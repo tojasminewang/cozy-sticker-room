@@ -3,13 +3,13 @@
    All the game tuning lives here. Edit freely!
 
    To add a sticker to a room:
-     1. Draw it in js/art.js (add an entry to CSR.art.stickers)
+     1. Draw it in js/art.js or js/stickers-plus.js
      2. Add a line to the room's `stickers` array below:
         { id, art, name, x, y, scale, z, shadow }
         x/y  = the sticker's target spot, in room coordinates
                (the room canvas is 720 wide × 920 tall)
         z    = draw order (0 = behind, bigger = in front)
-   To add a room: copy the bedroom block and give it new stickers.
+   To add a room: copy a room block, register a scene for its id.
    ============================================================ */
 
 window.CSR = window.CSR || {};
@@ -29,63 +29,65 @@ CSR.config = {
     {
       id: 'bedroom',
       name: 'Cozy Bedroom',
-      // soft palette for this room (walls / floor accents)
       palette: {
-        wallTop: '#FBE9DD', wallBottom: '#F8D7C6',
-        floorTop: '#F6DEBD', floorBottom: '#F0CBA1',
+        wallTop: '#FAD9D0', wallBottom: '#F5C3B8',
+        floorTop: '#F3D3AB', floorBottom: '#EBBE8D',
         accent: '#EE8FA6',
       },
       stickers: [
-        { id: 'rug',    art: 'rug',       name: 'Scallop Rug',    x: 264, y: 812, scale: 2.05, z: 0, shadow: false },
-        { id: 'shelf',  art: 'bookshelf', name: 'Book Nook',      x: 148, y: 598, scale: 1.5,  z: 1, shadow: true  },
-        { id: 'lamp',   art: 'lamp',      name: 'Glow Lamp',      x: 353, y: 494, scale: 0.95, z: 2, shadow: false },
-        { id: 'plant',  art: 'plant',     name: 'Leafy Friend',   x: 655, y: 840, scale: 1.0,  z: 3, shadow: true  },
-        { id: 'bunny',  art: 'bunny',     name: 'Mochi Bunny',    x: 600, y: 494, scale: 0.85, z: 2, shadow: false },
-        { id: 'poster', art: 'poster',    name: 'Rainbow Poster', x: 562, y: 208, scale: 1.15, z: 1, shadow: false },
+        { id: 'rug',       art: 'rug',       name: 'Scallop Rug',    x: 264, y: 812, scale: 2.05, z: 0, shadow: false },
+        { id: 'shelf',     art: 'bookshelf', name: 'Book Nook',      x: 148, y: 598, scale: 1.5,  z: 1, shadow: true  },
+        { id: 'lamp',      art: 'lamp',      name: 'Glow Lamp',      x: 353, y: 494, scale: 0.95, z: 2, shadow: false },
+        { id: 'plant',     art: 'plant',     name: 'Leafy Friend',   x: 655, y: 840, scale: 1.0,  z: 3, shadow: true  },
+        { id: 'bunny',     art: 'bunny',     name: 'Mochi Bunny',    x: 600, y: 494, scale: 0.85, z: 2, shadow: false },
+        { id: 'poster',    art: 'poster',    name: 'Rainbow Poster', x: 562, y: 208, scale: 1.15, z: 1, shadow: false },
+        { id: 'moonlight', art: 'moonlight', name: 'Moon Light',     x: 378, y: 308, scale: 0.9,  z: 1, shadow: false },
+        { id: 'slippers',  art: 'slippers',  name: 'Slippers',       x: 170, y: 872, scale: 0.95, z: 3, shadow: false },
       ],
     },
-
     {
       id: 'kitchen',
       name: 'Sunny Kitchen',
       palette: {
-        wallTop: '#FCF1DA', wallBottom: '#F9E3BC',
-        floorTop: '#F7DFC2', floorBottom: '#F0CDA4',
+        wallTop: '#FBE9BC', wallBottom: '#F6D897',
+        floorTop: '#F5D9B4', floorBottom: '#ECC793',
         accent: '#F2B95C',
       },
       stickers: [
-        { id: 'kettle',     art: 'kettle',     name: 'Tea Kettle',     x: 130, y: 484, scale: 0.95, z: 2, shadow: false },
-        { id: 'toaster',    art: 'toaster',    name: 'Happy Toast',    x: 300, y: 497, scale: 0.95, z: 2, shadow: false },
-        { id: 'fruitbowl',  art: 'fruitbowl',  name: 'Fruit Friends',  x: 428, y: 498, scale: 0.95, z: 3, shadow: false },
-        { id: 'spiceshelf', art: 'spiceshelf', name: 'Spice Shelf',    x: 420, y: 296, scale: 1.2,  z: 1, shadow: false },
-        { id: 'clock',      art: 'clock',      name: 'Tick-Tock',      x: 470, y: 158, scale: 1.0,  z: 1, shadow: false },
-        { id: 'herb',       art: 'herb',       name: 'Baby Basil',     x: 176, y: 252, scale: 0.8,  z: 2, shadow: false },
-        { id: 'stool',      art: 'stool',      name: 'Honey Stool',    x: 520, y: 810, scale: 1.1,  z: 2, shadow: true  },
+        { id: 'kettle',     art: 'kettle',     name: 'Tea Kettle',   x: 130, y: 484, scale: 0.95, z: 2, shadow: false },
+        { id: 'toaster',    art: 'toaster',    name: 'Happy Toast',  x: 300, y: 497, scale: 0.95, z: 2, shadow: false },
+        { id: 'fruitbowl',  art: 'fruitbowl',  name: 'Fruit Friends',x: 428, y: 498, scale: 0.95, z: 3, shadow: false },
+        { id: 'spiceshelf', art: 'spiceshelf', name: 'Spice Shelf',  x: 420, y: 296, scale: 1.2,  z: 1, shadow: false },
+        { id: 'clock',      art: 'clock',      name: 'Tick-Tock',    x: 470, y: 158, scale: 1.0,  z: 1, shadow: false },
+        { id: 'herb',       art: 'herb',       name: 'Baby Basil',   x: 176, y: 252, scale: 0.8,  z: 2, shadow: false },
+        { id: 'stool',      art: 'stool',      name: 'Honey Stool',  x: 520, y: 810, scale: 1.1,  z: 2, shadow: true  },
+        { id: 'fruitcrate', art: 'fruitcrate', name: 'Fruit Crate',  x: 140, y: 800, scale: 1.0,  z: 2, shadow: true  },
+        { id: 'mugrack',    art: 'mugrack',    name: 'Mug Rack',     x: 285, y: 395, scale: 0.85, z: 1, shadow: false },
       ],
     },
-
     {
       id: 'nook',
       name: 'Plant Corner',
       palette: {
-        wallTop: '#F2F4E2', wallBottom: '#E9EDCD',
-        floorTop: '#F0DDBA', floorBottom: '#E7C99B',
+        wallTop: '#EDF2D3', wallBottom: '#E0E8B6',
+        floorTop: '#EED8AF', floorBottom: '#E3C28E',
         accent: '#8FBF98',
       },
       stickers: [
-        { id: 'monstera',  art: 'monstera',    name: 'Monstera Pal',  x: 140, y: 745, scale: 1.35, z: 2, shadow: true  },
-        { id: 'hangplant', art: 'hangplant',   name: 'Sky Fern',      x: 240, y: 140, scale: 0.95, z: 1, shadow: false },
-        { id: 'sign',      art: 'sign',        name: 'Grow Sign',     x: 385, y: 240, scale: 1.05, z: 1, shadow: false },
-        { id: 'bee',       art: 'bee',         name: 'Bee Buddy',     x: 400, y: 120, scale: 0.75, z: 1, shadow: false },
-        { id: 'tulipvase', art: 'tulipvase',   name: 'Sweet Tulips',  x: 580, y: 312, scale: 0.9,  z: 2, shadow: false },
-        { id: 'cactus',    art: 'cactustrio',  name: 'Cactus Trio',   x: 580, y: 446, scale: 1.0,  z: 2, shadow: false },
-        { id: 'can',       art: 'wateringcan', name: 'Watering Pal',  x: 350, y: 795, scale: 1.0,  z: 3, shadow: true  },
+        { id: 'monstera',  art: 'monstera',    name: 'Monstera Pal', x: 140, y: 745, scale: 1.35, z: 2, shadow: true  },
+        { id: 'hangplant', art: 'hangplant',   name: 'Sky Fern',     x: 240, y: 140, scale: 0.95, z: 1, shadow: false },
+        { id: 'sign',      art: 'sign',        name: 'Grow Sign',    x: 385, y: 240, scale: 1.05, z: 1, shadow: false },
+        { id: 'bee',       art: 'bee',         name: 'Bee Buddy',    x: 400, y: 120, scale: 0.75, z: 1, shadow: false },
+        { id: 'tulipvase', art: 'tulipvase',   name: 'Sweet Tulips', x: 580, y: 312, scale: 0.9,  z: 2, shadow: false },
+        { id: 'cactus',    art: 'cactustrio',  name: 'Cactus Trio',  x: 580, y: 446, scale: 1.0,  z: 2, shadow: false },
+        { id: 'can',       art: 'wateringcan', name: 'Watering Pal', x: 350, y: 795, scale: 1.0,  z: 3, shadow: true  },
+        { id: 'gnome',     art: 'gnome',       name: 'Gnome Pal',    x: 580, y: 845, scale: 0.95, z: 3, shadow: true  },
+        { id: 'birdhouse', art: 'birdhouse',   name: 'Birdhouse',    x: 355, y: 452, scale: 0.95, z: 1, shadow: false },
       ],
     },
-
     {
       id: 'cafe', name: 'Cozy Café',
-      palette: { wallTop: '#F8EBDB', wallBottom: '#F3DCC2', floorTop: '#EBD3AF', floorBottom: '#DFBF95', accent: '#D98E68' },
+      palette: { wallTop: '#F3DFC2', wallBottom: '#EBCCA2', floorTop: '#E5C9A0', floorBottom: '#D9B584', accent: '#D98E68' },
       stickers: [
         { id: 'espresso',   art: 'espresso',   name: 'Espresso Pal', x: 140, y: 492, scale: 0.95, z: 2, shadow: false },
         { id: 'cakedome',   art: 'cakedome',   name: 'Cake Dome',    x: 300, y: 494, scale: 0.95, z: 2, shadow: false },
@@ -93,11 +95,13 @@ CSR.config = {
         { id: 'croissant',  art: 'croissant',  name: 'Croissant',    x: 640, y: 545, scale: 0.9,  z: 3, shadow: false },
         { id: 'menuboard',  art: 'menuboard',  name: 'Menu Board',   x: 420, y: 235, scale: 1.05, z: 1, shadow: false },
         { id: 'trailplant', art: 'trailplant', name: 'Ivy Hook',     x: 600, y: 230, scale: 1.0,  z: 1, shadow: false },
+        { id: 'cupstack',   art: 'cupstack',   name: 'Cup Tower',    x: 430, y: 492, scale: 0.9,  z: 2, shadow: false },
+        { id: 'latteart',   art: 'latteart',   name: 'Latte Print',  x: 600, y: 390, scale: 0.95, z: 1, shadow: false },
       ],
     },
     {
       id: 'bath', name: 'Bubble Bath',
-      palette: { wallTop: '#E9F5F3', wallBottom: '#DAECE8', floorTop: '#F2E7D8', floorBottom: '#E7D5BE', accent: '#7FC4BD' },
+      palette: { wallTop: '#DDF0EC', wallBottom: '#C8E5DF', floorTop: '#F0E2CE', floorBottom: '#E4D0B4', accent: '#7FC4BD' },
       stickers: [
         { id: 'ducky',       art: 'ducky',       name: 'Ducky',        x: 515, y: 530, scale: 0.85, z: 2, shadow: false },
         { id: 'bubbles',     art: 'bubbles',     name: 'Bubble Cloud', x: 470, y: 410, scale: 0.9,  z: 1, shadow: false },
@@ -105,23 +109,27 @@ CSR.config = {
         { id: 'potionshelf', art: 'potionshelf', name: 'Potion Shelf', x: 580, y: 300, scale: 1.05, z: 1, shadow: false },
         { id: 'towelstack',  art: 'towelstack',  name: 'Towel Stack',  x: 120, y: 780, scale: 1.05, z: 2, shadow: true  },
         { id: 'bathmat',     art: 'bathmat',     name: 'Bath Mat',     x: 200, y: 850, scale: 1.5,  z: 0, shadow: false },
+        { id: 'towelring',   art: 'towelring',   name: 'Towel Ring',   x: 170, y: 388, scale: 0.95, z: 1, shadow: false },
+        { id: 'octo',        art: 'octo',        name: 'Octo Pal',     x: 418, y: 545, scale: 0.8,  z: 2, shadow: false },
       ],
     },
     {
       id: 'study', name: 'Study Nook',
-      palette: { wallTop: '#F4EFDE', wallBottom: '#ECE3C8', floorTop: '#EFDCBA', floorBottom: '#E4C99E', accent: '#C9A25E' },
+      palette: { wallTop: '#F1E7C4', wallBottom: '#E8D6A3', floorTop: '#EDD8B0', floorBottom: '#E1C48F', accent: '#C9A25E' },
       stickers: [
-        { id: 'desklamp',  art: 'desklamp',  name: 'Study Lamp',  x: 500, y: 428, scale: 0.95, z: 2, shadow: false },
-        { id: 'laptop',    art: 'laptop',    name: 'Lil Laptop',  x: 620, y: 437, scale: 0.95, z: 2, shadow: false },
-        { id: 'corkboard', art: 'corkboard', name: 'Pin Board',   x: 380, y: 215, scale: 1.15, z: 1, shadow: false },
-        { id: 'calendar',  art: 'calendar',  name: 'Calendar',    x: 565, y: 230, scale: 1.0,  z: 1, shadow: false },
-        { id: 'globe',     art: 'globe',     name: 'World Globe', x: 150, y: 750, scale: 1.1,  z: 2, shadow: true  },
-        { id: 'pouf',      art: 'pouf',      name: 'Pouf',        x: 300, y: 830, scale: 1.2,  z: 2, shadow: true  },
+        { id: 'desklamp',    art: 'desklamp',    name: 'Study Lamp',  x: 500, y: 428, scale: 0.95, z: 2, shadow: false },
+        { id: 'laptop',      art: 'laptop',      name: 'Lil Laptop',  x: 620, y: 437, scale: 0.95, z: 2, shadow: false },
+        { id: 'corkboard',   art: 'corkboard',   name: 'Pin Board',   x: 380, y: 215, scale: 1.15, z: 1, shadow: false },
+        { id: 'calendar',    art: 'calendar',    name: 'Calendar',    x: 565, y: 230, scale: 1.0,  z: 1, shadow: false },
+        { id: 'globe',       art: 'globe',       name: 'World Globe', x: 150, y: 750, scale: 1.1,  z: 2, shadow: true  },
+        { id: 'pouf',        art: 'pouf',        name: 'Pouf',        x: 300, y: 830, scale: 1.2,  z: 2, shadow: true  },
+        { id: 'deskchair',   art: 'deskchair',   name: 'Desk Chair',  x: 485, y: 762, scale: 1.1,  z: 2, shadow: true  },
+        { id: 'wastebasket', art: 'wastebasket', name: 'Paper Bin',   x: 655, y: 795, scale: 0.95, z: 2, shadow: true  },
       ],
     },
     {
       id: 'studio', name: 'Art Studio',
-      palette: { wallTop: '#F2ECF8', wallBottom: '#E8DDF3', floorTop: '#EFDFC4', floorBottom: '#E3CBA4', accent: '#A98BD4' },
+      palette: { wallTop: '#ECE0F6', wallBottom: '#DFCCF0', floorTop: '#EDDCBE', floorBottom: '#E0C89D', accent: '#A98BD4' },
       stickers: [
         { id: 'canvasart',   art: 'canvasart',   name: 'Rainbow Art',  x: 600, y: 455, scale: 1.2,  z: 2, shadow: false },
         { id: 'palette',     art: 'palette',     name: 'Palette',      x: 170, y: 795, scale: 1.05, z: 2, shadow: true  },
@@ -129,11 +137,13 @@ CSR.config = {
         { id: 'brushjar',    art: 'brushjar',    name: 'Brush Jar',    x: 120, y: 372, scale: 0.95, z: 2, shadow: false },
         { id: 'painttubes',  art: 'painttubes',  name: 'Paint Tubes',  x: 240, y: 385, scale: 0.95, z: 2, shadow: false },
         { id: 'swatchboard', art: 'swatchboard', name: 'Swatches',     x: 370, y: 205, scale: 1.05, z: 1, shadow: false },
+        { id: 'canvasroll',  art: 'canvasroll',  name: 'Canvas Rolls', x: 640, y: 830, scale: 1.0,  z: 3, shadow: true  },
+        { id: 'ribbon',      art: 'ribbon',      name: 'Art Ribbon',   x: 520, y: 190, scale: 0.9,  z: 1, shadow: false },
       ],
     },
     {
       id: 'music', name: 'Music Room',
-      palette: { wallTop: '#EBECF8', wallBottom: '#DDDFF1', floorTop: '#EFDCBA', floorBottom: '#E2C69A', accent: '#8B92D8' },
+      palette: { wallTop: '#E2E4F8', wallBottom: '#D0D4F0', floorTop: '#EDD9B4', floorBottom: '#DFC392', accent: '#8B92D8' },
       stickers: [
         { id: 'metronome',  art: 'metronome',  name: 'Metronome',  x: 500, y: 398, scale: 0.9,  z: 2, shadow: false },
         { id: 'boombox',    art: 'boombox',    name: 'Boombox',    x: 615, y: 404, scale: 0.9,  z: 2, shadow: false },
@@ -141,23 +151,27 @@ CSR.config = {
         { id: 'micstand',   art: 'micstand',   name: 'Lil Mic',    x: 320, y: 750, scale: 1.1,  z: 2, shadow: true  },
         { id: 'headphones', art: 'headphones', name: 'Headphones', x: 360, y: 240, scale: 1.0,  z: 1, shadow: false },
         { id: 'vinyl',      art: 'vinyl',      name: 'Vinyl Star', x: 560, y: 255, scale: 1.0,  z: 1, shadow: false },
+        { id: 'amp',        art: 'amp',        name: 'Lil Amp',    x: 560, y: 802, scale: 1.0,  z: 3, shadow: true  },
+        { id: 'tambourine', art: 'tambourine', name: 'Tambourine', x: 150, y: 428, scale: 0.9,  z: 1, shadow: false },
       ],
     },
     {
       id: 'games', name: 'Game Den',
-      palette: { wallTop: '#E8F1FB', wallBottom: '#D9E7F7', floorTop: '#EFE0C6', floorBottom: '#E2CBA6', accent: '#7BA6E8' },
+      palette: { wallTop: '#DCEAFB', wallBottom: '#C8DCF6', floorTop: '#EDDEC0', floorBottom: '#DFC9A0', accent: '#7BA6E8' },
       stickers: [
-        { id: 'arcadecab',  art: 'arcadecab',  name: 'Arcade Cab',  x: 170, y: 685, scale: 1.25, z: 2, shadow: true  },
-        { id: 'controller', art: 'controller', name: 'Controller',  x: 320, y: 815, scale: 1.0,  z: 3, shadow: true  },
-        { id: 'beanbag',    art: 'beanbag',    name: 'Bean Bag',    x: 615, y: 822, scale: 1.2,  z: 2, shadow: true  },
-        { id: 'handheld',   art: 'handheld',   name: 'Handheld',    x: 628, y: 556, scale: 0.85, z: 2, shadow: false },
-        { id: 'gamestack',  art: 'gamestack',  name: 'Game Stack',  x: 350, y: 758, scale: 0.9,  z: 2, shadow: true  },
-        { id: 'starsign',   art: 'starsign',   name: 'Star Sign',   x: 245, y: 245, scale: 1.1,  z: 1, shadow: false },
+        { id: 'arcadecab',   art: 'arcadecab',   name: 'Arcade Cab',   x: 170, y: 685, scale: 1.25, z: 2, shadow: true  },
+        { id: 'controller',  art: 'controller',  name: 'Controller',   x: 320, y: 815, scale: 1.0,  z: 3, shadow: true  },
+        { id: 'beanbag',     art: 'beanbag',     name: 'Bean Bag',     x: 615, y: 822, scale: 1.2,  z: 2, shadow: true  },
+        { id: 'handheld',    art: 'handheld',    name: 'Handheld',     x: 628, y: 556, scale: 0.85, z: 2, shadow: false },
+        { id: 'gamestack',   art: 'gamestack',   name: 'Game Stack',   x: 350, y: 758, scale: 0.9,  z: 2, shadow: true  },
+        { id: 'starsign',    art: 'starsign',    name: 'Star Sign',    x: 245, y: 245, scale: 1.1,  z: 1, shadow: false },
+        { id: 'cloudplush',  art: 'cloudplush',  name: 'Cloud Plush',  x: 468, y: 820, scale: 1.0,  z: 3, shadow: true  },
+        { id: 'retroposter', art: 'retroposter', name: 'Retro Poster', x: 640, y: 248, scale: 0.95, z: 1, shadow: false },
       ],
     },
     {
       id: 'cats', name: 'Kitty Corner',
-      palette: { wallTop: '#FBEFE3', wallBottom: '#F7E0CA', floorTop: '#F4E3C8', floorBottom: '#EAD0AA', accent: '#F0A987' },
+      palette: { wallTop: '#FAE3CB', wallBottom: '#F5CFAB', floorTop: '#F2DFC0', floorBottom: '#E7CBA0', accent: '#F0A987' },
       stickers: [
         { id: 'sleepycat',   art: 'sleepycat',   name: 'Sleepy Loaf',  x: 185, y: 392, scale: 1.0,  z: 2, shadow: false },
         { id: 'cattree',     art: 'cattree',     name: 'Cat Tower',    x: 565, y: 650, scale: 1.35, z: 2, shadow: true  },
@@ -165,11 +179,13 @@ CSR.config = {
         { id: 'yarnball',    art: 'yarnball',    name: 'Yarn Ball',    x: 215, y: 838, scale: 0.9,  z: 3, shadow: true  },
         { id: 'pawframe',    art: 'pawframe',    name: 'Paw Art',      x: 395, y: 225, scale: 1.0,  z: 1, shadow: false },
         { id: 'fishpennant', art: 'fishpennant', name: 'Fish Flags',   x: 560, y: 190, scale: 1.1,  z: 1, shadow: false },
+        { id: 'catbed',      art: 'catbed',      name: 'Cat Bed',      x: 360, y: 722, scale: 1.0,  z: 2, shadow: true  },
+        { id: 'mousetoy',    art: 'mousetoy',    name: 'Mouse Toy',    x: 150, y: 756, scale: 0.85, z: 3, shadow: true  },
       ],
     },
     {
       id: 'balcony', name: 'Balcony Garden',
-      palette: { wallTop: '#FDE3C8', wallBottom: '#F2BFA8', floorTop: '#E0B98E', floorBottom: '#D3A276', accent: '#F49BB0' },
+      palette: { wallTop: '#FCDDBC', wallBottom: '#EFB098', floorTop: '#DDB183', floorBottom: '#CE9A6A', accent: '#F49BB0' },
       stickers: [
         { id: 'flowerbox',    art: 'flowerbox',    name: 'Flower Box',  x: 250, y: 426, scale: 1.05, z: 2, shadow: false },
         { id: 'birdy',        art: 'birdy',        name: 'Birdy',       x: 450, y: 426, scale: 0.8,  z: 2, shadow: false },
@@ -177,11 +193,13 @@ CSR.config = {
         { id: 'candlejar',    art: 'candlejar',    name: 'Candle Jar',  x: 140, y: 795, scale: 1.0,  z: 2, shadow: true  },
         { id: 'teatable',     art: 'teatable',     name: 'Tea Table',   x: 360, y: 755, scale: 1.1,  z: 2, shadow: true  },
         { id: 'floorcushion', art: 'floorcushion', name: 'Sun Cushion', x: 585, y: 830, scale: 1.1,  z: 2, shadow: true  },
+        { id: 'birdfeeder',   art: 'birdfeeder',   name: 'Bird Feeder', x: 100, y: 132, scale: 0.9,  z: 1, shadow: false },
+        { id: 'telescope',    art: 'telescope',    name: 'Telescope',   x: 648, y: 724, scale: 1.0,  z: 2, shadow: true  },
       ],
     },
     {
       id: 'camp', name: 'Starry Camp',
-      palette: { wallTop: '#C9B6DE', wallBottom: '#F2C9AE', floorTop: '#ABD198', floorBottom: '#92BE80', accent: '#9A82C9' },
+      palette: { wallTop: '#C2ABDB', wallBottom: '#F0BE9F', floorTop: '#A3CC8E', floorBottom: '#88B475', accent: '#9A82C9' },
       stickers: [
         { id: 'campfire',    art: 'campfire',    name: 'Campfire',     x: 470, y: 745, scale: 1.1,  z: 2, shadow: false },
         { id: 'mallowstick', art: 'mallowstick', name: "S'more Stick", x: 605, y: 795, scale: 0.95, z: 3, shadow: false },
@@ -189,18 +207,22 @@ CSR.config = {
         { id: 'camplantern', art: 'camplantern', name: 'Lantern',      x: 185, y: 815, scale: 0.95, z: 3, shadow: true  },
         { id: 'backpack',    art: 'backpack',    name: 'Backpack',     x: 645, y: 650, scale: 1.0,  z: 2, shadow: true  },
         { id: 'starbunting', art: 'starbunting', name: 'Star Flags',   x: 420, y: 140, scale: 1.15, z: 1, shadow: false },
+        { id: 'owl',         art: 'owl',         name: 'Owl Buddy',    x: 200, y: 256, scale: 0.85, z: 2, shadow: false },
+        { id: 'cooler',      art: 'cooler',      name: 'Camp Cooler',  x: 490, y: 864, scale: 0.9,  z: 3, shadow: true  },
       ],
     },
     {
       id: 'lodge', name: 'Winter Lodge',
-      palette: { wallTop: '#F7E9E2', wallBottom: '#F1D8CC', floorTop: '#EBD2AF', floorBottom: '#DDBD92', accent: '#C97B6B' },
+      palette: { wallTop: '#F5DFD3', wallBottom: '#EFC9B9', floorTop: '#E8CBA2', floorBottom: '#DAB584', accent: '#C97B6B' },
       stickers: [
-        { id: 'hearthfire',    art: 'hearthfire',    name: 'Cozy Fire',   x: 550, y: 545, scale: 1.0,  z: 2, shadow: false },
-        { id: 'stockings',     art: 'stockings',     name: 'Stockings',   x: 478, y: 442, scale: 0.9,  z: 2, shadow: false },
-        { id: 'cocoamug',      art: 'cocoamug',      name: 'Hot Cocoa',   x: 472, y: 354, scale: 0.85, z: 2, shadow: false },
-        { id: 'snowglobe',     art: 'snowglobe',     name: 'Snow Globe',  x: 605, y: 350, scale: 0.85, z: 2, shadow: false },
-        { id: 'wreath',        art: 'wreath',        name: 'Wreath',      x: 545, y: 180, scale: 1.05, z: 1, shadow: false },
-        { id: 'blanketbasket', art: 'blanketbasket', name: 'Knit Basket', x: 180, y: 780, scale: 1.1,  z: 2, shadow: true  },
+        { id: 'hearthfire',    art: 'hearthfire',    name: 'Cozy Fire',    x: 550, y: 545, scale: 1.0,  z: 2, shadow: false },
+        { id: 'stockings',     art: 'stockings',     name: 'Stockings',    x: 478, y: 442, scale: 0.9,  z: 2, shadow: false },
+        { id: 'cocoamug',      art: 'cocoamug',      name: 'Hot Cocoa',    x: 472, y: 354, scale: 0.85, z: 2, shadow: false },
+        { id: 'snowglobe',     art: 'snowglobe',     name: 'Snow Globe',   x: 605, y: 350, scale: 0.85, z: 2, shadow: false },
+        { id: 'wreath',        art: 'wreath',        name: 'Wreath',       x: 545, y: 180, scale: 1.05, z: 1, shadow: false },
+        { id: 'blanketbasket', art: 'blanketbasket', name: 'Knit Basket',  x: 180, y: 780, scale: 1.1,  z: 2, shadow: true  },
+        { id: 'rockingchair',  art: 'rockingchair',  name: 'Rocker Chair', x: 322, y: 742, scale: 1.15, z: 2, shadow: true  },
+        { id: 'sconce',        art: 'sconce',        name: 'Wall Candle',  x: 320, y: 308, scale: 0.9,  z: 1, shadow: false },
       ],
     },
 

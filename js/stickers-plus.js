@@ -991,5 +991,421 @@
         <path d="M35 92 Q60 97 85 92" fill="none" stroke="#D9A468" stroke-width="3" stroke-dasharray="9 8" stroke-linecap="round"/>
       `,
     },
+
+    /* ════════ ROOM FILLER PACK (2 extra stickers per room) ════════ */
+
+    /* ---- bedroom: crescent moon night-light ---- */
+    moonlight: {
+      w: 100, h: 110,
+      sil: `<path d="M34 12 Q10 30 10 55 Q10 84 34 100 Q50 110 68 104 Q46 92 40 72 Q34 48 46 28 Q54 14 70 8 Q50 0 34 12 Z"/>`,
+      body: `
+        <ellipse cx="38" cy="55" rx="44" ry="50" fill="#FFE9AE" opacity="0.3"/>
+        <path d="M36 14 Q14 32 14 55 Q14 82 36 96 Q48 104 62 100 Q44 88 38 70 Q32 48 43 29 Q50 17 63 12 Q48 4 36 14 Z"
+              fill="#FFD98E" stroke="${C}" stroke-width="${SW}"/>
+        <path d="M26 42 q3 3.4 6 0" ${o}/>
+        <path d="M26 60 q3 2.8 6 0" transform="translate(2 0)" ${o}/>
+        <ellipse cx="22" cy="52" rx="4" ry="2.8" fill="#F9AFC0" opacity="0.9"/>
+        ${ST(78, 28, 1, '#FFE9AE')}
+        ${ST(84, 72, 0.75, '#FFE9AE')}
+      `,
+    },
+
+    /* ---- bedroom: bunny slippers ---- */
+    slippers: {
+      w: 125, h: 75,
+      sil: `<path d="M16 36 Q16 14 38 13 L48 13 Q66 14 66 34 Q66 38 64 41 Q68 32 78 31 L88 31 Q106 32 106 52 Q106 70 88 71 L74 71 Q62 70 60 60 Q56 68 44 69 L34 69 Q16 68 16 46 Z"/>`,
+      body: `
+        <ellipse cx="41" cy="41" rx="24" ry="26" fill="#F9BFCE" stroke="${C}" stroke-width="3"/>
+        <path d="M20 34 Q26 18 41 18 Q56 18 62 34 Q54 44 41 44 Q28 44 20 34 Z" fill="#FBD9E2" stroke="${C}" stroke-width="2.5"/>
+        <path d="M37 30 c-1.8 -2.2 -5.2 -0.8 -5.2 1.7 c0 2.2 3 3.5 5.2 5.4 c2.2 -1.9 5.2 -3.2 5.2 -5.4 c0 -2.5 -3.4 -3.9 -5.2 -1.7 Z" fill="#EE8FA6" transform="translate(4 0)"/>
+        <ellipse cx="82" cy="52" rx="22" ry="17" fill="#F9BFCE" stroke="${C}" stroke-width="3"/>
+        <path d="M63 47 Q68 34 82 34 Q96 34 101 47 Q94 55 82 55 Q70 55 63 47 Z" fill="#FBD9E2" stroke="${C}" stroke-width="2.5"/>
+        <circle cx="82" cy="45" r="3" fill="#EE8FA6"/>
+      `,
+    },
+
+    /* ---- kitchen: crate of apples ---- */
+    fruitcrate: {
+      w: 120, h: 95,
+      sil: `<path d="M20 34 Q20 24 30 24 Q32 12 44 12 Q54 12 56 22 Q60 18 66 20 Q68 10 80 10 Q92 10 94 22 L96 24 Q106 24 106 34 L110 34 Q116 34 115 41 L108 84 Q106 92 98 92 L28 92 Q20 92 18 84 L11 41 Q10 34 16 34 Z"/>`,
+      body: `
+        <circle cx="42" cy="28" r="15" fill="#F98D8D" stroke="${C}" stroke-width="3"/>
+        <path d="M42 15 q0.5 -5 4 -6" fill="none" stroke="${C}" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="64" cy="24" r="13" fill="#FFB26B" stroke="${C}" stroke-width="3"/>
+        <circle cx="86" cy="27" r="14" fill="#F98D8D" stroke="${C}" stroke-width="3"/>
+        <ellipse cx="92" cy="14" rx="5" ry="3" transform="rotate(-24 92 14)" fill="#86CF9C" stroke="#58A46F" stroke-width="1.8"/>
+        <path d="M16 36 L110 36 L103 82 Q102 89 95 89 L31 89 Q24 89 23 82 Z" fill="#E8C08A" stroke="${C}" stroke-width="${SW}"/>
+        <path d="M22 52 L104 52 M25 68 L101 68" stroke="#D9A468" stroke-width="3" stroke-linecap="round"/>
+        <path d="M63 42 c-1.8 -2.2 -5.2 -0.8 -5.2 1.7 c0 2.2 3 3.5 5.2 5.4 c2.2 -1.9 5.2 -3.2 5.2 -5.4 c0 -2.5 -3.4 -3.9 -5.2 -1.7 Z" fill="#B9743F" opacity="0.6"/>
+      `,
+    },
+
+    /* ---- kitchen: wall rack with mugs ---- */
+    mugrack: {
+      w: 130, h: 85,
+      sil: `<path d="M14 12 L116 12 Q124 12 124 20 L124 28 Q124 36 116 36 L106 36 L106 40 Q112 40 112 48 L112 64 Q112 74 102 74 L78 74 Q68 74 68 64 L68 48 Q68 40 74 40 L74 36 L60 36 L60 42 Q66 42 66 50 L66 66 Q66 76 56 76 L32 76 Q22 76 22 66 L22 50 Q22 42 28 42 L28 36 L14 36 Q6 36 6 28 L6 20 Q6 12 14 12 Z"/>`,
+      body: `
+        <rect x="6" y="12" width="118" height="24" rx="8" fill="#E8C08A" stroke="${C}" stroke-width="${SW}"/>
+        <circle cx="42" cy="38" r="3" fill="#B98F7B" stroke="${C}" stroke-width="1.5"/>
+        <circle cx="88" cy="38" r="3" fill="#B98F7B" stroke="${C}" stroke-width="1.5"/>
+        <rect x="22" y="44" width="42" height="30" rx="8" fill="#BFE0F7" stroke="${C}" stroke-width="3"/>
+        <path d="M64 52 q8 -2 8 6 q0 8 -8 6" fill="none" stroke="${C}" stroke-width="3"/>
+        ${ST(43, 59, 0.8, '#FFFDF6')}
+        <rect x="68" y="42" width="42" height="30" rx="8" fill="#F9BFCE" stroke="${C}" stroke-width="3"/>
+        <path d="M110 50 q8 -2 8 6 q0 8 -8 6" fill="none" stroke="${C}" stroke-width="3"/>
+        <path d="M89 52 c-1.8 -2.2 -5.2 -0.8 -5.2 1.7 c0 2.2 3 3.5 5.2 5.4 c2.2 -1.9 5.2 -3.2 5.2 -5.4 c0 -2.5 -3.4 -3.9 -5.2 -1.7 Z" fill="#FFFDF6"/>
+      `,
+    },
+
+    /* ---- nook: garden gnome ---- */
+    gnome: {
+      w: 95, h: 125,
+      sil: `<path d="M48 4 Q58 4 60 14 L72 60 Q88 66 90 84 Q92 106 72 114 Q60 119 48 119 Q36 119 24 114 Q4 106 6 84 Q8 66 24 60 L36 14 Q38 4 48 4 Z"/>`,
+      body: `
+        <path d="M48 6 Q56 6 58 14 L70 60 L26 60 L38 14 Q40 6 48 6 Z" fill="#E88A8A" stroke="${C}" stroke-width="${SW}"/>
+        ${ST(48, 32, 0.9, '#FFE9AE')}
+        <path d="M26 60 Q10 70 12 90 Q14 108 34 112 Q48 116 62 112 Q82 108 84 90 Q86 70 70 60 Q60 74 48 74 Q36 74 26 60 Z"
+              fill="#FFFDF6" stroke="${C}" stroke-width="${SW}"/>
+        <circle cx="48" cy="64" r="8" fill="#F8C3A4" stroke="${C}" stroke-width="2.5"/>
+        <ellipse cx="36" cy="66" rx="4" ry="2.8" fill="#F9AFC0" opacity="0.9"/>
+        <ellipse cx="60" cy="66" rx="4" ry="2.8" fill="#F9AFC0" opacity="0.9"/>
+        <path d="M40 92 Q48 98 56 92" fill="none" stroke="#E8D5C0" stroke-width="2.5" stroke-linecap="round"/>
+        <ellipse cx="36" cy="114" rx="9" ry="5" fill="#B98F7B" stroke="${C}" stroke-width="2.5"/>
+        <ellipse cx="60" cy="114" rx="9" ry="5" fill="#B98F7B" stroke="${C}" stroke-width="2.5"/>
+      `,
+    },
+
+    /* ---- nook: birdhouse ---- */
+    birdhouse: {
+      w: 100, h: 115,
+      sil: `<path d="M46 6 Q50 3 54 6 L92 38 Q97 43 91 47 L88 47 L88 94 Q88 104 78 104 L22 104 Q12 104 12 94 L12 47 L9 47 Q3 43 8 38 Z"/>`,
+      body: `
+        <rect x="16" y="46" width="68" height="54" rx="8" fill="#F6D9AF" stroke="${C}" stroke-width="${SW}"/>
+        <path d="M8 42 L50 8 L92 42 Q94 46 88 46 L12 46 Q6 46 8 42 Z" fill="#E88A8A" stroke="${C}" stroke-width="${SW}"/>
+        <circle cx="50" cy="70" r="13" fill="#6E5147" stroke="${C}" stroke-width="3"/>
+        <path d="M42 70 a8 8 0 0 1 16 0 Z" fill="#BFE0F7" stroke="${C}" stroke-width="2"/>
+        <path d="M48 66 q2 2.4 4 0" stroke="#FFFDF6" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M50 83 v9" stroke="${C}" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="50" cy="94" r="3" fill="#E8C08A" stroke="${C}" stroke-width="2"/>
+        <path d="M24 56 c-1.6 -1.9 -4.6 -0.7 -4.6 1.5" fill="none" stroke="#F9AFC0" stroke-width="2.5" stroke-linecap="round"/>
+      `,
+    },
+
+    /* ---- café: takeaway cup tower ---- */
+    cupstack: {
+      w: 95, h: 105,
+      sil: `<path d="M34 10 L62 10 Q70 10 69 18 L67 32 L72 32 Q80 32 79 40 L77 54 L82 54 Q90 54 89 62 L85 92 Q84 100 76 100 L20 100 Q12 100 11 92 L7 62 Q6 54 14 54 L19 54 L17 40 Q16 32 24 32 L29 32 L27 18 Q26 10 34 10 Z"/>`,
+      body: `
+        <path d="M30 12 h36 l-3 22 h-30 Z" fill="#F9BFCE" stroke="${C}" stroke-width="3"/>
+        <path d="M28 22 h40" stroke="#E58FAB" stroke-width="2.5"/>
+        <path d="M22 36 h52 l-3 20 h-46 Z" fill="#BFE0F7" stroke="${C}" stroke-width="3"/>
+        ${ST(48, 46, 0.8, '#FFFDF6')}
+        <path d="M12 58 h72 l-4 34 Q79 97 74 97 h-52 Q17 97 16 92 Z" fill="#A7E0B6" stroke="${C}" stroke-width="${SW}"/>
+        <path d="M45 70 c-1.8 -2.2 -5.2 -0.8 -5.2 1.7 c0 2.2 3 3.5 5.2 5.4 c2.2 -1.9 5.2 -3.2 5.2 -5.4 c0 -2.5 -3.4 -3.9 -5.2 -1.7 Z" fill="#FFFDF6" transform="translate(3 0)"/>
+        <path d="M14 64 h68" stroke="#6FB884" stroke-width="2.5" opacity="0.7"/>
+      `,
+    },
+
+    /* ---- café: framed latte print ---- */
+    latteart: {
+      w: 100, h: 115,
+      sil: `<rect x="10" y="12" width="80" height="92" rx="10"/>`,
+      body: `
+        <rect x="10" y="12" width="80" height="92" rx="10" fill="#D9A468" stroke="${C}" stroke-width="${SW}"/>
+        <rect x="18" y="20" width="64" height="76" rx="6" fill="#FFFDF6" stroke="${C}" stroke-width="2.5"/>
+        <path d="M30 56 Q30 48 38 48 L62 48 Q70 48 70 56 Q70 74 50 76 Q30 74 30 56 Z" fill="#F6D9AF" stroke="${C}" stroke-width="2.5"/>
+        <path d="M70 52 q7 -1 7 5 q0 6 -7 5" fill="none" stroke="${C}" stroke-width="2.5"/>
+        <path d="M50 52 c-1.8 -2.2 -5.2 -0.8 -5.2 1.7 c0 2.2 3 3.5 5.2 5.4 c2.2 -1.9 5.2 -3.2 5.2 -5.4 c0 -2.5 -3.4 -3.9 -5.2 -1.7 Z" fill="#FFFDF6"/>
+        <path d="M42 40 q3 -4 1 -8 M56 40 q3 -4 1 -8" stroke="#B98F7B" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <rect x="34" y="6" width="32" height="12" rx="3" transform="rotate(-3 50 12)" fill="#BEE8CD" opacity="0.92"/>
+      `,
+    },
+
+    /* ---- bath: towel ring ---- */
+    towelring: {
+      w: 95, h: 115,
+      sil: `<path d="M30 10 Q48 2 66 10 Q80 18 76 34 Q72 44 62 46 L66 46 L66 52 Q78 54 78 66 L78 94 Q78 106 66 106 L30 106 Q18 106 18 94 L18 66 Q18 54 30 52 L30 46 Q24 44 20 34 Q16 18 30 10 Z"/>`,
+      body: `
+        <circle cx="48" cy="28" r="20" fill="none" stroke="#E8C08A" stroke-width="7"/>
+        <circle cx="48" cy="28" r="20" fill="none" stroke="${C}" stroke-width="2" opacity="0.4"/>
+        <circle cx="48" cy="8" r="5" fill="#FFF2DC" stroke="${C}" stroke-width="2.5"/>
+        <rect x="22" y="50" width="52" height="54" rx="9" fill="#BFE0F7" stroke="${C}" stroke-width="${SW}"/>
+        <path d="M22 62 L74 62" stroke="#8FC1E8" stroke-width="3"/>
+        <path d="M28 78 h40 M28 88 h40" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+        <path d="M24 102 q6 5 12 0 q6 5 12 0 q6 5 12 0 q6 5 12 0" fill="none" stroke="#8FC1E8" stroke-width="2.5"/>
+      `,
+    },
+
+    /* ---- bath: octopus buddy ---- */
+    octo: {
+      w: 105, h: 90,
+      sil: `<path d="M52 6 Q84 6 88 38 Q90 52 82 60 Q88 64 86 72 Q83 80 74 78 Q76 84 68 86 Q60 88 56 82 Q50 88 42 86 Q34 84 36 76 Q26 80 22 72 Q19 64 26 58 Q16 50 17 38 Q20 6 52 6 Z"/>`,
+      body: `
+        <ellipse cx="52" cy="40" rx="34" ry="32" fill="#CBB4E8" stroke="${C}" stroke-width="${SW}"/>
+        <path d="M26 62 q-4 8 4 12 M42 70 q-2 8 6 10 M62 70 q2 8 -6 10 M78 62 q4 8 -4 12"
+              fill="none" stroke="#B39BD9" stroke-width="7" stroke-linecap="round"/>
+        ${F(52, 44, 0.9)}
+        <path d="M30 24 Q36 16 46 14" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity="0.6"/>
+        <circle cx="90" cy="18" r="5" fill="#EAF6FF" stroke="#7FC4BD" stroke-width="2"/>
+        <circle cx="98" cy="30" r="3.5" fill="#EAF6FF" stroke="#7FC4BD" stroke-width="2"/>
+      `,
+    },
+
+    /* ---- study: rolling desk chair ---- */
+    deskchair: {
+      w: 110, h: 140,
+      sil: `<path d="M30 14 Q30 4 40 4 L70 4 Q80 4 80 14 L80 46 Q80 56 70 56 L60 56 L60 64 Q78 64 82 70 Q86 78 78 82 L60 84 L60 104 Q76 106 82 112 Q88 120 78 124 L32 124 Q22 120 28 112 Q34 106 50 104 L50 84 L32 82 Q24 78 28 70 Q32 64 50 64 L50 56 L40 56 Q30 56 30 46 Z"/>`,
+      body: `
+        <rect x="30" y="4" width="50" height="52" rx="12" fill="#A7C6A0" stroke="${C}" stroke-width="${SW}"/>
+        <rect x="38" y="12" width="34" height="36" rx="8" fill="#BFD8B8"/>
+        <path d="M46 30 c-1.8 -2.2 -5.2 -0.8 -5.2 1.7 c0 2.2 3 3.5 5.2 5.4 c2.2 -1.9 5.2 -3.2 5.2 -5.4 c0 -2.5 -3.4 -3.9 -5.2 -1.7 Z" fill="#FFFDF6" transform="translate(9 -2)"/>
+        <ellipse cx="55" cy="72" rx="26" ry="11" fill="#A7C6A0" stroke="${C}" stroke-width="3"/>
+        <rect x="50" y="80" width="10" height="28" rx="5" fill="#B8A08E" stroke="${C}" stroke-width="2.5"/>
+        <path d="M30 116 Q38 108 55 108 Q72 108 80 116 Q85 121 77 122 L33 122 Q25 121 30 116 Z" fill="#B8A08E" stroke="${C}" stroke-width="3"/>
+        <circle cx="34" cy="124" r="4" fill="#8A6357" stroke="${C}" stroke-width="2"/>
+        <circle cx="76" cy="124" r="4" fill="#8A6357" stroke="${C}" stroke-width="2"/>
+      `,
+    },
+
+    /* ---- study: paper bin ---- */
+    wastebasket: {
+      w: 90, h: 100,
+      sil: `<path d="M34 8 Q46 0 56 8 Q64 14 60 24 L70 24 Q78 24 77 32 L70 88 Q69 96 61 96 L29 96 Q21 96 20 88 L13 32 Q12 24 20 24 L30 24 Q26 14 34 8 Z"/>`,
+      body: `
+        <circle cx="45" cy="17" r="12" fill="#FFFDF6" stroke="${C}" stroke-width="2.5"/>
+        <path d="M38 14 l6 4 M46 12 l-3 7 M48 20 l4 -3" stroke="#D9C6AC" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M16 28 h58 l-6 58 Q67 93 60 93 h-30 Q23 93 22 86 Z" fill="#8FC1E8" stroke="${C}" stroke-width="${SW}"/>
+        <path d="M28 34 L31 88 M45 34 L45 88 M62 34 L59 88" stroke="#6FA3D4" stroke-width="2.5" opacity="0.7"/>
+        <circle cx="61" cy="28" r="8" fill="#FFFDF6" stroke="${C}" stroke-width="2.5"/>
+      `,
+    },
+
+    /* ---- studio: rolled canvases ---- */
+    canvasroll: {
+      w: 115, h: 95,
+      sil: `<path d="M40 26 L76 26 Q90 26 90 40 L90 44 L98 44 Q112 44 112 58 L112 70 Q112 84 98 84 L18 84 Q4 84 4 70 L4 58 Q4 44 18 44 L26 44 L26 40 Q26 26 40 26 Z"/>`,
+      body: `
+        <rect x="26" y="26" width="64" height="28" rx="14" fill="#FFFDF6" stroke="${C}" stroke-width="3"/>
+        <circle cx="78" cy="40" r="9" fill="#F6E9D8" stroke="${C}" stroke-width="2.5"/>
+        <path d="M78 40 a4 4 0 0 1 4 -4" stroke="#D9C6AC" stroke-width="2" fill="none"/>
+        <rect x="4" y="44" width="58" height="40" rx="14" fill="#FFF6EE" stroke="${C}" stroke-width="3"/>
+        <circle cx="50" cy="64" r="11" fill="#F6E9D8" stroke="${C}" stroke-width="2.5"/>
+        <rect x="54" y="44" width="58" height="40" rx="14" fill="#FFFDF6" stroke="${C}" stroke-width="3"/>
+        <circle cx="100" cy="64" r="11" fill="#F6E9D8" stroke="${C}" stroke-width="2.5"/>
+        <path d="M34 30 L30 82" stroke="#F49BB0" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 7"/>
+        <path d="M20 60 q3 3.4 6 0" ${o}/>
+      `,
+    },
+
+    /* ---- studio: award rosette ---- */
+    ribbon: {
+      w: 95, h: 125,
+      sil: `<path d="M22 68 Q10 60 10 42 Q10 16 34 8 Q60 0 78 18 Q92 32 84 56 Q80 66 72 70 L80 108 Q81 116 73 114 L60 106 L54 116 Q50 122 44 116 L38 106 L26 114 Q18 116 19 108 L26 70 Q24 70 22 68 Z"/>`,
+      body: `
+        <path d="M34 70 L26 108 L40 100 L48 112 L56 100 L70 108 L62 70 Z" fill="#F49BB0" stroke="${C}" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="48" cy="40" r="32" fill="#F49BB0" stroke="${C}" stroke-width="${SW}"/>
+        <path d="M48 8 L48 16 M70 14 L65 21 M82 34 L74 37 M82 48 L74 45 M26 14 L31 21 M14 34 L22 37 M14 48 L22 45" stroke="#E58FAB" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="48" cy="40" r="19" fill="#FBD9E2" stroke="${C}" stroke-width="2.5"/>
+        ${ST(48, 40, 1.4, '#FFD98E')}
+      `,
+    },
+
+    /* ---- music: little amp ---- */
+    amp: {
+      w: 115, h: 100,
+      sil: `<path d="M28 22 L36 22 Q36 8 57 8 Q78 8 78 22 L86 22 Q98 22 98 34 L98 80 Q98 92 86 92 L28 92 Q16 92 16 80 L16 34 Q16 22 28 22 Z"/>`,
+      body: `
+        <path d="M40 22 Q40 12 57 12 Q74 12 74 22" fill="none" stroke="${C}" stroke-width="3.5" stroke-linecap="round"/>
+        <rect x="16" y="22" width="82" height="70" rx="12" fill="#E8C08A" stroke="${C}" stroke-width="${SW}"/>
+        <rect x="22" y="28" width="70" height="14" rx="7" fill="#F6D9AF" stroke="#D9A468" stroke-width="2"/>
+        <circle cx="34" cy="35" r="4" fill="#B98F7B" stroke="${C}" stroke-width="1.8"/>
+        <circle cx="48" cy="35" r="4" fill="#B98F7B" stroke="${C}" stroke-width="1.8"/>
+        <circle cx="76" cy="35" r="4" fill="#E88A8A" stroke="${C}" stroke-width="1.8"/>
+        <circle cx="52" cy="64" r="19" fill="#8A6357" stroke="${C}" stroke-width="3"/>
+        <path d="M40 56 L64 72 M40 72 L64 56 M52 47 L52 81" stroke="#B8A08E" stroke-width="2" opacity="0.8"/>
+        ${ST(82, 66, 1, '#FFD98E')}
+      `,
+    },
+
+    /* ---- music: tambourine ---- */
+    tambourine: {
+      w: 105, h: 110,
+      sil: `<path d="M44 8 Q52 0 60 8 L62 16 A38 38 0 1 1 42 16 Z"/>`,
+      body: `
+        <path d="M46 8 Q52 3 58 8 L60 18 L44 18 Z" fill="#F49BB0" stroke="${C}" stroke-width="2.5"/>
+        <circle cx="52" cy="56" r="36" fill="#F6D9AF" stroke="${C}" stroke-width="${SW}"/>
+        <circle cx="52" cy="56" r="25" fill="#FFF6EE" stroke="#D9A468" stroke-width="2.5"/>
+        <circle cx="22" cy="42" r="5" fill="#FFD98E" stroke="${C}" stroke-width="2"/>
+        <circle cx="82" cy="42" r="5" fill="#FFD98E" stroke="${C}" stroke-width="2"/>
+        <circle cx="18" cy="66" r="5" fill="#FFD98E" stroke="${C}" stroke-width="2"/>
+        <circle cx="86" cy="66" r="5" fill="#FFD98E" stroke="${C}" stroke-width="2"/>
+        <circle cx="52" cy="90" r="5" fill="#FFD98E" stroke="${C}" stroke-width="2"/>
+        <path d="M46 52 c-1.8 -2.2 -5.2 -0.8 -5.2 1.7 c0 2.2 3 3.5 5.2 5.4 c2.2 -1.9 5.2 -3.2 5.2 -5.4 c0 -2.5 -3.4 -3.9 -5.2 -1.7 Z" fill="#F9BFCE" transform="translate(6 0)"/>
+      `,
+    },
+
+    /* ---- games: cloud plush ---- */
+    cloudplush: {
+      w: 125, h: 85,
+      sil: `<path d="M24 62 Q8 58 10 44 Q12 30 28 30 Q30 14 48 12 Q64 10 70 22 Q78 12 92 16 Q106 20 104 34 Q116 38 114 52 Q112 64 98 66 Q94 76 78 76 L42 76 Q28 76 24 62 Z"/>`,
+      body: `
+        <path d="M26 60 Q13 56 14 45 Q16 33 30 33 Q32 18 48 16 Q62 14 68 25 Q76 15 90 19 Q102 23 101 35 Q112 39 110 51 Q108 61 96 63 Q92 72 78 72 L44 72 Q30 72 26 60 Z"
+              fill="#FFFDF6" stroke="${C}" stroke-width="${SW}"/>
+        ${F(62, 48, 0.95)}
+        <path d="M34 46 Q38 40 44 38" fill="none" stroke="#E8DED2" stroke-width="3" stroke-linecap="round"/>
+        <path d="M84 60 q6 6 14 4" fill="none" stroke="#E8DED2" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 7"/>
+        <path d="M96 28 a5 5 0 0 1 8 3" fill="none" stroke="#F49BB0" stroke-width="3" stroke-linecap="round"/>
+      `,
+    },
+
+    /* ---- games: retro rocket poster ---- */
+    retroposter: {
+      w: 110, h: 140,
+      sil: `<rect x="12" y="14" width="86" height="112" rx="10"/>`,
+      body: `
+        <rect x="12" y="14" width="86" height="112" rx="10" fill="#5C5064" stroke="${C}" stroke-width="${SW}"/>
+        <rect x="20" y="22" width="70" height="96" rx="6" fill="none" stroke="#786C80" stroke-width="2.5" stroke-dasharray="6 6"/>
+        <g fill="#F9BFCE">
+          <rect x="50" y="34" width="10" height="10"/><rect x="45" y="44" width="20" height="20"/>
+          <rect x="45" y="64" width="8" height="10"/><rect x="57" y="64" width="8" height="10"/>
+        </g>
+        <rect x="50" y="76" width="10" height="8" fill="#FFD98E"/>
+        <circle cx="32" cy="40" r="2.5" fill="#BFE0F7"/>
+        <circle cx="78" cy="52" r="2.5" fill="#BFE0F7"/>
+        <circle cx="30" cy="70" r="2.5" fill="#BFE0F7"/>
+        <path d="M28 96 h22 M28 104 h32 M28 112 h18" stroke="#8FD4C3" stroke-width="4" stroke-linecap="round"/>
+      `,
+    },
+
+    /* ---- cats: donut cat bed ---- */
+    catbed: {
+      w: 130, h: 85,
+      sil: `<ellipse cx="65" cy="46" rx="58" ry="33"/>`,
+      body: `
+        <ellipse cx="65" cy="44" rx="56" ry="30" fill="#F0A987" stroke="${C}" stroke-width="${SW}"/>
+        <ellipse cx="65" cy="50" rx="38" ry="17" fill="#FBD9E2" stroke="${C}" stroke-width="2.5"/>
+        <path d="M34 54 Q65 66 96 54" fill="none" stroke="#E0955F" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 8"/>
+        <path d="M28 30 q4 -6 10 -6 M92 24 q6 0 10 6" stroke="#E0955F" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M60 34 Q64 30 68 34 Q70 38 65 40 Q60 38 60 34 Z" fill="#F49BB0" opacity="0.9"/>
+      `,
+    },
+
+    /* ---- cats: mouse toy ---- */
+    mousetoy: {
+      w: 95, h: 70,
+      sil: `<path d="M14 44 Q14 20 40 16 Q44 4 56 8 Q64 10 62 20 Q76 24 80 38 Q84 52 70 58 Q50 66 30 60 Q14 56 14 44 Z"/>`,
+      body: `
+        <path d="M64 24 q14 -4 18 6 q3 10 -8 12" fill="none" stroke="#B8A08E" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 6"/>
+        <path d="M16 44 Q16 24 40 20 Q62 16 72 30 Q80 42 68 52 Q52 62 32 57 Q16 53 16 44 Z" fill="#CBB8A8" stroke="${C}" stroke-width="${SW}"/>
+        <circle cx="48" cy="18" r="10" fill="#CBB8A8" stroke="${C}" stroke-width="3"/>
+        <circle cx="48" cy="18" r="4.5" fill="#E8B99B"/>
+        <path d="M24 40 q3 3.4 6 0" ${o}/>
+        <circle cx="17" cy="46" r="3.5" fill="#EE8FA6"/>
+        <path d="M22 50 l-8 2 M23 44 l-8 -2" stroke="#B8A08E" stroke-width="1.8" stroke-linecap="round"/>
+        <ellipse cx="34" cy="48" rx="4" ry="2.8" fill="#F9AFC0" opacity="0.9"/>
+      `,
+    },
+
+    /* ---- balcony: hanging bird feeder ---- */
+    birdfeeder: {
+      w: 100, h: 130,
+      sil: `<path d="M45 4 Q51 0 55 6 L55 14 L88 36 Q94 41 88 45 L84 45 L84 78 L90 80 Q96 84 92 90 L88 92 L88 104 Q88 114 78 114 L22 114 Q12 114 12 104 L12 92 L8 90 Q4 84 10 80 L16 78 L16 45 L12 45 Q6 41 12 36 L45 14 Z"/>`,
+      body: `
+        <path d="M50 4 L50 16" stroke="${C}" stroke-width="3" stroke-linecap="round"/>
+        <rect x="20" y="44" width="60" height="36" rx="7" fill="#F6D9AF" stroke="${C}" stroke-width="3"/>
+        <path d="M12 40 L50 14 L88 40 Q92 44 86 44 L14 44 Q8 44 12 40 Z" fill="#A7C6A0" stroke="${C}" stroke-width="${SW}"/>
+        <circle cx="34" cy="62" r="2.5" fill="#B98F7B"/><circle cx="44" cy="66" r="2.5" fill="#B98F7B"/>
+        <circle cx="39" cy="72" r="2.5" fill="#B98F7B"/><circle cx="50" cy="62" r="2.5" fill="#B98F7B"/>
+        <path d="M8 92 Q8 84 18 84 L82 84 Q92 84 92 92 L92 100 Q92 110 82 110 L18 110 Q8 110 8 100 Z" fill="#E8C08A" stroke="${C}" stroke-width="${SW}"/>
+        <ellipse cx="66" cy="76" rx="11" ry="9" fill="#F9BFCE" stroke="${C}" stroke-width="2.5"/>
+        <circle cx="72" cy="70" r="6" fill="#F9BFCE" stroke="${C}" stroke-width="2.5"/>
+        <path d="M78 70 q4 0 3 3 Z" fill="#FFD98E" stroke="${C}" stroke-width="1.5"/>
+        <path d="M73 68 q1.5 1.8 3 0" stroke="${C}" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      `,
+    },
+
+    /* ---- balcony: stargazer telescope ---- */
+    telescope: {
+      w: 125, h: 130,
+      sil: `<path d="M98 6 Q106 0 112 8 L120 18 Q126 26 118 32 L70 62 Q78 74 70 80 L66 76 L62 92 Q76 108 70 116 Q62 122 54 112 L50 100 L38 116 Q30 124 22 116 Q16 108 26 102 L44 88 L40 76 Q30 78 28 68 Q27 60 36 56 L86 24 Z"/>`,
+      body: `
+        <rect x="30" y="52" width="66" height="22" rx="11" transform="rotate(-32 63 63)" fill="#8B92D8" stroke="${C}" stroke-width="${SW}"/>
+        <rect x="82" y="16" width="40" height="28" rx="12" transform="rotate(-32 102 30)" fill="#A7ACE0" stroke="${C}" stroke-width="3"/>
+        <path d="M40 70 L26 106 M52 74 L58 108" stroke="#B8A08E" stroke-width="6" stroke-linecap="round"/>
+        <path d="M46 72 L44 108" stroke="#8A6357" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="46" cy="70" r="8" fill="#E8C08A" stroke="${C}" stroke-width="2.5"/>
+        ${ST(116, 10, 1.2, '#FFE9AE')}
+        ${ST(100, 2, 0.7, '#FFE9AE')}
+      `,
+    },
+
+    /* ---- camp: sleepy owl ---- */
+    owl: {
+      w: 95, h: 95,
+      sil: `<path d="M22 30 L28 14 Q30 6 38 12 L44 20 Q48 18 52 20 L58 12 Q66 6 68 14 L74 30 Q86 40 84 58 Q82 80 62 86 Q48 90 34 86 Q14 80 12 58 Q10 40 22 30 Z"/>`,
+      body: `
+        <path d="M26 28 L30 14 Q32 8 37 13 L42 20 Z" fill="#C9A87E" stroke="${C}" stroke-width="3"/>
+        <path d="M70 28 L66 14 Q64 8 59 13 L54 20 Z" fill="#C9A87E" stroke="${C}" stroke-width="3"/>
+        <ellipse cx="48" cy="52" rx="36" ry="34" fill="#C9A87E" stroke="${C}" stroke-width="${SW}"/>
+        <ellipse cx="48" cy="64" rx="20" ry="16" fill="#F6E3C8"/>
+        <path d="M40 58 q4 4 8 0 M44 66 q4 4 8 0" stroke="#D9A468" stroke-width="2" fill="none"/>
+        <circle cx="36" cy="42" r="10" fill="#FFFDF6" stroke="${C}" stroke-width="2.5"/>
+        <circle cx="60" cy="42" r="10" fill="#FFFDF6" stroke="${C}" stroke-width="2.5"/>
+        <path d="M28 38 a10 10 0 0 1 16 0 M52 38 a10 10 0 0 1 16 0" fill="#C9A87E" stroke="${C}" stroke-width="2"/>
+        <circle cx="36" cy="45" r="3" fill="${C}"/>
+        <circle cx="60" cy="45" r="3" fill="${C}"/>
+        <path d="M45 50 h6 l-3 4 Z" fill="#FFD98E" stroke="${C}" stroke-width="1.5"/>
+        <path d="M20 56 q-4 8 2 14 M76 56 q4 8 -2 14" stroke="${C}" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M40 86 v5 M56 86 v5" stroke="#E8A05C" stroke-width="2.5" stroke-linecap="round"/>
+      `,
+    },
+
+    /* ---- camp: cooler box ---- */
+    cooler: {
+      w: 110, h: 95,
+      sil: `<path d="M20 26 L34 26 Q34 14 55 14 Q76 14 76 26 L90 26 Q100 26 100 36 L100 44 L96 44 L96 82 Q96 90 88 90 L22 90 Q14 90 14 82 L14 44 L10 44 L10 36 Q10 26 20 26 Z"/>`,
+      body: `
+        <path d="M38 26 Q38 18 55 18 Q72 18 72 26" fill="none" stroke="${C}" stroke-width="3.5" stroke-linecap="round"/>
+        <rect x="10" y="26" width="90" height="20" rx="8" fill="#8FC1E8" stroke="${C}" stroke-width="${SW}"/>
+        <rect x="14" y="44" width="82" height="46" rx="9" fill="#BFE0F7" stroke="${C}" stroke-width="${SW}"/>
+        <rect x="46" y="42" width="18" height="10" rx="4" fill="#FFFDF6" stroke="${C}" stroke-width="2.5"/>
+        <g transform="translate(55 68)" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.9">
+          <path d="M0 -10 V10 M-10 0 H10 M-7 -7 L7 7 M-7 7 L7 -7" fill="none"/>
+        </g>
+        <path d="M22 52 Q26 48 32 47" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+      `,
+    },
+
+    /* ---- lodge: rocking chair ---- */
+    rockingchair: {
+      w: 135, h: 150,
+      sil: `<path d="M34 12 Q34 2 44 2 L92 2 Q102 2 102 12 L102 56 Q102 64 94 64 L98 64 Q108 64 108 74 L108 80 Q108 88 100 88 L96 88 L96 112 L106 116 Q116 122 110 130 Q104 136 96 130 L88 124 L46 124 L38 130 Q30 136 24 130 Q18 122 28 116 L38 112 L38 88 L34 88 Q26 88 26 80 L26 74 Q26 64 36 64 L40 64 Q34 64 34 56 Z"/>`,
+      body: `
+        <rect x="34" y="2" width="68" height="62" rx="14" fill="#E8C08A" stroke="${C}" stroke-width="${SW}"/>
+        <path d="M50 10 L50 56 M67 10 L67 56 M84 10 L84 56" stroke="#D9A468" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M96 6 Q116 10 112 34 Q110 48 96 50 L92 38 Q100 36 100 26 Q100 18 92 16 Z" fill="#A7C6A0" stroke="${C}" stroke-width="2.5"/>
+        <path d="M96 14 q6 4 4 12 M92 44 q6 -2 8 -8" stroke="#8FB287" stroke-width="2" fill="none"/>
+        <rect x="26" y="64" width="82" height="22" rx="10" fill="#E88A8A" stroke="${C}" stroke-width="${SW}"/>
+        <path d="M34 75 h66" stroke="#D07070" stroke-width="2.5" stroke-dasharray="7 7" stroke-linecap="round"/>
+        <rect x="38" y="86" width="12" height="28" rx="5" fill="#D9A468" stroke="${C}" stroke-width="2.5"/>
+        <rect x="84" y="86" width="12" height="28" rx="5" fill="#D9A468" stroke="${C}" stroke-width="2.5"/>
+        <path d="M22 122 Q67 140 112 122" fill="none" stroke="#B98F7B" stroke-width="6" stroke-linecap="round"/>
+      `,
+    },
+
+    /* ---- lodge: wall candle sconce ---- */
+    sconce: {
+      w: 92, h: 115,
+      sil: `<path d="M40 26 Q36 18 42 10 Q46 4 50 10 Q56 18 52 26 Q56 28 56 34 L56 50 L62 50 Q70 50 70 58 L70 64 Q70 74 60 76 L60 86 Q60 94 52 96 L52 100 Q60 102 60 108 Q60 114 52 114 L40 114 Q32 114 32 108 Q32 102 40 100 L40 96 Q32 94 32 86 L32 76 Q22 74 22 64 L22 58 Q22 50 30 50 L36 50 L36 34 Q36 28 40 26 Z"/>`,
+      body: `
+        <ellipse cx="46" cy="24" rx="30" ry="26" fill="#FFE9AE" opacity="0.35"/>
+        <path d="M46 8 Q39 18 46 27 Q53 18 46 8 Z" fill="#FFD98E" stroke="#F2B95C" stroke-width="2.5"/>
+        <rect x="37" y="28" width="18" height="24" rx="5" fill="#FFFDF6" stroke="${C}" stroke-width="3"/>
+        <path d="M37 36 q4 6 0 10" stroke="#E8DED2" stroke-width="2.5" fill="none"/>
+        <path d="M26 52 L66 52 Q70 62 60 68 Q52 72 40 72 Q32 70 28 64 Q24 58 26 52 Z" fill="#E8C08A" stroke="${C}" stroke-width="${SW}"/>
+        <rect x="42" y="72" width="8" height="24" rx="4" fill="#D9A468" stroke="${C}" stroke-width="2.5"/>
+        <ellipse cx="46" cy="102" rx="16" ry="9" fill="#E8C08A" stroke="${C}" stroke-width="3"/>
+      `,
+    },
   });
 })();

@@ -153,13 +153,17 @@
         transform="rotate(45 ${dxx + 26} ${dyy + 26})" fill="#FFFFFF" opacity="0.12"/>`;
     }
     // coffee-bean wallpaper
-    const beans = wp((x, y, r) => `<g transform="translate(${x} ${y}) rotate(${r % 2 ? 28 : -24})" opacity="0.28">
-      <ellipse rx="6.5" ry="9.5" fill="#B98F7B"/>
-      <path d="M0 -8 Q2.5 0 0 8" stroke="#F8EBDB" stroke-width="2" fill="none"/></g>`,
+    const beans = wp((x, y, r) => `<g transform="translate(${x} ${y}) rotate(${r % 2 ? 28 : -24})" opacity="0.42">
+      <ellipse rx="7" ry="10" fill="#B98F7B"/>
+      <path d="M0 -8 Q2.5 0 0 8" stroke="#F3DFC2" stroke-width="2.2" fill="none"/></g>`,
       { y0: 148, rows: 3, dy: 104, dx: 122, stag: 61 });
+    // warm wood wainscot behind the counter
+    let boards = `<rect x="-6" y="462" width="732" height="142" fill="#D9B584" stroke="#C9A26E" stroke-width="2.5"/>`;
+    for (let x = 36; x < 720; x += 62) boards += `<path d="M${x} 464 v138" stroke="#C9A26E" stroke-width="2.5" opacity="0.7"/>`;
+    boards += `<rect x="-6" y="456" width="732" height="12" rx="6" fill="#E5C9A0" stroke="#C9A26E" stroke-width="2"/>`;
     return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="300" height="130" rx="14"/></clipPath>`)}${wallFloor()}${board()}${diam}
       ${beans}
-      <path d="M0 460 L720 460" stroke="#D9B98C" stroke-width="3.5" opacity="0.55"/>
+      ${boards}
       ${pool()}
       ${lights()}
       <!-- striped awning over a wide storefront window -->
@@ -205,8 +209,8 @@
     for (let x = 96; x < 720; x += 96) fl += `<path d="M${x} 604 L${x} 920" stroke="#D9C6AC" stroke-width="2.5" opacity="0.45"/>`;
     [700, 800, 900].forEach((y) => { fl += `<path d="M0 ${y} L720 ${y}" stroke="#D9C6AC" stroke-width="2.5" opacity="0.45"/>`; });
     // floating bubble wallpaper
-    const bubs = wp((x, y, r) => `<g transform="translate(${x} ${y})" opacity="0.32">
-      <circle r="${r % 2 ? 8 : 13}" fill="none" stroke="#7FC4BD" stroke-width="2.5"/>
+    const bubs = wp((x, y, r) => `<g transform="translate(${x} ${y})" opacity="0.5">
+      <circle r="${r % 2 ? 9 : 14}" fill="none" stroke="#7FC4BD" stroke-width="2.5"/>
       <path d="M${r % 2 ? -3 : -5} ${r % 2 ? -3 : -6} a6 6 0 0 1 4 -3" stroke="#7FC4BD" stroke-width="2" fill="none" stroke-linecap="round"/></g>`,
       { y0: 128, rows: 3, dy: 112, dx: 138, stag: 69 });
     return `${defs(p, `<clipPath id="winClip"><circle cx="0" cy="0" r="82"/></clipPath>`)}
@@ -240,6 +244,10 @@
               fill="#FFFDF6" stroke="${C}" stroke-width="${SW}"/>
         <ellipse cx="185" cy="16" rx="172" ry="18" fill="#D8F0EC" stroke="${C}" stroke-width="3"/>
         <ellipse cx="185" cy="14" rx="150" ry="12" fill="#BCE6DE"/>
+        <path d="M84 10 L84 -30 Q84 -44 98 -44 L112 -44" fill="none" stroke="#B8A08E" stroke-width="9" stroke-linecap="round"/>
+        <rect x="106" y="-52" width="17" height="18" rx="6" fill="#B8A08E" stroke="${C}" stroke-width="2.5"/>
+        <path d="M115 -28 v10" stroke="#8FC1E8" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 7"/>
+        <circle cx="84" cy="-38" r="6" fill="#D8F0EC" stroke="${C}" stroke-width="2.5"/>
         <circle cx="80" cy="12" r="9" fill="#EAF6FF" stroke="#7FC4BD" stroke-width="2.5"/>
         <circle cx="120" cy="4" r="6" fill="#EAF6FF" stroke="#7FC4BD" stroke-width="2"/>
         <circle cx="272" cy="8" r="7" fill="#EAF6FF" stroke="#7FC4BD" stroke-width="2"/>
@@ -250,13 +258,26 @@
   /* ════════════════ 6. STUDY NOOK ════════════════ */
   function studyScene(p) {
     return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="180" height="230" rx="14"/></clipPath>`)}${wallFloor()}${board()}
-      ${vStripes('#C9A25E', 0.1, 22, 88)}
-      ${wp((x, y) => `<path transform="translate(${x} ${y}) scale(0.85)" d="${A.starPath}" fill="#C9A25E" opacity="0.3"/>`,
+      ${vStripes('#C9A25E', 0.16, 22, 88)}
+      ${wp((x, y) => `<path transform="translate(${x} ${y}) scale(0.95)" d="${A.starPath}" fill="#C9A25E" opacity="0.45"/>`,
         { y0: 185, rows: 3, dy: 132, dx: 176, stag: 88 })}
       ${floorPlanks('#C9A87E', 0.38)}
       ${pool()}
       ${bunting(['#A7C6A0', '#F2C48D', '#E8C08A', '#BFE0F7'])}
       ${rectWindow(50, 98, { w: 180, h: 230, style: 'shade', tint: '#E8C08A', tintDark: '#C9924F' })}
+      <!-- little wall library under the window -->
+      <g transform="translate(56 384)">
+        <rect x="0" y="0" width="200" height="12" rx="6" fill="#D9A468" stroke="${C}" stroke-width="2.5"/>
+        <rect x="14" y="-30" width="12" height="30" rx="4" fill="#E88A8A" stroke="${C}" stroke-width="2"/>
+        <rect x="30" y="-26" width="12" height="26" rx="4" fill="#8FC1E8" stroke="${C}" stroke-width="2"/>
+        <rect x="46" y="-32" width="12" height="32" rx="4" fill="#A7C6A0" stroke="${C}" stroke-width="2"/>
+        <rect x="66" y="-26" width="12" height="26" rx="4" fill="#F2C48D" stroke="${C}" stroke-width="2" transform="rotate(9 72 -13)"/>
+        <rect x="120" y="-24" width="34" height="24" rx="5" fill="#FFF6EE" stroke="${C}" stroke-width="2"/>
+        <rect x="24" y="66" width="150" height="12" rx="6" fill="#D9A468" stroke="${C}" stroke-width="2.5"/>
+        <rect x="40" y="40" width="12" height="26" rx="4" fill="#CBB4E8" stroke="${C}" stroke-width="2"/>
+        <rect x="56" y="44" width="12" height="22" rx="4" fill="#F49BB0" stroke="${C}" stroke-width="2"/>
+        <circle cx="120" cy="52" r="12" fill="#D8EEF9" stroke="${C}" stroke-width="2"/>
+      </g>
       <!-- desk -->
       <g transform="translate(420 472)">
         <ellipse cx="140" cy="288" rx="150" ry="14" fill="#B98F7B" opacity="0.16"/>
@@ -278,11 +299,19 @@
     let si = 0;
     const splats = wp((x, y) => {
       const c2 = splCols[si++ % 5];
-      return `<g transform="translate(${x} ${y})" opacity="0.34">
-        <circle r="9" fill="${c2}"/><circle cx="11" cy="-6" r="4" fill="${c2}"/><circle cx="-10" cy="7" r="3" fill="${c2}"/></g>`;
+      return `<g transform="translate(${x} ${y})" opacity="0.5">
+        <circle r="10" fill="${c2}"/><circle cx="12" cy="-7" r="4.5" fill="${c2}"/><circle cx="-11" cy="8" r="3.5" fill="${c2}"/></g>`;
     }, { y0: 145, rows: 3, dy: 115, dx: 140, stag: 70 });
     return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="250" height="210" rx="14"/></clipPath>`)}${wallFloor()}${board()}
       ${floorPlanks('#C9A87E', 0.32)}
+      <ellipse cx="580" cy="870" rx="165" ry="46" fill="#FFFDF6" opacity="0.6"/>
+      <circle cx="520" cy="866" r="6" fill="#F49BB0" opacity="0.5"/>
+      <circle cx="620" cy="880" r="5" fill="#8FC1E8" opacity="0.5"/>
+      <circle cx="660" cy="852" r="4" fill="#FFD98E" opacity="0.55"/>
+      <g transform="rotate(-3 341 320)"><rect x="315" y="300" width="52" height="40" rx="5" fill="#FFFDF6" stroke="${C}" stroke-width="2.5"/>
+        <path d="M325 330 q8 -14 16 0 q6 -10 12 0" stroke="#A7E0B6" stroke-width="2.5" fill="none"/></g>
+      <g transform="rotate(4 404 329)"><rect x="382" y="312" width="44" height="34" rx="5" fill="#FFFDF6" stroke="${C}" stroke-width="2.5"/>
+        <circle cx="404" cy="329" r="8" fill="#F9BFCE"/></g>
       <ellipse cx="200" cy="840" rx="60" ry="18" fill="#F49BB0" opacity="0.25"/>
       <ellipse cx="420" cy="880" rx="46" ry="14" fill="#8FC1E8" opacity="0.22"/>
       <ellipse cx="580" cy="850" rx="40" ry="13" fill="#FFD98E" opacity="0.25"/>
@@ -312,9 +341,11 @@
     const note = (x, y, s, op) => `<g transform="translate(${x} ${y}) scale(${s})" opacity="${op}">
       <circle cx="0" cy="10" r="6" fill="#8B92D8"/><path d="M6 10 L6 -14 L18 -18 L18 -8" stroke="#8B92D8" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="12" cy="-6" r="6" fill="#8B92D8"/></g>`;
     return `${defs(p)}${wallFloor()}${board()}
-      ${wp((x, y, r) => note(x, y, r % 2 ? 0.55 : 0.7, 0.24), { y0: 140, rows: 3, dy: 122, dx: 158, stag: 79 })}
+      ${wp((x, y, r) => note(x, y, r % 2 ? 0.6 : 0.78, 0.36), { y0: 140, rows: 3, dy: 122, dx: 158, stag: 79 })}
       <path d="M0 528 q30 -14 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0"
-            stroke="#8B92D8" stroke-width="2.5" fill="none" opacity="0.25"/>
+            stroke="#8B92D8" stroke-width="2.5" fill="none" opacity="0.35"/>
+      <rect x="390" y="712" width="334" height="32" rx="15" fill="#C9A87E" stroke="${C}" stroke-width="3"/>
+      <path d="M398 726 L716 726" stroke="#B8946A" stroke-width="2.5" opacity="0.7"/>
       <ellipse cx="380" cy="790" rx="272" ry="95" fill="#8B92D8" opacity="0.13"/>
       <ellipse cx="380" cy="790" rx="240" ry="78" fill="none" stroke="#8B92D8" stroke-width="3.5"
                opacity="0.28" stroke-dasharray="1 16" stroke-linecap="round"/>
@@ -353,11 +384,19 @@
       <rect x="${x + 2 * u}" y="${y + 4 * u}" width="${3 * u}" height="${u}"/>
       <rect x="${x + 3 * u}" y="${y + 5 * u}" width="${u}" height="${u}"/></g>`;
     let gg = '';
-    for (let x = 36; x < 720; x += 72) gg += `<path d="M${x} 100 L${x} 596" stroke="#7BA6E8" stroke-width="2" opacity="0.10"/>`;
-    for (let y = 136; y < 600; y += 72) gg += `<path d="M0 ${y} L720 ${y}" stroke="#7BA6E8" stroke-width="2" opacity="0.10"/>`;
+    for (let x = 36; x < 720; x += 72) gg += `<path d="M${x} 100 L${x} 596" stroke="#7BA6E8" stroke-width="2" opacity="0.16"/>`;
+    for (let y = 136; y < 600; y += 72) gg += `<path d="M0 ${y} L720 ${y}" stroke="#7BA6E8" stroke-width="2" opacity="0.16"/>`;
     [[324, 208], [468, 280], [612, 172], [252, 424], [540, 460], [110, 352]].forEach(([x, y], i) => {
-      gg += `<rect x="${x}" y="${y}" width="16" height="16" rx="3" fill="${['#F49BB0', '#A7E0B6', '#FFD98E', '#CBB4E8'][i % 4]}" opacity="0.42"/>`;
+      gg += `<rect x="${x}" y="${y}" width="17" height="17" rx="3" fill="${['#F49BB0', '#A7E0B6', '#FFD98E', '#CBB4E8'][i % 4]}" opacity="0.55"/>`;
     });
+    gg += `<g transform="translate(430 318)">
+      <rect x="0" y="26" width="220" height="13" rx="6.5" fill="#D9B98C" stroke="${C}" stroke-width="2.5"/>
+      <path d="M28 24 Q22 12 30 6 L46 6 Q54 12 48 24 Z" fill="#FFD98E" stroke="${C}" stroke-width="2.5"/>
+      <rect x="32" y="22" width="12" height="6" fill="#E8C08A" stroke="${C}" stroke-width="1.8"/>
+      <path d="M96 26 h20 l-2.5 -14 h-15 Z" fill="#F3AE8B" stroke="${C}" stroke-width="2"/>
+      <ellipse cx="106" cy="6" rx="7" ry="5" fill="#86CF9C" stroke="#58A46F" stroke-width="1.8"/>
+      <rect x="160" y="8" width="34" height="18" rx="4" fill="#CBB4E8" stroke="${C}" stroke-width="2"/>
+    </g>`;
     let cf = '';
     for (let r = 0; r < 6; r++)
       for (let x = 30 + (r % 2) * 26; x < 720; x += 52) cf += `<circle cx="${x}" cy="${644 + r * 50}" r="2.8" fill="#FFFFFF" opacity="0.2"/>`;
@@ -393,8 +432,12 @@
     const paw = (x, y, s, op) => `<g transform="translate(${x} ${y}) scale(${s})" opacity="${op}" fill="#E8B99B">
       <ellipse cx="0" cy="4" rx="9" ry="7"/><ellipse cx="-10" cy="-6" rx="4" ry="5"/><ellipse cx="-3" cy="-10" rx="4" ry="5"/><ellipse cx="4" cy="-10" rx="4" ry="5"/><ellipse cx="11" cy="-6" rx="4" ry="5"/></g>`;
     return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="260" height="140" rx="14"/></clipPath>`)}${wallFloor()}${board()}${floorDots()}
-      ${wp((x, y, r) => paw(x, y, r % 2 ? 0.75 : 1, 0.24), { y0: 148, rows: 3, dy: 118, dx: 148, stag: 74 })}
-      ${paw(255, 715, 0.9, 0.16)}${paw(520, 855, 0.8, 0.15)}
+      ${wp((x, y, r) => paw(x, y, r % 2 ? 0.85 : 1.1, 0.38), { y0: 148, rows: 3, dy: 118, dx: 148, stag: 74 })}
+      ${paw(255, 715, 0.9, 0.2)}${paw(520, 855, 0.8, 0.18)}
+      <rect x="560" y="420" width="90" height="12" rx="6" fill="#E8C08A" stroke="${C}" stroke-width="2.5"/>
+      <path d="M574 432 L582 452 M636 432 L628 452" stroke="#D9A468" stroke-width="4" stroke-linecap="round"/>
+      <rect x="622" y="356" width="76" height="12" rx="6" fill="#E8C08A" stroke="${C}" stroke-width="2.5"/>
+      <path d="M634 368 L642 388 M686 368 L678 388" stroke="#D9A468" stroke-width="4" stroke-linecap="round"/>
       ${pool(240, 700, 0.2)}
       ${lights(['#F8B58E', '#F9BFCE', '#FFE9AE', '#BEE8CD'])}
       ${rectWindow(40, 132, { w: 260, h: 140, style: 'scallop', tint: '#F8B58E', tintDark: '#E0955F' })}
@@ -426,8 +469,22 @@
       <path transform="translate(662 148) scale(0.7)" d="${A.starPath}" fill="#FFF1C4" opacity="0.6"/>
       <path d="M300 118 q8 -8 16 0 M330 130 q7 -7 14 0" stroke="#8A7767" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/>
       <path d="M472 208 q8 -8 16 0 M502 220 q7 -7 14 0" stroke="#8A7767" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.55"/>
-      <path d="M0 480 Q 120 420 260 452 Q 420 486 540 448 Q 640 420 720 452 L720 604 L0 604 Z" fill="#D8A8B8" opacity="0.5"/>
-      <path d="M0 520 Q 160 470 340 500 Q 520 528 720 492 L720 604 L0 604 Z" fill="#C08FA6" opacity="0.5"/>
+      <g opacity="0.5" fill="#C98FA6">
+        <rect x="-10" y="360" width="90" height="244" rx="6"/><rect x="150" y="386" width="70" height="218" rx="6"/>
+        <rect x="330" y="372" width="80" height="232" rx="6"/><rect x="560" y="366" width="76" height="238" rx="6"/>
+      </g>
+      <g opacity="0.42" fill="#B87E98">
+        <rect x="70" y="330" width="80" height="274" rx="6"/><rect x="215" y="350" width="100" height="254" rx="6"/>
+        <rect x="405" y="338" width="90" height="266" rx="6"/><rect x="630" y="342" width="100" height="262" rx="6"/>
+      </g>
+      <g fill="#FFE9AE" opacity="0.6">
+        <rect x="92" y="352" width="10" height="12" rx="2"/><rect x="116" y="376" width="10" height="12" rx="2"/>
+        <rect x="248" y="372" width="10" height="12" rx="2"/><rect x="278" y="396" width="10" height="12" rx="2"/>
+        <rect x="430" y="360" width="10" height="12" rx="2"/><rect x="460" y="386" width="10" height="12" rx="2"/>
+        <rect x="656" y="366" width="10" height="12" rx="2"/><rect x="686" y="390" width="10" height="12" rx="2"/>
+      </g>
+      <path d="M84 40 h34 M100 40 v18" stroke="${C}" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="100" cy="64" r="6" fill="none" stroke="${C}" stroke-width="4"/>
       ${planks}
       ${lights(['#FFE9AE', '#FFD98E', '#F9BFCE', '#FFE9AE'])}
       <path d="M596 40 h34 M613 40 v18" stroke="${C}" stroke-width="4" stroke-linecap="round"/>
@@ -487,12 +544,20 @@
         bricks += `<rect x="${bx}" y="${16 + r * 40}" width="52" height="32" rx="6" fill="#DE9078" opacity="${r % 2 ? 0.5 : 0.7}"/>`;
       }
     }
-    return `${defs(p)}${wallFloor()}${board()}
-      ${hPlanks('#C97B6B', 0.15, 132, 94, 592)}
-      <circle cx="184" cy="180" r="5" fill="#C97B6B" opacity="0.18"/>
-      <circle cx="564" cy="276" r="5" fill="#C97B6B" opacity="0.18"/>
-      <circle cx="92" cy="372" r="5" fill="#C97B6B" opacity="0.18"/>
-      <circle cx="304" cy="468" r="5" fill="#C97B6B" opacity="0.18"/>
+    return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="200" height="180" rx="14"/></clipPath>`)}${wallFloor()}${board()}
+      ${hPlanks('#C97B6B', 0.24, 132, 94, 592)}
+      <circle cx="184" cy="180" r="5" fill="#C97B6B" opacity="0.3"/>
+      <circle cx="564" cy="276" r="5" fill="#C97B6B" opacity="0.3"/>
+      <circle cx="92" cy="372" r="5" fill="#C97B6B" opacity="0.3"/>
+      <circle cx="304" cy="468" r="5" fill="#C97B6B" opacity="0.3"/>
+      <g transform="translate(352 598)">
+        <circle cx="20" cy="34" r="16" fill="#D9A468" stroke="${C}" stroke-width="3"/>
+        <circle cx="20" cy="34" r="7" fill="#F0CD9C" stroke="#B98F7B" stroke-width="2"/>
+        <circle cx="52" cy="34" r="16" fill="#D9A468" stroke="${C}" stroke-width="3"/>
+        <circle cx="52" cy="34" r="7" fill="#F0CD9C" stroke="#B98F7B" stroke-width="2"/>
+        <circle cx="36" cy="12" r="16" fill="#E8C08A" stroke="${C}" stroke-width="3"/>
+        <circle cx="36" cy="12" r="7" fill="#F6D9AF" stroke="#B98F7B" stroke-width="2"/>
+      </g>
       ${floorPlanks('#C9A87E', 0.38)}
       <ellipse cx="225" cy="800" rx="175" ry="62" fill="#E88A8A" opacity="0.26"/>
       <ellipse cx="225" cy="800" rx="142" ry="47" fill="none" stroke="#FFFDF6" stroke-width="4" opacity="0.55"

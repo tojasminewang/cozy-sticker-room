@@ -470,18 +470,23 @@ CSR.art = (() => {
       }
     }
 
-    // heart-print wallpaper + two little sparkle-crosses
+    // heart-print wallpaper (bold) + white panel wainscot below
     let wallDeco = '';
-    for (let r = 0; r < 4; r++) {
+    for (let r = 0; r < 3; r++) {
       for (let x = 60 + (r % 2 ? 68 : 0); x <= 690; x += 136) {
-        wallDeco += `<path transform="translate(${x} ${140 + r * 118}) scale(${r % 2 ? 0.9 : 1.15})"
+        wallDeco += `<path transform="translate(${x} ${138 + r * 112}) scale(${r % 2 ? 1.05 : 1.35})"
           d="M0 2 c-2.4 -2.9 -7 -1 -7 2.3 c0 2.9 4.1 4.7 7 7.2 c2.9 -2.5 7 -4.3 7 -7.2 c0 -3.3 -4.6 -5.2 -7 -2.3 Z"
-          fill="${r % 2 ? '#F2A9BC' : '#EFB3C9'}" opacity="0.34"/>`;
+          fill="${r % 2 ? '#EE9BB1' : '#EBA5BE'}" opacity="0.55"/>`;
       }
     }
+    wallDeco += `<rect x="-6" y="468" width="732" height="136" fill="#FDF1EA" stroke="#EBC7B8" stroke-width="2.5"/>
+      <rect x="-6" y="462" width="732" height="13" rx="6.5" fill="#FFF8F2" stroke="#EBC7B8" stroke-width="2"/>`;
+    for (let i = 0; i < 5; i++) {
+      wallDeco += `<rect x="${26 + i * 140}" y="490" width="114" height="90" rx="10" fill="none" stroke="#EFD3C4" stroke-width="3"/>`;
+    }
     wallDeco += `
-      <path d="M245 340 h14 M252 333 v14" stroke="#F2C9CF" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>
-      <path d="M683 318 h14 M690 311 v14" stroke="#F2C9CF" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>`;
+      <path d="M245 356 h14 M252 349 v14" stroke="#EE9BB1" stroke-width="3.5" stroke-linecap="round" opacity="0.7"/>
+      <path d="M683 330 h14 M690 323 v14" stroke="#EE9BB1" stroke-width="3.5" stroke-linecap="round" opacity="0.7"/>`;
 
     // fairy lights — kept high so they clear the window and curtain rod
     const bulbCols = ['#FFD98E', '#F9BFCE', '#BEE8CD', '#BFE0F7'];
@@ -606,11 +611,14 @@ CSR.art = (() => {
         fill="${flagCols[i % 4]}" stroke="${COCOA}" stroke-width="2.5" stroke-linejoin="round"/>`)
       .join('');
 
-    // cream stripes + scattered strawberries (sunny-kitchen wallpaper)
+    // cream stripes + scattered strawberries + tile backsplash
     let wallDeco = '';
-    for (let x = 30; x < 720; x += 92) wallDeco += `<rect x="${x}" y="0" width="26" height="604" fill="#FFFFFF" opacity="0.16"/>`;
+    for (let x = 30; x < 720; x += 92) wallDeco += `<rect x="${x}" y="0" width="26" height="604" fill="#FFFFFF" opacity="0.28"/>`;
+    wallDeco += `<rect x="18" y="450" width="494" height="76" rx="8" fill="#FCF5DE" stroke="#E8D5A8" stroke-width="2.5"/>`;
+    for (let x = 67; x < 510; x += 49) wallDeco += `<path d="M${x} 452 v72" stroke="#E8D5A8" stroke-width="2" opacity="0.9"/>`;
+    wallDeco += `<path d="M20 488 L510 488" stroke="#E8D5A8" stroke-width="2" opacity="0.9"/>`;
     [[352, 150], [560, 190], [80, 396], [220, 452], [420, 438], [648, 260], [270, 395]].forEach(([x, y], i) => {
-      wallDeco += `<g transform="translate(${x} ${y}) rotate(${i % 2 ? 14 : -12})" opacity="0.5">
+      wallDeco += `<g transform="translate(${x} ${y}) rotate(${i % 2 ? 14 : -12})" opacity="0.7">
         <path d="M0 -4 q-7 0 -7 6 q0 7 7 11 q7 -4 7 -11 q0 -6 -7 -6 Z" fill="#F26D8A"/>
         <circle cx="-2.5" cy="3" r="1" fill="#FFF1C4"/><circle cx="2.5" cy="3" r="1" fill="#FFF1C4"/><circle cx="0" cy="7" r="1" fill="#FFF1C4"/>
         <ellipse cx="-3" cy="-5" rx="3.6" ry="2" transform="rotate(-24 -3 -5)" fill="#86CF9C"/>
@@ -715,14 +723,19 @@ CSR.art = (() => {
           fill="${leafCols[i % 2]}" stroke="#58A46F" stroke-width="1.8"/>`;
       });
 
-    // scattered leaf sprigs (greenhouse wallpaper)
+    // scattered leaf sprigs (greenhouse wallpaper) + lattice band
     let wallDeco = '';
-    [[350, 150], [440, 155], [560, 150], [330, 335], [455, 345], [360, 440], [240, 335], [255, 450], [660, 230]].forEach(([x, y], i) => {
-      wallDeco += `<g transform="translate(${x} ${y}) rotate(${i % 2 ? 20 : -16})" opacity="0.4">
-        <path d="M0 9 Q0 -2 0 -9" stroke="#6FA97F" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <ellipse cx="-4.5" cy="-3" rx="4.8" ry="2.5" transform="rotate(-32 -4.5 -3)" fill="#86CF9C"/>
-        <ellipse cx="4.5" cy="-6" rx="4.8" ry="2.5" transform="rotate(28 4.5 -6)" fill="#A7DFB5"/></g>`;
+    [[350, 150], [440, 155], [560, 150], [330, 335], [455, 345], [360, 430], [240, 335], [255, 440], [660, 230]].forEach(([x, y], i) => {
+      wallDeco += `<g transform="translate(${x} ${y}) rotate(${i % 2 ? 20 : -16})" opacity="0.6">
+        <path d="M0 9 Q0 -2 0 -9" stroke="#6FA97F" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <ellipse cx="-4.5" cy="-3" rx="5.2" ry="2.8" transform="rotate(-32 -4.5 -3)" fill="#86CF9C"/>
+        <ellipse cx="4.5" cy="-6" rx="5.2" ry="2.8" transform="rotate(28 4.5 -6)" fill="#A7DFB5"/></g>`;
     });
+    for (let x = -130; x < 720; x += 64) {
+      wallDeco += `<path d="M${x} 600 L${x + 132} 468" stroke="#C2D0A0" stroke-width="3" opacity="0.5"/>
+        <path d="M${x + 132} 600 L${x} 468" stroke="#C2D0A0" stroke-width="3" opacity="0.5"/>`;
+    }
+    wallDeco += `<rect x="-6" y="460" width="732" height="11" rx="5.5" fill="#F4F6E4" stroke="#D4DCAE" stroke-width="2"/>`;
     wallDeco += `<path d="M593 186 h14 M600 179 v14" stroke="#CFE0B8" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
                  <path d="M273 476 h14 M280 469 v14" stroke="#CFE0B8" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>`;
 
