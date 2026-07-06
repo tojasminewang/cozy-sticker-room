@@ -64,7 +64,26 @@ CSR.config = {
       ],
     },
 
+    {
+      id: 'nook',
+      name: 'Plant Corner',
+      palette: {
+        wallTop: '#F2F4E2', wallBottom: '#E9EDCD',
+        floorTop: '#F0DDBA', floorBottom: '#E7C99B',
+        accent: '#8FBF98',
+      },
+      stickers: [
+        { id: 'monstera',  art: 'monstera',    name: 'Monstera Pal',  x: 140, y: 745, scale: 1.35, z: 2, shadow: true  },
+        { id: 'hangplant', art: 'hangplant',   name: 'Sky Fern',      x: 240, y: 140, scale: 0.95, z: 1, shadow: false },
+        { id: 'sign',      art: 'sign',        name: 'Grow Sign',     x: 385, y: 240, scale: 1.05, z: 1, shadow: false },
+        { id: 'bee',       art: 'bee',         name: 'Bee Buddy',     x: 400, y: 120, scale: 0.75, z: 1, shadow: false },
+        { id: 'tulipvase', art: 'tulipvase',   name: 'Sweet Tulips',  x: 580, y: 312, scale: 0.9,  z: 2, shadow: false },
+        { id: 'cactus',    art: 'cactustrio',  name: 'Cactus Trio',   x: 580, y: 446, scale: 1.0,  z: 2, shadow: false },
+        { id: 'can',       art: 'wateringcan', name: 'Watering Pal',  x: 350, y: 795, scale: 1.0,  z: 3, shadow: true  },
+      ],
+    },
+
     // Locked teaser room — set locked:false and add stickers to open it up.
-    { id: 'nook', name: 'Plant Corner', locked: true, stickers: [] },
+    { id: 'cafe', name: 'Cozy Café', locked: true, stickers: [] },
   ],
 };

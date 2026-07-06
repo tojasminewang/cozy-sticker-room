@@ -304,6 +304,157 @@ CSR.art = (() => {
         <ellipse cx="55" cy="31" rx="30" ry="9" fill="#FBD9E2"/>
       `,
     },
+
+    /* ════════ PLANT CORNER stickers ════════ */
+
+    /* ---- big monstera in a woven basket ---- */
+    monstera: {
+      w: 150, h: 160,
+      sil: `<path d="M31 96 L30 58 Q26 44 36 42 Q44 26 58 26 Q64 14 75 14 Q86 14 92 26 Q106 26 114 42 Q124 44 120 58 L119 96 Q123 96 123 100 L123 104 Q123 108 119 108 L116.5 108 L110 148 Q108.5 156 100 156 L50 156 Q41.5 156 40 148 L33.5 108 L31 108 Q27 108 27 104 L27 100 Q27 96 31 96 Z"/>`,
+      body: `
+        <path d="M75 98 C 52 90 34 78 28 52 C 46 42 68 60 75 98 Z" fill="#8FCF9F" stroke="#58A46F" stroke-width="3"/>
+        <path d="M75 98 C 98 90 116 78 122 52 C 104 42 82 60 75 98 Z" fill="#8FCF9F" stroke="#58A46F" stroke-width="3"/>
+        <path d="M75 96 C 56 76 50 52 58 30 C 74 36 82 66 75 96 Z" fill="#A7DFB5" stroke="#58A46F" stroke-width="3"/>
+        <path d="M75 96 C 94 76 100 52 92 30 C 76 36 68 66 75 96 Z" fill="#A7DFB5" stroke="#58A46F" stroke-width="3"/>
+        <path d="M75 98 C 64 68 64 40 75 18 C 86 40 86 68 75 98 Z" fill="#6FBE8A" stroke="#58A46F" stroke-width="3"/>
+        <path d="M75 88 L75 32" stroke="#58A46F" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+        <path d="M40 58 q8 -8 16 -10" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+        <path d="M110 58 q-8 -8 -16 -10" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+        <rect x="27" y="94" width="96" height="14" rx="7" fill="#E8C08A" stroke="${COCOA}" stroke-width="${SW}"/>
+        <path d="M33 108 h84 l-6.5 40 a9 9 0 0 1 -9 8 h-53 a9 9 0 0 1 -9 -8 Z" fill="#F0CD9C" stroke="${COCOA}" stroke-width="${SW}"/>
+        <path d="M38 122 Q75 130 112 122" fill="none" stroke="#D9A468" stroke-width="3" stroke-dasharray="10 8" stroke-linecap="round"/>
+        <path d="M42 138 Q75 145 108 138" fill="none" stroke="#D9A468" stroke-width="3" stroke-dasharray="10 8" stroke-linecap="round"/>
+      `,
+    },
+
+    /* ---- hanging fern ball in a rope net ---- */
+    hangplant: {
+      w: 120, h: 120,
+      sil: `<path d="M53 12 Q51 2 60 2 Q69 2 67 12 L76 34 A38 38 0 1 1 44 34 Z"/>`,
+      body: `
+        <circle cx="60" cy="9" r="7" fill="#E8C08A" stroke="${COCOA}" stroke-width="3"/>
+        <path d="M56 15 L46 40 M64 15 L74 40 M60 16 L60 42" stroke="#D9A468" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="60" cy="68" r="36" fill="#7FC494" stroke="#58A46F" stroke-width="${SW}"/>
+        <ellipse cx="38" cy="52" rx="8" ry="12" transform="rotate(-34 38 52)" fill="#A7DFB5" stroke="#58A46F" stroke-width="2"/>
+        <ellipse cx="82" cy="52" rx="8" ry="12" transform="rotate(34 82 52)" fill="#A7DFB5" stroke="#58A46F" stroke-width="2"/>
+        <ellipse cx="60" cy="42" rx="9" ry="12" fill="#8FCF9F" stroke="#58A46F" stroke-width="2"/>
+        <ellipse cx="34" cy="78" rx="7" ry="10" transform="rotate(-70 34 78)" fill="#6FBE8A" stroke="#58A46F" stroke-width="2"/>
+        <ellipse cx="86" cy="78" rx="7" ry="10" transform="rotate(70 86 78)" fill="#6FBE8A" stroke="#58A46F" stroke-width="2"/>
+        <ellipse cx="60" cy="94" rx="9" ry="11" fill="#8FCF9F" stroke="#58A46F" stroke-width="2"/>
+        <path d="M30 58 Q60 76 90 58" fill="none" stroke="#E8C08A" stroke-width="3" opacity="0.9"/>
+        <path d="M36 90 Q60 72 84 90" fill="none" stroke="#E8C08A" stroke-width="3" opacity="0.9"/>
+        <circle cx="48" cy="66" r="2.5" fill="#FFFFFF" opacity="0.7"/>
+        <circle cx="72" cy="62" r="2.5" fill="#FFFFFF" opacity="0.7"/>
+        <circle cx="60" cy="80" r="2.5" fill="#FFFFFF" opacity="0.7"/>
+      `,
+    },
+
+    /* ---- three cactus friends in a tray ---- */
+    cactustrio: {
+      w: 140, h: 105,
+      sil: `<path d="M14 84 Q14 78 20 78 L23 78 A17 19 0 1 1 57 78 L60 78 L60 34 Q60 20 71 20 Q82 20 82 34 L82 78 L88 78 A15 16 0 1 1 118 78 L120 78 Q126 78 126 84 L126 90 Q126 96 120 96 L20 96 Q14 96 14 90 Z"/>`,
+      body: `
+        <ellipse cx="40" cy="60" rx="16" ry="19" fill="#8FCF9F" stroke="#58A46F" stroke-width="3"/>
+        <path d="M34 48 v22 M46 48 v22" stroke="#6FB884" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="40" cy="41" r="5" fill="#F49BB0" stroke="${COCOA}" stroke-width="2"/>
+        <circle cx="40" cy="41" r="1.8" fill="#FFF1C4"/>
+        <path d="M36 62 q2.5 3 5 0" ${o}/>
+        <ellipse cx="33" cy="67" rx="3" ry="2.2" fill="#F9AFC0" opacity="0.9"/>
+        <ellipse cx="49" cy="67" rx="3" ry="2.2" fill="#F9AFC0" opacity="0.9"/>
+        <rect x="60" y="22" width="22" height="56" rx="11" fill="#7FC494" stroke="#58A46F" stroke-width="3"/>
+        <path d="M66 32 v36 M76 32 v36" stroke="#6FB884" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="71" cy="21" r="4.5" fill="#FFD98E" stroke="${COCOA}" stroke-width="2"/>
+        <path d="M64 40 l-3 -2 M78 48 l3 -2 M64 56 l-3 2 M78 62 l3 2" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="103" cy="64" rx="15" ry="16" fill="#A7DFB5" stroke="#58A46F" stroke-width="3"/>
+        <circle cx="97" cy="58" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+        <circle cx="109" cy="56" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+        <circle cx="103" cy="70" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+        <path d="M99 63 q2.5 3 5 0" ${o}/>
+        <rect x="14" y="76" width="112" height="20" rx="10" fill="#F3AE8B" stroke="${COCOA}" stroke-width="${SW}"/>
+        <path d="M22 86 Q70 92 118 86" fill="none" stroke="#E0955F" stroke-width="2.5" stroke-dasharray="5 7" stroke-linecap="round"/>
+      `,
+    },
+
+    /* ---- lilac watering can ---- */
+    wateringcan: {
+      w: 135, h: 115,
+      sil: `<path d="M30 96 L30 54 Q30 42 42 42 L48 42 Q50 22 65 22 Q80 22 82 42 L84 42 L104 32 Q108 24 115 29 Q122 34 116 41 L98 58 L96 58 L96 96 Q96 108 84 108 L42 108 Q30 108 30 96 Z"/>`,
+      body: `
+        <path d="M120 50 q3 6 -2 10" fill="none" stroke="#8FC1E8" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+        <path d="M127 41 q3 5 -1 9" fill="none" stroke="#8FC1E8" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+        <path d="M84 52 L106 35 L113 41 L96 60 Z" fill="#CBB4E8" stroke="${COCOA}" stroke-width="3"/>
+        <ellipse cx="110" cy="37" rx="8.5" ry="6.5" transform="rotate(-38 110 37)" fill="#B39BD9" stroke="${COCOA}" stroke-width="2.5"/>
+        <circle cx="107" cy="34" r="1.3" fill="#FFFDF6"/>
+        <circle cx="113" cy="37" r="1.3" fill="#FFFDF6"/>
+        <circle cx="109" cy="41" r="1.3" fill="#FFFDF6"/>
+        <path d="M50 44 Q52 26 65 26 Q78 26 80 44" fill="none" stroke="${COCOA}" stroke-width="3.5" stroke-linecap="round"/>
+        <rect x="30" y="42" width="66" height="66" rx="13" fill="#CBB4E8" stroke="${COCOA}" stroke-width="${SW}"/>
+        <path d="M34 94 Q63 100 92 94" fill="none" stroke="#B39BD9" stroke-width="3" stroke-linecap="round"/>
+        <path d="M36 56 Q40 47 49 45" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+        <path d="M52 72 q3 3.4 6 0" ${o}/>
+        <path d="M70 72 q3 3.4 6 0" ${o}/>
+        <path d="M61 79 q3 2.8 6 0" ${o}/>
+        <ellipse cx="49" cy="80" rx="4.2" ry="2.9" fill="#F9AFC0" opacity="0.9"/>
+        <ellipse cx="79" cy="80" rx="4.2" ry="2.9" fill="#F9AFC0" opacity="0.9"/>
+      `,
+    },
+
+    /* ---- sweet tulips in a vase ---- */
+    tulipvase: {
+      w: 110, h: 130,
+      sil: `<path d="M23 50 A34 34 0 1 1 87 50 L82 62 Q88 68 88 80 Q88 102 78 111 Q71 118 55 118 Q39 118 32 111 Q22 102 22 80 Q22 68 28 62 Z"/>`,
+      body: `
+        <path d="M39 34 L47 62 M55 26 L55 60 M71 34 L63 62" stroke="#58A46F" stroke-width="3" stroke-linecap="round"/>
+        <ellipse cx="44" cy="52" rx="7" ry="4.5" transform="rotate(-32 44 52)" fill="#86CF9C" stroke="#58A46F" stroke-width="2"/>
+        <ellipse cx="66" cy="52" rx="7" ry="4.5" transform="rotate(32 66 52)" fill="#86CF9C" stroke="#58A46F" stroke-width="2"/>
+        <path d="M30 24 q0 -13 9 -13 q9 0 9 13 q0 8 -9 10 q-9 -2 -9 -10 Z" fill="#F49BB0" stroke="${COCOA}" stroke-width="2.5"/>
+        <path d="M39 13 v17" stroke="#E37E9C" stroke-width="2" stroke-linecap="round"/>
+        <path d="M46 16 q0 -13 9 -13 q9 0 9 13 q0 8 -9 10 q-9 -2 -9 -10 Z" fill="#FFD98E" stroke="${COCOA}" stroke-width="2.5"/>
+        <path d="M55 5 v17" stroke="#EAB65C" stroke-width="2" stroke-linecap="round"/>
+        <path d="M62 24 q0 -13 9 -13 q9 0 9 13 q0 8 -9 10 q-9 -2 -9 -10 Z" fill="#CBB4E8" stroke="${COCOA}" stroke-width="2.5"/>
+        <path d="M71 13 v17" stroke="#A98BD4" stroke-width="2" stroke-linecap="round"/>
+        <path d="M32 64 Q24 70 24 82 Q24 102 34 110 Q42 116 55 116 Q68 116 76 110 Q86 102 86 82 Q86 70 78 64 Z" fill="#BFE0F7" stroke="${COCOA}" stroke-width="${SW}"/>
+        <rect x="32" y="58" width="46" height="10" rx="5" fill="#D3ECFA" stroke="${COCOA}" stroke-width="3"/>
+        <path d="M30 88 Q42 94 55 90 Q68 86 80 92" fill="none" stroke="#8FC1E8" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M30 76 Q34 68 42 66" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity="0.6"/>
+      `,
+    },
+
+    /* ---- little hanging grow-sign ---- */
+    sign: {
+      w: 120, h: 110,
+      sil: `<path d="M55 10 Q53 2 60 2 Q67 2 65 10 L94 40 Q100 42 100 48 L100 88 Q100 98 90 98 L30 98 Q20 98 20 88 L20 48 Q20 42 26 40 Z"/>`,
+      body: `
+        <circle cx="60" cy="8" r="5" fill="#B98F7B" stroke="${COCOA}" stroke-width="2.5"/>
+        <path d="M58 12 L30 44 M62 12 L90 44" stroke="#D9A468" stroke-width="3" stroke-linecap="round"/>
+        <rect x="20" y="42" width="80" height="56" rx="10" fill="#E8C08A" stroke="${COCOA}" stroke-width="${SW}"/>
+        <rect x="26" y="48" width="68" height="44" rx="7" fill="none" stroke="#D9A468" stroke-width="2.5" stroke-dasharray="6 6"/>
+        <path d="M60 84 L60 68" stroke="#58A46F" stroke-width="3" stroke-linecap="round"/>
+        <ellipse cx="52" cy="64" rx="8" ry="5.5" transform="rotate(-28 52 64)" fill="#86CF9C" stroke="#58A46F" stroke-width="2"/>
+        <ellipse cx="68" cy="64" rx="8" ry="5.5" transform="rotate(28 68 64)" fill="#86CF9C" stroke="#58A46F" stroke-width="2"/>
+        <circle cx="38" cy="57" r="2.2" fill="#F49BB0"/>
+        <circle cx="82" cy="57" r="2.2" fill="#F49BB0"/>
+        <circle cx="60" cy="90" r="2.2" fill="#F49BB0"/>
+      `,
+    },
+
+    /* ---- bumble bee buddy ---- */
+    bee: {
+      w: 110, h: 84,
+      sil: `<path d="M38 36 Q30 14 46 14 Q56 14 54 30 Q58 26 62 28 Q60 12 74 12 Q86 14 78 32 Q86 38 86 50 Q86 70 60 70 Q34 70 34 50 Q34 42 38 36 Z"/>`,
+      body: `
+        <path d="M8 62 q8 -16 22 -8 q10 6 2 12" fill="none" stroke="${COCOA}" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 7" opacity="0.6"/>
+        <ellipse cx="46" cy="24" rx="11" ry="8" transform="rotate(-24 46 24)" fill="#EAF6FF" stroke="${COCOA}" stroke-width="2.5" opacity="0.95"/>
+        <ellipse cx="70" cy="22" rx="11" ry="8" transform="rotate(18 70 22)" fill="#EAF6FF" stroke="${COCOA}" stroke-width="2.5" opacity="0.95"/>
+        <ellipse cx="60" cy="48" rx="26" ry="20" fill="#FFD98E" stroke="${COCOA}" stroke-width="${SW}"/>
+        <path d="M43 32 C 40 43 40 53 43 64 L 52 66 C 49 54 49 42 52 30 Z" fill="${COCOA}"/>
+        <path d="M60 28.5 C 58 41 58 55 60 67.5 L 69 66 C 68 54 68 42 69 30 Z" fill="${COCOA}"/>
+        <path d="M74 44 q2.5 3 5 0" ${o}/>
+        <path d="M77 52 q2 2.4 4 0" ${o}/>
+        <ellipse cx="72" cy="54" rx="3.4" ry="2.4" fill="#F9AFC0" opacity="0.9"/>
+        <path d="M36 44 q-4 -1 -5 3" stroke="${COCOA}" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      `,
+    },
   };
 
   /* ---------------------------------------------------------- *
@@ -533,7 +684,93 @@ CSR.art = (() => {
     `;
   }
 
-  const scenes = { bedroom: bedroomScene, kitchen: kitchenScene };
+  /* ---------------------------------------------------------- *
+   *  PLANT CORNER scene (720 × 920)                             *
+   * ---------------------------------------------------------- */
+  function nookScene(p) {
+    // wood plank floor
+    let planks = '';
+    [680, 760, 840].forEach((y) => { planks += `<path d="M0 ${y} L720 ${y}" stroke="#D9B98C" stroke-width="3" opacity="0.4"/>`; });
+    [[170, 634], [430, 644], [650, 630], [90, 712], [320, 708], [560, 716], [210, 792], [470, 790], [120, 872], [390, 868], [630, 876]]
+      .forEach(([x, y]) => { planks += `<path d="M${x} ${y} v18" stroke="#D9B98C" stroke-width="3" opacity="0.35" stroke-linecap="round"/>`; });
+
+    // ivy garland along the beam
+    const leafCols = ['#8FCF9F', '#A7DFB5'];
+    let garland = `<path d="M-10 72 Q 90 94 190 76 T 390 76 T 590 76 T 730 66" fill="none" stroke="#7FB98B" stroke-width="3.5" stroke-linecap="round"/>`;
+    [[60, 82], [130, 87], [200, 76], [270, 74], [340, 79], [410, 76], [480, 74], [550, 77], [620, 72], [680, 68]]
+      .forEach(([x, y], i) => {
+        garland += `<ellipse cx="${x}" cy="${y}" rx="8" ry="4.5" transform="rotate(${i % 2 ? 38 : -38} ${x} ${y})"
+          fill="${leafCols[i % 2]}" stroke="#58A46F" stroke-width="1.8"/>`;
+      });
+
+    let wallDeco = '';
+    [[350, 150], [430, 150], [330, 330], [450, 340], [360, 430], [240, 330], [250, 440], [600, 250]]
+      .forEach(([x, y]) => { wallDeco += `<circle cx="${x}" cy="${y}" r="5" fill="#FFFFFF" opacity="0.16"/>`; });
+    wallDeco += `<path d="M593 186 h14 M600 179 v14" stroke="#CFE0B8" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
+                 <path d="M273 476 h14 M280 469 v14" stroke="#CFE0B8" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>`;
+
+    return `
+      <defs>
+        <linearGradient id="wallG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="${p.wallTop}"/><stop offset="1" stop-color="${p.wallBottom}"/>
+        </linearGradient>
+        <linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="${p.floorTop}"/><stop offset="1" stop-color="${p.floorBottom}"/>
+        </linearGradient>
+        <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#C3E7F9"/><stop offset="1" stop-color="#EBF8FF"/>
+        </linearGradient>
+        <clipPath id="winClip"><path d="M0 238 L0 120 A120 120 0 0 1 240 120 L240 238 Z"/></clipPath>
+      </defs>
+
+      <rect x="0" y="0" width="720" height="608" fill="url(#wallG)"/>
+      <rect x="0" y="604" width="720" height="316" fill="url(#floorG)"/>
+      ${planks}
+      <rect x="-6" y="596" width="732" height="15" rx="7.5" fill="#FBF7E4" stroke="#DCE2B8" stroke-width="2"/>
+      ${wallDeco}
+      <ellipse cx="176" cy="700" rx="150" ry="40" fill="#FFFFFF" opacity="0.12"/>
+
+      <!-- ceiling beam + hook -->
+      <rect x="-6" y="44" width="732" height="18" rx="9" fill="#E2B584" stroke="${COCOA}" stroke-width="3"/>
+      ${garland}
+      <path d="M240 62 v10" stroke="${COCOA}" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="240" cy="79" r="6" fill="none" stroke="${COCOA}" stroke-width="4"/>
+
+      <!-- arched window -->
+      <g transform="translate(56 108)">
+        <path d="M-10 240 L-10 120 A130 130 0 0 1 250 120 L250 240 Z" fill="#FBF7E4" stroke="#DCE0B4" stroke-width="3"/>
+        <path d="M0 238 L0 120 A120 120 0 0 1 240 120 L240 238 Z" fill="url(#skyG)" stroke="${COCOA}" stroke-width="3"/>
+        <g clip-path="url(#winClip)">
+          <circle cx="54" cy="66" r="20" fill="#FFE29E" stroke="#F2C46F" stroke-width="3"/>
+          <ellipse cx="150" cy="80" rx="30" ry="13" fill="#FFFFFF" opacity="0.95"/>
+          <ellipse cx="172" cy="68" rx="18" ry="11" fill="#FFFFFF" opacity="0.95"/>
+          <path d="M0 238 q 60 -44 120 -30 q 62 14 120 -8 l0 40 l-240 0 Z" fill="#CDEBD2" opacity="0.9"/>
+          <rect x="114" y="0" width="12" height="238" fill="#FBF7E4" opacity="0.9"/>
+          <rect x="0" y="132" width="240" height="10" fill="#FBF7E4" opacity="0.9"/>
+        </g>
+        <path d="M0 238 L0 120 A120 120 0 0 1 240 120 L240 238 Z" fill="none" stroke="${COCOA}" stroke-width="3"/>
+        <rect x="-20" y="236" width="280" height="20" rx="10" fill="#FBF7E4" stroke="#DCE0B4" stroke-width="3"/>
+      </g>
+
+      <!-- plant ladder shelf -->
+      <g transform="translate(470 300)">
+        <ellipse cx="110" cy="424" rx="120" ry="13" fill="#B98F7B" opacity="0.16"/>
+        <rect x="0" y="0" width="14" height="420" rx="7" fill="#E2B584" stroke="${COCOA}" stroke-width="3"/>
+        <rect x="206" y="0" width="14" height="420" rx="7" fill="#E2B584" stroke="${COCOA}" stroke-width="3"/>
+        <rect x="7" y="60" width="206" height="16" rx="8" fill="#EDC494" stroke="${COCOA}" stroke-width="3"/>
+        <rect x="7" y="190" width="206" height="16" rx="8" fill="#EDC494" stroke="${COCOA}" stroke-width="3"/>
+        <rect x="7" y="320" width="206" height="16" rx="8" fill="#EDC494" stroke="${COCOA}" stroke-width="3"/>
+        <rect x="36" y="286" width="30" height="8" rx="4" fill="#F8C3A4" stroke="${COCOA}" stroke-width="2.5"/>
+        <path d="M40 294 h22 l-3 24 h-16 Z" fill="#F3AE8B" stroke="${COCOA}" stroke-width="2.5"/>
+        <rect x="76" y="296" width="24" height="7" rx="3.5" fill="#F5D0AE" stroke="${COCOA}" stroke-width="2"/>
+        <path d="M79 303 h18 l-2.5 15 h-13 Z" fill="#F0CD9C" stroke="${COCOA}" stroke-width="2"/>
+        <rect x="140" y="308" width="46" height="9" rx="3.5" fill="#F49BB0" stroke="${COCOA}" stroke-width="2"/>
+        <rect x="146" y="299" width="38" height="9" rx="3.5" fill="#8FC1E8" stroke="${COCOA}" stroke-width="2"/>
+      </g>
+    `;
+  }
+
+  const scenes = { bedroom: bedroomScene, kitchen: kitchenScene, nook: nookScene };
 
   function roomBase(room) {
     const p = room.palette || {
