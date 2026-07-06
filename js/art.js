@@ -827,10 +827,12 @@ CSR.art = (() => {
               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${inner}</svg>`;
   }
 
-  // Dashed target-spot outline, positioned in room coordinates
+  // Dashed target-spot outline, positioned in room coordinates.
+  // Carries data-z so outlines slot into the same depth order as placed
+  // stickers (an outline in FRONT of a placed sticker stays visible).
   function spotMarkup(spec) {
     const a = stickers[spec.art];
-    return `<g class="spot" data-spot="${spec.id}" transform="translate(${spec.x} ${spec.y}) scale(${spec.scale})">
+    return `<g class="spot" data-spot="${spec.id}" data-z="${spec.z || 0}" transform="translate(${spec.x} ${spec.y}) scale(${spec.scale})">
       <g class="sil-spot" transform="translate(${-a.w / 2} ${-a.h / 2})">${a.sil}</g>
     </g>`;
   }

@@ -134,15 +134,14 @@
     const rm = S.room(state.data, state.roomId);
     els.gameRoomName.textContent = room.name;
 
-    const placedSpecs = room.stickers
-      .filter((s) => rm.placed.includes(s.id))
-      .sort((a, b) => (a.z || 0) - (b.z || 0));
+    // spots and placed stickers share one z-sorted layer, so a dashed
+    // outline that belongs in front of a placed sticker draws on top of it
+    const items = room.stickers.slice().sort((a, b) => (a.z || 0) - (b.z || 0));
     const spots = room.stickers.filter((s) => !rm.placed.includes(s.id));
 
     els.roomSvg.innerHTML = `
       <g id="gBase">${baseWithIds(room, 'game')}</g>
-      <g id="gSpots">${spots.map((s) => A.spotMarkup(s)).join('')}</g>
-      <g id="gStickers">${placedSpecs.map((s) => A.placedMarkup(s, false)).join('')}</g>`;
+      <g id="gItems">${items.map((s) => (rm.placed.includes(s.id) ? A.placedMarkup(s, false) : A.spotMarkup(s))).join('')}</g>`;
 
     els.trayList.innerHTML = spots.map((s) => `
       <li data-id="${s.id}">
@@ -176,11 +175,11 @@
   }
 
   function insertPlaced(spec, pop) {
-    const g = els.roomSvg.querySelector('#gStickers');
+    const g = els.roomSvg.querySelector('#gItems');
     g.insertAdjacentHTML('beforeend', A.placedMarkup(spec, pop));
     const node = g.lastElementChild;
     const z = spec.z || 0;
-    const before = [...g.children].find((ch) => ch !== node && Number(ch.dataset.z) > z);
+    const before = [...g.children].find((ch) => ch !== node && Number(ch.dataset.z || 0) > z);
     if (before) g.insertBefore(node, before);
     return node;
   }
@@ -339,7 +338,7 @@
     }
     disarmReset();
     X.back();
-    els.roomSvg.querySelectorAll('#gStickers .inner').forEach((el) => {
+    els.roomSvg.querySelectorAll('#gItems .placed .inner').forEach((el) => {
       el.classList.remove('pop');
       el.classList.add('peel');
     });
