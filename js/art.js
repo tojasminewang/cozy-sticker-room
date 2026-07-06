@@ -483,9 +483,9 @@ CSR.art = (() => {
       <path d="M245 340 h14 M252 333 v14" stroke="#F2C9CF" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>
       <path d="M683 318 h14 M690 311 v14" stroke="#F2C9CF" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>`;
 
-    // fairy lights
+    // fairy lights — kept high so they clear the window and curtain rod
     const bulbCols = ['#FFD98E', '#F9BFCE', '#BEE8CD', '#BFE0F7'];
-    const bulbs = [[60, 72], [160, 81], [260, 62], [360, 50], [450, 70], [545, 64], [645, 48]]
+    const bulbs = [[70, 40], [180, 48], [300, 40], [420, 44], [540, 42], [650, 32]]
       .map(([x, y], i) => `
         <circle cx="${x}" cy="${y}" r="14" fill="${bulbCols[i % 4]}" opacity="0.28"/>
         <circle cx="${x}" cy="${y}" r="8" fill="${bulbCols[i % 4]}" stroke="${COCOA}" stroke-width="2.5"/>`)
@@ -512,7 +512,7 @@ CSR.art = (() => {
       ${wallDeco}
       <ellipse cx="205" cy="700" rx="150" ry="42" fill="#FFFFFF" opacity="0.12"/>
 
-      <path d="M-10 44 C 90 96 190 80 290 58 C 390 38 430 76 520 66 C 600 57 660 46 730 40"
+      <path d="M-10 30 Q 120 54 260 38 T 520 42 T 730 28"
             fill="none" stroke="#B98F7B" stroke-width="4" stroke-linecap="round"/>
       ${bulbs}
 
@@ -599,10 +599,10 @@ CSR.art = (() => {
       }
     }
 
-    // party bunting along the top
+    // party bunting — flags hang over the clear wall right of the window
     const flagCols = ['#F9BFCE', '#BEE8CD', '#FFD98E', '#BFE0F7'];
-    const flags = [[52, 62], [140, 76], [228, 82], [316, 78], [404, 66], [492, 56], [580, 50], [662, 46]]
-      .map(([x, y], i) => `<path d="M${x} ${y} L${x + 34} ${y - 2} L${x + 19} ${y + 30} Z"
+    const flags = [[330, 43], [416, 44], [502, 41], [588, 37], [656, 33]]
+      .map(([x, y], i) => `<path d="M${x} ${y} L${x + 32} ${y - 2} L${x + 18} ${y + 27} Z"
         fill="${flagCols[i % 4]}" stroke="${COCOA}" stroke-width="2.5" stroke-linejoin="round"/>`)
       .join('');
 
@@ -639,7 +639,7 @@ CSR.art = (() => {
       ${wallDeco}
       <ellipse cx="200" cy="690" rx="150" ry="40" fill="#FFFFFF" opacity="0.12"/>
 
-      <path d="M-10 46 Q 160 96 360 68 T 730 40" fill="none" stroke="#B98F7B" stroke-width="4" stroke-linecap="round"/>
+      <path d="M-10 34 Q 150 54 320 42 T 730 30" fill="none" stroke="#B98F7B" stroke-width="4" stroke-linecap="round"/>
       ${flags}
 
       <!-- window with café curtain -->

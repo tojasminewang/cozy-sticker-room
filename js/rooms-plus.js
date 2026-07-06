@@ -70,40 +70,77 @@
     return s;
   };
 
-  // standard window (glass 220×190) — hill/curtain vary per room
-  const rectWindow = (x, y, { hill = '#CDEBD2', frame = '#FFF7EA', trim = '#E8C7A6', snow = false } = {}) => `
+  // window builder — size, pane grid, and dressing vary per room.
+  // style: '' | 'drapes' | 'shade' | 'shutters' | 'scallop'
+  const rectWindow = (x, y, o = {}) => {
+    const { w = 220, h = 190, hill = '#CDEBD2', frame = '#FFF7EA', trim = '#E8C7A6',
+            snow = false, style = '', tint = '#F9BFCE', tintDark = '#E9A9BB', grid = false } = o;
+    const bars = grid
+      ? `<rect x="${w / 3 - 5}" y="0" width="10" height="${h}" fill="${frame}" opacity="0.9"/>
+         <rect x="${(2 * w) / 3 - 5}" y="0" width="10" height="${h}" fill="${frame}" opacity="0.9"/>
+         <rect x="0" y="${h * 0.48 - 5}" width="${w}" height="10" fill="${frame}" opacity="0.9"/>`
+      : `<rect x="${w / 2 - 5}" y="0" width="10" height="${h}" fill="${frame}" opacity="0.9"/>
+         <rect x="0" y="${h * 0.45 - 5}" width="${w}" height="10" fill="${frame}" opacity="0.9"/>`;
+    let dress = '';
+    if (style === 'drapes') dress = `
+      <path d="M-6 8 Q ${w * 0.15} ${h * 0.5} -4 ${h + 4} L -16 ${h + 4} L -16 8 Z" fill="${tint}" stroke="${tintDark}" stroke-width="3"/>
+      <path d="M${w + 6} 8 Q ${w - w * 0.15} ${h * 0.5} ${w + 4} ${h + 4} L ${w + 16} ${h + 4} L ${w + 16} 8 Z" fill="${tint}" stroke="${tintDark}" stroke-width="3"/>
+      <rect x="-16" y="-16" width="${w + 32}" height="28" rx="12" fill="${tint}" stroke="${tintDark}" stroke-width="3"/>`;
+    if (style === 'shade') dress = `
+      <rect x="4" y="0" width="${w - 8}" height="${h * 0.24}" rx="9" fill="${tint}" stroke="${tintDark}" stroke-width="3"/>
+      <rect x="10" y="${h * 0.24 - 5}" width="${w - 20}" height="10" rx="5" fill="${tintDark}"/>
+      <path d="M${w / 2} ${h * 0.24 + 5} v14" stroke="${tintDark}" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="${w / 2}" cy="${h * 0.24 + 25}" r="4.5" fill="${tint}" stroke="${tintDark}" stroke-width="2"/>`;
+    if (style === 'shutters') dress = `
+      <rect x="-38" y="-4" width="28" height="${h + 10}" rx="9" fill="${tint}" stroke="${C}" stroke-width="3"/>
+      <path d="M-31 14 h14 M-31 ${h * 0.32} h14 M-31 ${h * 0.56} h14 M-31 ${h * 0.8} h14" stroke="${tintDark}" stroke-width="2.5" stroke-linecap="round"/>
+      <rect x="${w + 10}" y="-4" width="28" height="${h + 10}" rx="9" fill="${tint}" stroke="${C}" stroke-width="3"/>
+      <path d="M${w + 17} 14 h14 M${w + 17} ${h * 0.32} h14 M${w + 17} ${h * 0.56} h14 M${w + 17} ${h * 0.8} h14" stroke="${tintDark}" stroke-width="2.5" stroke-linecap="round"/>`;
+    if (style === 'scallop') {
+      const scW = (w - 4) / 9;
+      let sc = `M2 0 L${w - 2} 0 L${w - 2} 16 `;
+      for (let i = 0; i < 9; i++) sc += `q ${-scW / 2} 13 ${-scW} 0 `;
+      sc += 'Z';
+      dress = `<path d="${sc}" fill="${tint}" opacity="0.96" stroke="${tintDark}" stroke-width="2.5" stroke-linejoin="round"/>`;
+    }
+    const drift = snow
+      ? `<path d="M8 ${h - 4} q 18 -14 42 -4 q 17 -10 36 -1 q 15 -8 32 0 l 0 9 l -110 0 Z" fill="#FFFFFF" opacity="0.95"/>`
+      : '';
+    return `
     <g transform="translate(${x} ${y})">
-      <rect x="-10" y="-10" width="240" height="230" rx="20" fill="${frame}" stroke="${trim}" stroke-width="3"/>
-      <rect x="0" y="0" width="220" height="190" rx="14" fill="url(#skyG)" stroke="${C}" stroke-width="3"/>
+      <rect x="-10" y="-10" width="${w + 20}" height="${h + 40}" rx="20" fill="${frame}" stroke="${trim}" stroke-width="3"/>
+      <rect x="0" y="0" width="${w}" height="${h}" rx="14" fill="url(#skyG)" stroke="${C}" stroke-width="3"/>
       <g clip-path="url(#winClip)">
-        <circle cx="48" cy="46" r="18" fill="#FFE29E" stroke="#F2C46F" stroke-width="3"/>
-        <ellipse cx="140" cy="52" rx="30" ry="13" fill="#FFFFFF" opacity="0.95"/>
-        <ellipse cx="162" cy="42" rx="18" ry="11" fill="#FFFFFF" opacity="0.95"/>
-        <path d="M0 190 q 55 -40 110 -28 q 60 13 110 -8 l0 36 l-220 0 Z" fill="${hill}" opacity="0.92"/>
-        ${snow ? `<circle cx="40" cy="90" r="3" fill="#FFF"/><circle cx="90" cy="70" r="3" fill="#FFF"/>
-          <circle cx="150" cy="96" r="3" fill="#FFF"/><circle cx="190" cy="66" r="3" fill="#FFF"/>` : ''}
-        <rect x="100" y="0" width="10" height="190" fill="${frame}" opacity="0.9"/>
-        <rect x="0" y="85" width="220" height="10" fill="${frame}" opacity="0.9"/>
+        <circle cx="${w * 0.22}" cy="${h * 0.27}" r="${Math.min(w, h) * 0.14 + 5}" fill="#FFE29E" stroke="#F2C46F" stroke-width="3"/>
+        <ellipse cx="${w * 0.66}" cy="${h * 0.3}" rx="${w * 0.14}" ry="12" fill="#FFFFFF" opacity="0.95"/>
+        <ellipse cx="${w * 0.77}" cy="${h * 0.23}" rx="${w * 0.09}" ry="10" fill="#FFFFFF" opacity="0.95"/>
+        <path d="M0 ${h} q ${w * 0.25} ${-h * 0.2} ${w * 0.5} ${-h * 0.14} q ${w * 0.28} ${h * 0.07} ${w * 0.5} ${-h * 0.05} l 0 ${h * 0.3} l ${-w} 0 Z" fill="${hill}" opacity="0.92"/>
+        ${snow ? `<circle cx="${w * 0.2}" cy="${h * 0.5}" r="3" fill="#FFF"/><circle cx="${w * 0.45}" cy="${h * 0.36}" r="3" fill="#FFF"/>
+          <circle cx="${w * 0.7}" cy="${h * 0.52}" r="3" fill="#FFF"/><circle cx="${w * 0.88}" cy="${h * 0.34}" r="3" fill="#FFF"/>` : ''}
+        ${bars}
       </g>
-      <rect x="0" y="0" width="220" height="190" rx="14" fill="none" stroke="${C}" stroke-width="3"/>
-      <rect x="-20" y="188" width="280" height="20" rx="10" fill="${frame}" stroke="${trim}" stroke-width="3"/>
+      <rect x="0" y="0" width="${w}" height="${h}" rx="14" fill="none" stroke="${C}" stroke-width="3"/>
+      ${dress}
+      <rect x="-20" y="${h - 2}" width="${w + 40}" height="20" rx="10" fill="${frame}" stroke="${trim}" stroke-width="3"/>
+      ${drift}
     </g>`;
+  };
 
-  // simple string of fairy lights across the top
+  // string of fairy lights — kept high and shallow so it clears every window
   const lights = (cols = ['#FFD98E', '#F9BFCE', '#BEE8CD', '#BFE0F7']) => {
-    const bulbs = [[70, 66], [170, 78], [270, 62], [370, 52], [470, 68], [570, 60], [660, 48]]
-      .map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="13" fill="${cols[i % 4]}" opacity="0.26"/>
-        <circle cx="${x}" cy="${y}" r="7.5" fill="${cols[i % 4]}" stroke="${C}" stroke-width="2.5"/>`).join('');
-    return `<path d="M-10 42 C 90 92 190 78 290 56 C 390 38 430 74 520 64 C 600 56 660 44 730 38"
+    const bulbs = [[64, 42], [170, 52], [286, 44], [400, 40], [512, 46], [636, 36]]
+      .map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="12" fill="${cols[i % 4]}" opacity="0.26"/>
+        <circle cx="${x}" cy="${y}" r="7" fill="${cols[i % 4]}" stroke="${C}" stroke-width="2.5"/>`).join('');
+    return `<path d="M-10 30 Q 130 56 280 42 T 560 42 T 730 26"
       fill="none" stroke="#B98F7B" stroke-width="4" stroke-linecap="round"/>${bulbs}`;
   };
 
-  // pennant bunting
+  // pennant bunting — high and shallow, clear of window frames
   const bunting = (cols) => {
-    const flags = [[60, 60], [150, 74], [240, 80], [330, 76], [420, 64], [510, 55], [600, 49], [672, 46]]
-      .map(([x, y], i) => `<path d="M${x} ${y} L${x + 32} ${y - 2} L${x + 18} ${y + 28} Z"
+    const flags = [[48, 38], [150, 48], [252, 48], [354, 42], [456, 40], [558, 40], [652, 34]]
+      .map(([x, y], i) => `<path d="M${x} ${y} L${x + 30} ${y - 2} L${x + 17} ${y + 25} Z"
         fill="${cols[i % cols.length]}" stroke="${C}" stroke-width="2.5" stroke-linejoin="round"/>`).join('');
-    return `<path d="M-10 44 Q 160 94 360 66 T 730 40" fill="none" stroke="#B98F7B" stroke-width="4" stroke-linecap="round"/>${flags}`;
+    return `<path d="M-10 32 Q 170 56 360 42 T 730 30" fill="none" stroke="#B98F7B" stroke-width="4" stroke-linecap="round"/>${flags}`;
   };
 
   /* ════════════════ 4. COZY CAFÉ ════════════════ */
@@ -120,19 +157,19 @@
       <ellipse rx="6.5" ry="9.5" fill="#B98F7B"/>
       <path d="M0 -8 Q2.5 0 0 8" stroke="#F8EBDB" stroke-width="2" fill="none"/></g>`,
       { y0: 148, rows: 3, dy: 104, dx: 122, stag: 61 });
-    return `${defs(p)}${wallFloor()}${board()}${diam}
+    return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="300" height="130" rx="14"/></clipPath>`)}${wallFloor()}${board()}${diam}
       ${beans}
       <path d="M0 460 L720 460" stroke="#D9B98C" stroke-width="3.5" opacity="0.55"/>
       ${pool()}
       ${lights()}
-      <!-- awning + window -->
-      <g transform="translate(46 98)">
-        <path d="M-24 -18 L264 -18 L252 26 Q246 38 234 38 L6 38 Q-6 38 -12 26 Z" fill="#F9BFCE" stroke="${C}" stroke-width="3"/>
-        <path d="M6 38 L-12 26 M66 38 L58 -18 M126 38 L120 -18 M186 38 L180 -18 M234 38 L252 26" stroke="#E9A9BB" stroke-width="3"/>
-        <path d="M6 38 q15 14 30 0 q15 14 30 0 q15 14 30 0 q15 14 30 0 q15 14 30 0 q15 14 30 0 q15 14 30 0 q12 12 18 0"
+      <!-- striped awning over a wide storefront window -->
+      <g transform="translate(40 102)">
+        <path d="M-26 -16 L326 -16 L312 30 Q306 42 294 42 L6 42 Q-6 42 -12 30 Z" fill="#F9BFCE" stroke="${C}" stroke-width="3"/>
+        <path d="M36 -16 L30 42 M96 -16 L92 42 M156 -16 L154 42 M216 -16 L216 42 M276 -16 L280 42" stroke="#E9A9BB" stroke-width="3"/>
+        <path d="M-12 42 q16 14 32 0 q16 14 32 0 q16 14 32 0 q16 14 32 0 q16 14 32 0 q16 14 32 0 q16 14 32 0 q16 14 32 0 q16 14 32 0 q16 14 32 0"
               fill="none" stroke="${C}" stroke-width="2.5"/>
       </g>
-      ${rectWindow(46, 148)}
+      ${rectWindow(40, 150, { w: 300, h: 130 })}
       <!-- counter -->
       <g transform="translate(28 538)">
         <ellipse cx="230" cy="214" rx="226" ry="14" fill="#B98F7B" opacity="0.14"/>
@@ -212,14 +249,14 @@
 
   /* ════════════════ 6. STUDY NOOK ════════════════ */
   function studyScene(p) {
-    return `${defs(p)}${wallFloor()}${board()}
+    return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="180" height="230" rx="14"/></clipPath>`)}${wallFloor()}${board()}
       ${vStripes('#C9A25E', 0.1, 22, 88)}
       ${wp((x, y) => `<path transform="translate(${x} ${y}) scale(0.85)" d="${A.starPath}" fill="#C9A25E" opacity="0.3"/>`,
         { y0: 185, rows: 3, dy: 132, dx: 176, stag: 88 })}
       ${floorPlanks('#C9A87E', 0.38)}
       ${pool()}
       ${bunting(['#A7C6A0', '#F2C48D', '#E8C08A', '#BFE0F7'])}
-      ${rectWindow(46, 98)}
+      ${rectWindow(50, 98, { w: 180, h: 230, style: 'shade', tint: '#E8C08A', tintDark: '#C9924F' })}
       <!-- desk -->
       <g transform="translate(420 472)">
         <ellipse cx="140" cy="288" rx="150" ry="14" fill="#B98F7B" opacity="0.16"/>
@@ -244,7 +281,7 @@
       return `<g transform="translate(${x} ${y})" opacity="0.34">
         <circle r="9" fill="${c2}"/><circle cx="11" cy="-6" r="4" fill="${c2}"/><circle cx="-10" cy="7" r="3" fill="${c2}"/></g>`;
     }, { y0: 145, rows: 3, dy: 115, dx: 140, stag: 70 });
-    return `${defs(p)}${wallFloor()}${board()}
+    return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="250" height="210" rx="14"/></clipPath>`)}${wallFloor()}${board()}
       ${floorPlanks('#C9A87E', 0.32)}
       <ellipse cx="200" cy="840" rx="60" ry="18" fill="#F49BB0" opacity="0.25"/>
       <ellipse cx="420" cy="880" rx="46" ry="14" fill="#8FC1E8" opacity="0.22"/>
@@ -252,7 +289,7 @@
       ${splats}
       ${pool()}
       ${lights(['#F49BB0', '#FFD98E', '#8FC1E8', '#CBB4E8'])}
-      ${rectWindow(46, 98)}
+      ${rectWindow(36, 92, { w: 250, h: 210, grid: true, frame: '#FFFFFF', trim: '#E4D7F2' })}
       <!-- wall shelf -->
       <g transform="translate(60 420)">
         <rect x="0" y="0" width="240" height="14" rx="7" fill="#E8C08A" stroke="${C}" stroke-width="3"/>
@@ -283,7 +320,7 @@
                opacity="0.28" stroke-dasharray="1 16" stroke-linecap="round"/>
       ${pool()}
       ${bunting(['#8B92D8', '#F9BFCE', '#BFE0F7', '#FFD98E'])}
-      ${rectWindow(46, 98)}
+      ${rectWindow(46, 98, { style: 'drapes', tint: '#C5B5E3', tintDark: '#A08FC9' })}
       <!-- upright piano -->
       <g transform="translate(430 440)">
         <ellipse cx="135" cy="288" rx="145" ry="14" fill="#B98F7B" opacity="0.16"/>
@@ -355,12 +392,12 @@
   function catsScene(p) {
     const paw = (x, y, s, op) => `<g transform="translate(${x} ${y}) scale(${s})" opacity="${op}" fill="#E8B99B">
       <ellipse cx="0" cy="4" rx="9" ry="7"/><ellipse cx="-10" cy="-6" rx="4" ry="5"/><ellipse cx="-3" cy="-10" rx="4" ry="5"/><ellipse cx="4" cy="-10" rx="4" ry="5"/><ellipse cx="11" cy="-6" rx="4" ry="5"/></g>`;
-    return `${defs(p)}${wallFloor()}${board()}${floorDots()}
+    return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="260" height="140" rx="14"/></clipPath>`)}${wallFloor()}${board()}${floorDots()}
       ${wp((x, y, r) => paw(x, y, r % 2 ? 0.75 : 1, 0.24), { y0: 148, rows: 3, dy: 118, dx: 148, stag: 74 })}
       ${paw(255, 715, 0.9, 0.16)}${paw(520, 855, 0.8, 0.15)}
       ${pool(240, 700, 0.2)}
       ${lights(['#F8B58E', '#F9BFCE', '#FFE9AE', '#BEE8CD'])}
-      ${rectWindow(46, 98)}
+      ${rectWindow(40, 132, { w: 260, h: 140, style: 'scallop', tint: '#F8B58E', tintDark: '#E0955F' })}
       <!-- window bench -->
       <g transform="translate(60 428)">
         <rect x="18" y="24" width="16" height="176" rx="7" fill="#D9A468" stroke="${C}" stroke-width="3"/>
@@ -463,7 +500,7 @@
       ${flake(360, 170, 1, 0.8)}${flake(430, 260, 0.8, 0.6)}${flake(330, 330, 0.7, 0.6)}${flake(620, 240, 0.9, 0.7)}${flake(160, 450, 0.8, 0.55)}
       ${pool()}
       ${lights(['#E88A8A', '#FFE9AE', '#A7C6A0', '#FFE9AE'])}
-      ${rectWindow(46, 98, { hill: '#F4FAFF', snow: true })}
+      ${rectWindow(46, 98, { w: 200, h: 180, style: 'shutters', tint: '#E88A8A', tintDark: '#D07070', snow: true, hill: '#F4FAFF' })}
       <!-- fireplace -->
       <g transform="translate(420 330)">
         <ellipse cx="130" cy="296" rx="150" ry="14" fill="#B98F7B" opacity="0.18"/>
