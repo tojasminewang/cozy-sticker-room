@@ -37,6 +37,32 @@
   const dots = (pts, color = '#FFFFFF', op = 0.14) =>
     pts.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5" fill="${color}" opacity="${op}"/>`).join('');
 
+  /* ---------- wallpaper helpers (each room gets its own print) ---------- */
+  // staggered pattern grid across the wall; draw(x, y, row) returns markup
+  const wp = (draw, { y0 = 150, rows = 4, dy = 108, x0 = 55, dx = 130, stag = 65, xMax = 690 } = {}) => {
+    let s = '';
+    for (let r = 0; r < rows; r++)
+      for (let x = x0 + (r % 2 ? stag : 0); x <= xMax; x += dx) s += draw(x, y0 + r * dy, r);
+    return s;
+  };
+  const vStripes = (c, op, w = 26, gap = 92) => {
+    let s = '';
+    for (let x = 28; x < 720; x += gap) s += `<rect x="${x}" y="0" width="${w}" height="604" fill="${c}" opacity="${op}"/>`;
+    return s;
+  };
+  const hPlanks = (c, op, y0 = 128, dy = 96, y1 = 592) => {
+    let s = '';
+    for (let y = y0; y <= y1; y += dy) s += `<path d="M0 ${y} L720 ${y}" stroke="${c}" stroke-width="3" opacity="${op}"/>`;
+    return s;
+  };
+  const floorPlanks = (c = '#C9A87E', op = 0.4) => {
+    let s = '';
+    [672, 752, 832].forEach((y) => { s += `<path d="M0 ${y} L720 ${y}" stroke="${c}" stroke-width="3" opacity="${op}"/>`; });
+    [[180, 628], [440, 636], [640, 624], [90, 706], [330, 712], [560, 708], [230, 788], [490, 786], [130, 866], [400, 862], [630, 870]]
+      .forEach(([x, y]) => { s += `<path d="M${x} ${y} v16" stroke="${c}" stroke-width="3" opacity="${op * 0.85}" stroke-linecap="round"/>`; });
+    return s;
+  };
+
   const floorDots = () => {
     let s = '';
     for (let r = 0; r < 3; r++) for (let i = 0; i < 8; i++)
@@ -82,8 +108,21 @@
 
   /* ════════════════ 4. COZY CAFÉ ════════════════ */
   function cafeScene(p) {
-    return `${defs(p)}${wallFloor()}${board()}${floorDots()}
-      ${dots([[360, 160], [430, 300], [340, 420], [560, 160], [120, 440], [250, 470]])}
+    // diamond-tile floor
+    let diam = '';
+    for (let r = 0; r < 3; r++) for (let c2 = 0; c2 < 7; c2++) {
+      const dxx = 44 + c2 * 100 + (r % 2) * 50, dyy = 632 + r * 88;
+      diam += `<rect x="${dxx}" y="${dyy}" width="52" height="52" rx="10"
+        transform="rotate(45 ${dxx + 26} ${dyy + 26})" fill="#FFFFFF" opacity="0.12"/>`;
+    }
+    // coffee-bean wallpaper
+    const beans = wp((x, y, r) => `<g transform="translate(${x} ${y}) rotate(${r % 2 ? 28 : -24})" opacity="0.28">
+      <ellipse rx="6.5" ry="9.5" fill="#B98F7B"/>
+      <path d="M0 -8 Q2.5 0 0 8" stroke="#F8EBDB" stroke-width="2" fill="none"/></g>`,
+      { y0: 148, rows: 3, dy: 104, dx: 122, stag: 61 });
+    return `${defs(p)}${wallFloor()}${board()}${diam}
+      ${beans}
+      <path d="M0 460 L720 460" stroke="#D9B98C" stroke-width="3.5" opacity="0.55"/>
       ${pool()}
       ${lights()}
       <!-- awning + window -->
@@ -117,18 +156,30 @@
 
   /* ════════════════ 5. BUBBLE BATH ════════════════ */
   function bathScene(p) {
+    // checkerboard tile wainscot
     let tiles = '';
-    for (let i = 0; i < 8; i++) tiles += `<path d="M${i * 96} 486 v104" stroke="#C8E3DF" stroke-width="3" opacity="0.7"/>`;
+    for (let i = 0; i < 8; i++) {
+      tiles += `<rect x="${i * 96}" y="${i % 2 ? 543 : 482}" width="96" height="61" fill="#DFF0EC"/>`;
+      tiles += `<path d="M${i * 96} 484 v118" stroke="#C8E3DF" stroke-width="3" opacity="0.8"/>`;
+    }
+    tiles += `<path d="M0 543 L720 543" stroke="#C8E3DF" stroke-width="3" opacity="0.8"/>`;
+    // floor tile grid
+    let fl = '';
+    for (let x = 96; x < 720; x += 96) fl += `<path d="M${x} 604 L${x} 920" stroke="#D9C6AC" stroke-width="2.5" opacity="0.45"/>`;
+    [700, 800, 900].forEach((y) => { fl += `<path d="M0 ${y} L720 ${y}" stroke="#D9C6AC" stroke-width="2.5" opacity="0.45"/>`; });
+    // floating bubble wallpaper
+    const bubs = wp((x, y, r) => `<g transform="translate(${x} ${y})" opacity="0.32">
+      <circle r="${r % 2 ? 8 : 13}" fill="none" stroke="#7FC4BD" stroke-width="2.5"/>
+      <path d="M${r % 2 ? -3 : -5} ${r % 2 ? -3 : -6} a6 6 0 0 1 4 -3" stroke="#7FC4BD" stroke-width="2" fill="none" stroke-linecap="round"/></g>`,
+      { y0: 128, rows: 3, dy: 112, dx: 138, stag: 69 });
     return `${defs(p, `<clipPath id="winClip"><circle cx="0" cy="0" r="82"/></clipPath>`)}
       ${wallFloor()}${board('#F6FBFA', '#C8E3DF')}
       <rect x="0" y="480" width="720" height="124" fill="#EAF6F3"/>
       <path d="M0 482 L720 482" stroke="#C8E3DF" stroke-width="3"/>
       ${tiles}
-      ${dots([[350, 180], [430, 320], [300, 380], [560, 200], [640, 350]])}
+      ${fl}
+      ${bubs}
       ${pool(200, 720)}
-      <circle cx="330" cy="130" r="12" fill="#FFFFFF" opacity="0.35"/>
-      <circle cx="370" cy="90" r="8" fill="#FFFFFF" opacity="0.3"/>
-      <circle cx="620" cy="120" r="10" fill="#FFFFFF" opacity="0.3"/>
       <!-- porthole window -->
       <g transform="translate(170 210)">
         <circle cx="0" cy="0" r="96" fill="#D8F0EC" stroke="${C}" stroke-width="3"/>
@@ -162,7 +213,10 @@
   /* ════════════════ 6. STUDY NOOK ════════════════ */
   function studyScene(p) {
     return `${defs(p)}${wallFloor()}${board()}
-      ${dots([[350, 160], [420, 330], [340, 440], [580, 170], [120, 430], [640, 330]])}
+      ${vStripes('#C9A25E', 0.1, 22, 88)}
+      ${wp((x, y) => `<path transform="translate(${x} ${y}) scale(0.85)" d="${A.starPath}" fill="#C9A25E" opacity="0.3"/>`,
+        { y0: 185, rows: 3, dy: 132, dx: 176, stag: 88 })}
+      ${floorPlanks('#C9A87E', 0.38)}
       ${pool()}
       ${bunting(['#A7C6A0', '#F2C48D', '#E8C08A', '#BFE0F7'])}
       ${rectWindow(46, 98)}
@@ -183,11 +237,19 @@
 
   /* ════════════════ 7. ART STUDIO ════════════════ */
   function studioScene(p) {
+    const splCols = ['#F49BB0', '#8FC1E8', '#FFD98E', '#A7E0B6', '#CBB4E8'];
+    let si = 0;
+    const splats = wp((x, y) => {
+      const c2 = splCols[si++ % 5];
+      return `<g transform="translate(${x} ${y})" opacity="0.34">
+        <circle r="9" fill="${c2}"/><circle cx="11" cy="-6" r="4" fill="${c2}"/><circle cx="-10" cy="7" r="3" fill="${c2}"/></g>`;
+    }, { y0: 145, rows: 3, dy: 115, dx: 140, stag: 70 });
     return `${defs(p)}${wallFloor()}${board()}
+      ${floorPlanks('#C9A87E', 0.32)}
       <ellipse cx="200" cy="840" rx="60" ry="18" fill="#F49BB0" opacity="0.25"/>
       <ellipse cx="420" cy="880" rx="46" ry="14" fill="#8FC1E8" opacity="0.22"/>
       <ellipse cx="580" cy="850" rx="40" ry="13" fill="#FFD98E" opacity="0.25"/>
-      ${dots([[350, 160], [420, 320], [560, 150], [340, 460], [620, 300]])}
+      ${splats}
       ${pool()}
       ${lights(['#F49BB0', '#FFD98E', '#8FC1E8', '#CBB4E8'])}
       ${rectWindow(46, 98)}
@@ -213,8 +275,12 @@
     const note = (x, y, s, op) => `<g transform="translate(${x} ${y}) scale(${s})" opacity="${op}">
       <circle cx="0" cy="10" r="6" fill="#8B92D8"/><path d="M6 10 L6 -14 L18 -18 L18 -8" stroke="#8B92D8" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="12" cy="-6" r="6" fill="#8B92D8"/></g>`;
     return `${defs(p)}${wallFloor()}${board()}
-      ${note(350, 200, 1, 0.3)}${note(560, 260, 0.8, 0.25)}${note(300, 420, 0.7, 0.25)}
-      ${dots([[420, 160], [340, 320], [600, 180], [140, 440]])}
+      ${wp((x, y, r) => note(x, y, r % 2 ? 0.55 : 0.7, 0.24), { y0: 140, rows: 3, dy: 122, dx: 158, stag: 79 })}
+      <path d="M0 528 q30 -14 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0"
+            stroke="#8B92D8" stroke-width="2.5" fill="none" opacity="0.25"/>
+      <ellipse cx="380" cy="790" rx="272" ry="95" fill="#8B92D8" opacity="0.13"/>
+      <ellipse cx="380" cy="790" rx="240" ry="78" fill="none" stroke="#8B92D8" stroke-width="3.5"
+               opacity="0.28" stroke-dasharray="1 16" stroke-linecap="round"/>
       ${pool()}
       ${bunting(['#8B92D8', '#F9BFCE', '#BFE0F7', '#FFD98E'])}
       ${rectWindow(46, 98)}
@@ -249,8 +315,18 @@
       <rect x="${x + u}" y="${y + 3 * u}" width="${5 * u}" height="${u}"/>
       <rect x="${x + 2 * u}" y="${y + 4 * u}" width="${3 * u}" height="${u}"/>
       <rect x="${x + 3 * u}" y="${y + 5 * u}" width="${u}" height="${u}"/></g>`;
+    let gg = '';
+    for (let x = 36; x < 720; x += 72) gg += `<path d="M${x} 100 L${x} 596" stroke="#7BA6E8" stroke-width="2" opacity="0.10"/>`;
+    for (let y = 136; y < 600; y += 72) gg += `<path d="M0 ${y} L720 ${y}" stroke="#7BA6E8" stroke-width="2" opacity="0.10"/>`;
+    [[324, 208], [468, 280], [612, 172], [252, 424], [540, 460], [110, 352]].forEach(([x, y], i) => {
+      gg += `<rect x="${x}" y="${y}" width="16" height="16" rx="3" fill="${['#F49BB0', '#A7E0B6', '#FFD98E', '#CBB4E8'][i % 4]}" opacity="0.42"/>`;
+    });
+    let cf = '';
+    for (let r = 0; r < 6; r++)
+      for (let x = 30 + (r % 2) * 26; x < 720; x += 52) cf += `<circle cx="${x}" cy="${644 + r * 50}" r="2.8" fill="#FFFFFF" opacity="0.2"/>`;
     return `${defs(p)}${wallFloor()}${board()}
-      ${dots([[350, 180], [180, 330], [620, 200], [340, 460]])}
+      ${gg}
+      ${cf}
       ${pool()}
       <path d="M-10 50 Q 180 90 360 62 T 730 44" fill="none" stroke="#B98F7B" stroke-width="4" stroke-linecap="round"/>
       ${px(84, 60, '#F49BB0')}${px(190, 74, '#FFD98E')}${px(296, 62, '#A7E0B6')}${px(402, 52, '#8FC1E8')}${px(508, 62, '#CBB4E8')}${px(614, 50, '#F49BB0')}
@@ -280,7 +356,8 @@
     const paw = (x, y, s, op) => `<g transform="translate(${x} ${y}) scale(${s})" opacity="${op}" fill="#E8B99B">
       <ellipse cx="0" cy="4" rx="9" ry="7"/><ellipse cx="-10" cy="-6" rx="4" ry="5"/><ellipse cx="-3" cy="-10" rx="4" ry="5"/><ellipse cx="4" cy="-10" rx="4" ry="5"/><ellipse cx="11" cy="-6" rx="4" ry="5"/></g>`;
     return `${defs(p)}${wallFloor()}${board()}${floorDots()}
-      ${paw(370, 200, 1.1, 0.4)}${paw(430, 260, 0.9, 0.32)}${paw(350, 320, 0.8, 0.28)}${paw(620, 320, 1, 0.35)}
+      ${wp((x, y, r) => paw(x, y, r % 2 ? 0.75 : 1, 0.24), { y0: 148, rows: 3, dy: 118, dx: 148, stag: 74 })}
+      ${paw(255, 715, 0.9, 0.16)}${paw(520, 855, 0.8, 0.15)}
       ${pool(240, 700, 0.2)}
       ${lights(['#F8B58E', '#F9BFCE', '#FFE9AE', '#BEE8CD'])}
       ${rectWindow(46, 98)}
@@ -306,7 +383,12 @@
       <ellipse cx="420" cy="150" rx="60" ry="20" fill="#FFFFFF" opacity="0.75"/>
       <ellipse cx="470" cy="132" rx="38" ry="16" fill="#FFFFFF" opacity="0.75"/>
       <ellipse cx="620" cy="230" rx="48" ry="16" fill="#FFFFFF" opacity="0.6"/>
+      <ellipse cx="260" cy="120" rx="34" ry="12" fill="#FFFFFF" opacity="0.5"/>
+      <ellipse cx="560" cy="310" rx="44" ry="14" fill="#FFFFFF" opacity="0.45"/>
+      <path transform="translate(84 96) scale(0.9)" d="${A.starPath}" fill="#FFF1C4" opacity="0.7"/>
+      <path transform="translate(662 148) scale(0.7)" d="${A.starPath}" fill="#FFF1C4" opacity="0.6"/>
       <path d="M300 118 q8 -8 16 0 M330 130 q7 -7 14 0" stroke="#8A7767" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/>
+      <path d="M472 208 q8 -8 16 0 M502 220 q7 -7 14 0" stroke="#8A7767" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.55"/>
       <path d="M0 480 Q 120 420 260 452 Q 420 486 540 448 Q 640 420 720 452 L720 604 L0 604 Z" fill="#D8A8B8" opacity="0.5"/>
       <path d="M0 520 Q 160 470 340 500 Q 520 528 720 492 L720 604 L0 604 Z" fill="#C08FA6" opacity="0.5"/>
       ${planks}
@@ -332,6 +414,11 @@
     return `${defs(p)}${wallFloor()}
       <path d="M584 96 a44 44 0 1 0 30 76 a44 44 0 0 1 -30 -76 Z" fill="#FFE9AE" stroke="#F2C46F" stroke-width="3" transform="rotate(-14 599 140)"/>
       ${stars}
+      <path d="M120 258 L212 220" stroke="#FFE9AE" stroke-width="3" stroke-linecap="round" opacity="0.65" stroke-dasharray="3 11"/>
+      <path transform="translate(224 214) scale(1.2)" d="${A.starPath}" fill="#FFE9AE"/>
+      <circle cx="384" cy="204" r="2.5" fill="#FFE9AE" opacity="0.8"/>
+      <circle cx="500" cy="286" r="2.5" fill="#FFE9AE" opacity="0.7"/>
+      <circle cx="96" cy="336" r="2.5" fill="#FFE9AE" opacity="0.7"/>
       <path d="M0 604 L60 520 L120 604 Z M100 604 L170 496 L240 604 Z M480 604 L544 508 L608 604 Z M580 604 L640 528 L700 604 Z" fill="#5E8A6E" opacity="0.55"/>
       <path d="M0 598 L720 598 L720 610 L0 610 Z" fill="#8FC084"/>
       ${tufts}
@@ -364,6 +451,15 @@
       }
     }
     return `${defs(p)}${wallFloor()}${board()}
+      ${hPlanks('#C97B6B', 0.15, 132, 94, 592)}
+      <circle cx="184" cy="180" r="5" fill="#C97B6B" opacity="0.18"/>
+      <circle cx="564" cy="276" r="5" fill="#C97B6B" opacity="0.18"/>
+      <circle cx="92" cy="372" r="5" fill="#C97B6B" opacity="0.18"/>
+      <circle cx="304" cy="468" r="5" fill="#C97B6B" opacity="0.18"/>
+      ${floorPlanks('#C9A87E', 0.38)}
+      <ellipse cx="225" cy="800" rx="175" ry="62" fill="#E88A8A" opacity="0.26"/>
+      <ellipse cx="225" cy="800" rx="142" ry="47" fill="none" stroke="#FFFDF6" stroke-width="4" opacity="0.55"
+               stroke-dasharray="1 14" stroke-linecap="round"/>
       ${flake(360, 170, 1, 0.8)}${flake(430, 260, 0.8, 0.6)}${flake(330, 330, 0.7, 0.6)}${flake(620, 240, 0.9, 0.7)}${flake(160, 450, 0.8, 0.55)}
       ${pool()}
       ${lights(['#E88A8A', '#FFE9AE', '#A7C6A0', '#FFE9AE'])}

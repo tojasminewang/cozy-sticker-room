@@ -470,10 +470,15 @@ CSR.art = (() => {
       }
     }
 
-    // soft wall texture: sparse dots + two little sparkle-crosses
+    // heart-print wallpaper + two little sparkle-crosses
     let wallDeco = '';
-    [[60, 400], [180, 360], [300, 395], [352, 298], [430, 335], [640, 350], [110, 455], [560, 330]]
-      .forEach(([x, y]) => { wallDeco += `<circle cx="${x}" cy="${y}" r="5" fill="#FFFFFF" opacity="0.13"/>`; });
+    for (let r = 0; r < 4; r++) {
+      for (let x = 60 + (r % 2 ? 68 : 0); x <= 690; x += 136) {
+        wallDeco += `<path transform="translate(${x} ${140 + r * 118}) scale(${r % 2 ? 0.9 : 1.15})"
+          d="M0 2 c-2.4 -2.9 -7 -1 -7 2.3 c0 2.9 4.1 4.7 7 7.2 c2.9 -2.5 7 -4.3 7 -7.2 c0 -3.3 -4.6 -5.2 -7 -2.3 Z"
+          fill="${r % 2 ? '#F2A9BC' : '#EFB3C9'}" opacity="0.34"/>`;
+      }
+    }
     wallDeco += `
       <path d="M245 340 h14 M252 333 v14" stroke="#F2C9CF" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>
       <path d="M683 318 h14 M690 311 v14" stroke="#F2C9CF" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>`;
@@ -601,9 +606,16 @@ CSR.art = (() => {
         fill="${flagCols[i % 4]}" stroke="${COCOA}" stroke-width="2.5" stroke-linejoin="round"/>`)
       .join('');
 
+    // cream stripes + scattered strawberries (sunny-kitchen wallpaper)
     let wallDeco = '';
-    [[90, 380], [210, 420], [330, 440], [130, 470], [420, 450], [350, 140], [620, 300]]
-      .forEach(([x, y]) => { wallDeco += `<circle cx="${x}" cy="${y}" r="5" fill="#FFFFFF" opacity="0.13"/>`; });
+    for (let x = 30; x < 720; x += 92) wallDeco += `<rect x="${x}" y="0" width="26" height="604" fill="#FFFFFF" opacity="0.16"/>`;
+    [[352, 150], [560, 190], [80, 396], [220, 452], [420, 438], [648, 260], [270, 395]].forEach(([x, y], i) => {
+      wallDeco += `<g transform="translate(${x} ${y}) rotate(${i % 2 ? 14 : -12})" opacity="0.5">
+        <path d="M0 -4 q-7 0 -7 6 q0 7 7 11 q7 -4 7 -11 q0 -6 -7 -6 Z" fill="#F26D8A"/>
+        <circle cx="-2.5" cy="3" r="1" fill="#FFF1C4"/><circle cx="2.5" cy="3" r="1" fill="#FFF1C4"/><circle cx="0" cy="7" r="1" fill="#FFF1C4"/>
+        <ellipse cx="-3" cy="-5" rx="3.6" ry="2" transform="rotate(-24 -3 -5)" fill="#86CF9C"/>
+        <ellipse cx="3" cy="-5" rx="3.6" ry="2" transform="rotate(24 3 -5)" fill="#86CF9C"/></g>`;
+    });
     wallDeco += `<path d="M607 262 h14 M614 255 v14" stroke="#F2D1A0" stroke-width="3.5" stroke-linecap="round" opacity="0.6"/>`;
 
     return `
@@ -703,9 +715,14 @@ CSR.art = (() => {
           fill="${leafCols[i % 2]}" stroke="#58A46F" stroke-width="1.8"/>`;
       });
 
+    // scattered leaf sprigs (greenhouse wallpaper)
     let wallDeco = '';
-    [[350, 150], [430, 150], [330, 330], [450, 340], [360, 430], [240, 330], [250, 440], [600, 250]]
-      .forEach(([x, y]) => { wallDeco += `<circle cx="${x}" cy="${y}" r="5" fill="#FFFFFF" opacity="0.16"/>`; });
+    [[350, 150], [440, 155], [560, 150], [330, 335], [455, 345], [360, 440], [240, 335], [255, 450], [660, 230]].forEach(([x, y], i) => {
+      wallDeco += `<g transform="translate(${x} ${y}) rotate(${i % 2 ? 20 : -16})" opacity="0.4">
+        <path d="M0 9 Q0 -2 0 -9" stroke="#6FA97F" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <ellipse cx="-4.5" cy="-3" rx="4.8" ry="2.5" transform="rotate(-32 -4.5 -3)" fill="#86CF9C"/>
+        <ellipse cx="4.5" cy="-6" rx="4.8" ry="2.5" transform="rotate(28 4.5 -6)" fill="#A7DFB5"/></g>`;
+    });
     wallDeco += `<path d="M593 186 h14 M600 179 v14" stroke="#CFE0B8" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
                  <path d="M273 476 h14 M280 469 v14" stroke="#CFE0B8" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>`;
 
