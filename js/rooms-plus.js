@@ -213,7 +213,7 @@
       <circle r="${r % 2 ? 9 : 14}" fill="none" stroke="#7FC4BD" stroke-width="2.5"/>
       <path d="M${r % 2 ? -3 : -5} ${r % 2 ? -3 : -6} a6 6 0 0 1 4 -3" stroke="#7FC4BD" stroke-width="2" fill="none" stroke-linecap="round"/></g>`,
       { y0: 128, rows: 3, dy: 112, dx: 138, stag: 69 });
-    return `${defs(p, `<clipPath id="winClip"><circle cx="0" cy="0" r="82"/></clipPath>`)}
+    return `${defs(p, `<clipPath id="winClip"><circle cx="0" cy="0" r="68"/></clipPath>`)}
       ${wallFloor()}${board('#F6FBFA', '#C8E3DF')}
       <rect x="0" y="480" width="720" height="124" fill="#EAF6F3"/>
       <path d="M0 482 L720 482" stroke="#C8E3DF" stroke-width="3"/>
@@ -221,19 +221,29 @@
       ${fl}
       ${bubs}
       ${pool(200, 720)}
-      <!-- porthole window -->
-      <g transform="translate(170 210)">
-        <circle cx="0" cy="0" r="96" fill="#D8F0EC" stroke="${C}" stroke-width="3"/>
-        <circle cx="0" cy="0" r="82" fill="url(#skyG)" stroke="${C}" stroke-width="3"/>
+      <!-- two staggered portholes, like a little ship -->
+      <g transform="translate(140 170)">
+        <circle cx="0" cy="0" r="80" fill="#D8F0EC" stroke="${C}" stroke-width="3"/>
+        <circle cx="0" cy="0" r="68" fill="url(#skyG)" stroke="${C}" stroke-width="3"/>
         <g clip-path="url(#winClip)">
-          <circle cx="-30" cy="-24" r="16" fill="#FFE29E" stroke="#F2C46F" stroke-width="3"/>
-          <ellipse cx="30" cy="-6" rx="26" ry="11" fill="#FFFFFF" opacity="0.95"/>
-          <path d="M-82 82 q 45 -34 90 -22 q 45 11 74 -6 l0 40 l-164 0 Z" fill="#BFE3F0" opacity="0.9"/>
+          <circle cx="-26" cy="-20" r="14" fill="#FFE29E" stroke="#F2C46F" stroke-width="3"/>
+          <ellipse cx="26" cy="-2" rx="22" ry="10" fill="#FFFFFF" opacity="0.95"/>
+          <path d="M-68 68 q 38 -28 76 -18 q 36 9 60 -5 l0 34 l-136 0 Z" fill="#BFE3F0" opacity="0.9"/>
         </g>
-        <circle cx="0" cy="-89" r="5" fill="#FFF" stroke="${C}" stroke-width="2"/>
-        <circle cx="0" cy="89" r="5" fill="#FFF" stroke="${C}" stroke-width="2"/>
-        <circle cx="-89" cy="0" r="5" fill="#FFF" stroke="${C}" stroke-width="2"/>
-        <circle cx="89" cy="0" r="5" fill="#FFF" stroke="${C}" stroke-width="2"/>
+        <circle cx="0" cy="-74" r="4.5" fill="#FFF" stroke="${C}" stroke-width="2"/>
+        <circle cx="0" cy="74" r="4.5" fill="#FFF" stroke="${C}" stroke-width="2"/>
+        <circle cx="-74" cy="0" r="4.5" fill="#FFF" stroke="${C}" stroke-width="2"/>
+        <circle cx="74" cy="0" r="4.5" fill="#FFF" stroke="${C}" stroke-width="2"/>
+      </g>
+      <g transform="translate(290 228)">
+        <circle cx="0" cy="0" r="56" fill="#D8F0EC" stroke="${C}" stroke-width="3"/>
+        <circle cx="0" cy="0" r="45" fill="url(#skyG)" stroke="${C}" stroke-width="3"/>
+        <circle cx="-12" cy="-8" r="10" fill="#FFE29E" stroke="#F2C46F" stroke-width="2.5"/>
+        <ellipse cx="16" cy="10" rx="15" ry="7" fill="#FFFFFF" opacity="0.95"/>
+        <circle cx="0" cy="-51" r="4" fill="#FFF" stroke="${C}" stroke-width="2"/>
+        <circle cx="0" cy="51" r="4" fill="#FFF" stroke="${C}" stroke-width="2"/>
+        <circle cx="-51" cy="0" r="4" fill="#FFF" stroke="${C}" stroke-width="2"/>
+        <circle cx="51" cy="0" r="4" fill="#FFF" stroke="${C}" stroke-width="2"/>
       </g>
       <!-- clawfoot tub -->
       <g transform="translate(330 545)">
@@ -257,16 +267,16 @@
 
   /* ════════════════ 6. STUDY NOOK ════════════════ */
   function studyScene(p) {
-    return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="180" height="230" rx="14"/></clipPath>`)}${wallFloor()}${board()}
+    return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="180" height="200" rx="14"/></clipPath>`)}${wallFloor()}${board()}
       ${vStripes('#C9A25E', 0.16, 22, 88)}
       ${wp((x, y) => `<path transform="translate(${x} ${y}) scale(0.95)" d="${A.starPath}" fill="#C9A25E" opacity="0.45"/>`,
         { y0: 185, rows: 3, dy: 132, dx: 176, stag: 88 })}
       ${floorPlanks('#C9A87E', 0.38)}
       ${pool()}
       ${bunting(['#A7C6A0', '#F2C48D', '#E8C08A', '#BFE0F7'])}
-      ${rectWindow(50, 98, { w: 180, h: 230, style: 'shade', tint: '#E8C08A', tintDark: '#C9924F' })}
-      <!-- little wall library under the window -->
-      <g transform="translate(56 384)">
+      ${rectWindow(46, 252, { w: 180, h: 200, style: 'shade', tint: '#E8C08A', tintDark: '#C9924F' })}
+      <!-- little wall library ABOVE the low reading window -->
+      <g transform="translate(56 122)">
         <rect x="0" y="0" width="200" height="12" rx="6" fill="#D9A468" stroke="${C}" stroke-width="2.5"/>
         <rect x="14" y="-30" width="12" height="30" rx="4" fill="#E88A8A" stroke="${C}" stroke-width="2"/>
         <rect x="30" y="-26" width="12" height="26" rx="4" fill="#8FC1E8" stroke="${C}" stroke-width="2"/>
@@ -302,7 +312,7 @@
       return `<g transform="translate(${x} ${y})" opacity="0.5">
         <circle r="10" fill="${c2}"/><circle cx="12" cy="-7" r="4.5" fill="${c2}"/><circle cx="-11" cy="8" r="3.5" fill="${c2}"/></g>`;
     }, { y0: 145, rows: 3, dy: 115, dx: 140, stag: 70 });
-    return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="250" height="210" rx="14"/></clipPath>`)}${wallFloor()}${board()}
+    return `${defs(p)}${wallFloor()}${board()}
       ${floorPlanks('#C9A87E', 0.32)}
       <ellipse cx="580" cy="870" rx="165" ry="46" fill="#FFFDF6" opacity="0.6"/>
       <circle cx="520" cy="866" r="6" fill="#F49BB0" opacity="0.5"/>
@@ -318,7 +328,28 @@
       ${splats}
       ${pool()}
       ${lights(['#F49BB0', '#FFD98E', '#8FC1E8', '#CBB4E8'])}
-      ${rectWindow(36, 92, { w: 250, h: 210, grid: true, frame: '#FFFFFF', trim: '#E4D7F2' })}
+      <!-- slanted ceiling skylight + light beam -->
+      <g>
+        <path d="M300 148 L420 148 L390 300 L270 300 Z" fill="#FFF6D9" opacity="0.14"/>
+        <path d="M282 56 L444 56 L420 146 L262 146 Z" fill="#FFFFFF" stroke="#E4D7F2" stroke-width="3"/>
+        <path d="M292 64 L434 64 L414 138 L272 138 Z" fill="url(#skyG)" stroke="${C}" stroke-width="3"/>
+        <path d="M340 64 L328 138 M388 64 L380 138" stroke="#FFFFFF" stroke-width="7" opacity="0.9"/>
+        <circle cx="318" cy="88" r="11" fill="#FFE29E" stroke="#F2C46F" stroke-width="2.5"/>
+        <ellipse cx="392" cy="98" rx="18" ry="8" fill="#FFFFFF" opacity="0.95"/>
+      </g>
+      <!-- pegboard with studio tools -->
+      <g transform="translate(36 96)">
+        <rect x="0" y="0" width="220" height="168" rx="12" fill="#FBF7EF" stroke="#E4D7F2" stroke-width="3"/>
+        ${(() => { let d = ''; for (let r = 0; r < 4; r++) for (let c = 0; c < 7; c++) d += `<circle cx="${26 + c * 28}" cy="${26 + r * 38}" r="2.5" fill="#E4D7F2"/>`; return d; })()}
+        <circle cx="52" cy="62" r="17" fill="#F9BFCE" stroke="${C}" stroke-width="2.5"/>
+        <circle cx="52" cy="62" r="7" fill="#FBF7EF" stroke="${C}" stroke-width="2"/>
+        <path d="M108 34 L120 84 M128 34 L116 84" stroke="#8FC1E8" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="108" cy="32" r="6" fill="none" stroke="#8FC1E8" stroke-width="4"/>
+        <circle cx="130" cy="32" r="6" fill="none" stroke="#8FC1E8" stroke-width="4"/>
+        <rect x="166" y="30" width="16" height="94" rx="5" fill="#FFD98E" stroke="${C}" stroke-width="2.5"/>
+        <path d="M170 46 h8 M170 62 h8 M170 78 h8 M170 94 h8 M170 110 h8" stroke="#C9924F" stroke-width="2"/>
+        <path d="M40 120 q16 18 36 8 q14 -7 10 -20" fill="none" stroke="#A7E0B6" stroke-width="5" stroke-linecap="round"/>
+      </g>
       <!-- wall shelf -->
       <g transform="translate(60 420)">
         <rect x="0" y="0" width="240" height="14" rx="7" fill="#E8C08A" stroke="${C}" stroke-width="3"/>
@@ -340,7 +371,7 @@
   function musicScene(p) {
     const note = (x, y, s, op) => `<g transform="translate(${x} ${y}) scale(${s})" opacity="${op}">
       <circle cx="0" cy="10" r="6" fill="#8B92D8"/><path d="M6 10 L6 -14 L18 -18 L18 -8" stroke="#8B92D8" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="12" cy="-6" r="6" fill="#8B92D8"/></g>`;
-    return `${defs(p)}${wallFloor()}${board()}
+    return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="140" height="490" rx="10"/></clipPath>`)}${wallFloor()}${board()}
       ${wp((x, y, r) => note(x, y, r % 2 ? 0.6 : 0.78, 0.36), { y0: 140, rows: 3, dy: 122, dx: 158, stag: 79 })}
       <path d="M0 528 q30 -14 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0"
             stroke="#8B92D8" stroke-width="2.5" fill="none" opacity="0.35"/>
@@ -351,7 +382,23 @@
                opacity="0.28" stroke-dasharray="1 16" stroke-linecap="round"/>
       ${pool()}
       ${bunting(['#8B92D8', '#F9BFCE', '#BFE0F7', '#FFD98E'])}
-      ${rectWindow(46, 98, { style: 'drapes', tint: '#C5B5E3', tintDark: '#A08FC9' })}
+      <!-- tall french door out to the garden -->
+      <g transform="translate(46 98)">
+        <rect x="-10" y="-10" width="160" height="520" rx="16" fill="#FFF7EA" stroke="#E8C7A6" stroke-width="3"/>
+        <rect x="0" y="0" width="140" height="490" rx="10" fill="url(#skyG)" stroke="${C}" stroke-width="3"/>
+        <g clip-path="url(#winClip)">
+          <circle cx="38" cy="64" r="16" fill="#FFE29E" stroke="#F2C46F" stroke-width="3"/>
+          <ellipse cx="98" cy="92" rx="22" ry="10" fill="#FFFFFF" opacity="0.95"/>
+          <path d="M0 490 q 35 -32 70 -22 q 36 10 70 -6 l0 32 l-140 0 Z" fill="#CDEBD2" opacity="0.9"/>
+        </g>
+        <rect x="65" y="0" width="10" height="490" fill="#FFF7EA" opacity="0.9"/>
+        <rect x="0" y="118" width="140" height="10" fill="#FFF7EA" opacity="0.9"/>
+        <rect x="0" y="240" width="140" height="10" fill="#FFF7EA" opacity="0.9"/>
+        <rect x="0" y="362" width="140" height="10" fill="#FFF7EA" opacity="0.9"/>
+        <rect x="0" y="0" width="140" height="490" rx="10" fill="none" stroke="${C}" stroke-width="3"/>
+        <circle cx="122" cy="255" r="6" fill="#E8C08A" stroke="${C}" stroke-width="2.5"/>
+        <rect x="-16" y="488" width="172" height="16" rx="8" fill="#FFF7EA" stroke="#E8C7A6" stroke-width="3"/>
+      </g>
       <!-- upright piano -->
       <g transform="translate(430 440)">
         <ellipse cx="135" cy="288" rx="145" ry="14" fill="#B98F7B" opacity="0.16"/>
@@ -544,7 +591,7 @@
         bricks += `<rect x="${bx}" y="${16 + r * 40}" width="52" height="32" rx="6" fill="#DE9078" opacity="${r % 2 ? 0.5 : 0.7}"/>`;
       }
     }
-    return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="200" height="180" rx="14"/></clipPath>`)}${wallFloor()}${board()}
+    return `${defs(p, `<clipPath id="winClip"><rect x="0" y="0" width="100" height="110" rx="14"/></clipPath>`)}${wallFloor()}${board()}
       ${hPlanks('#C97B6B', 0.24, 132, 94, 592)}
       <circle cx="184" cy="180" r="5" fill="#C97B6B" opacity="0.3"/>
       <circle cx="564" cy="276" r="5" fill="#C97B6B" opacity="0.3"/>
@@ -565,7 +612,18 @@
       ${flake(360, 170, 1, 0.8)}${flake(430, 260, 0.8, 0.6)}${flake(330, 330, 0.7, 0.6)}${flake(620, 240, 0.9, 0.7)}${flake(160, 450, 0.8, 0.55)}
       ${pool()}
       ${lights(['#E88A8A', '#FFE9AE', '#A7C6A0', '#FFE9AE'])}
-      ${rectWindow(46, 98, { w: 200, h: 180, style: 'shutters', tint: '#E88A8A', tintDark: '#D07070', snow: true, hill: '#F4FAFF' })}
+      ${rectWindow(330, 108, { w: 100, h: 110, style: 'shutters', tint: '#E88A8A', tintDark: '#D07070', snow: true, hill: '#F4FAFF' })}
+      <!-- crossed skis on the left wall -->
+      <g transform="translate(150 250)">
+        <g transform="rotate(18)">
+          <rect x="-10" y="-100" width="20" height="200" rx="10" fill="#8FC1E8" stroke="${C}" stroke-width="3"/>
+          <rect x="-10" y="-14" width="20" height="28" fill="#6FA3D4"/>
+        </g>
+        <g transform="rotate(-18)">
+          <rect x="-10" y="-100" width="20" height="200" rx="10" fill="#F49BB0" stroke="${C}" stroke-width="3"/>
+          <rect x="-10" y="-14" width="20" height="28" fill="#E58FAB"/>
+        </g>
+      </g>
       <!-- fireplace -->
       <g transform="translate(420 330)">
         <ellipse cx="130" cy="296" rx="150" ry="14" fill="#B98F7B" opacity="0.18"/>

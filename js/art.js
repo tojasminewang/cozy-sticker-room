@@ -515,14 +515,14 @@ CSR.art = (() => {
       <rect x="-6" y="596" width="732" height="15" rx="7.5" fill="#FFF4E4" stroke="#EAC9A8" stroke-width="2"/>
       ${dots}
       ${wallDeco}
-      <ellipse cx="205" cy="700" rx="150" ry="42" fill="#FFFFFF" opacity="0.12"/>
+      <ellipse cx="500" cy="700" rx="150" ry="42" fill="#FFFFFF" opacity="0.12"/>
 
       <path d="M-10 30 Q 120 54 260 38 T 520 42 T 730 28"
             fill="none" stroke="#B98F7B" stroke-width="4" stroke-linecap="round"/>
       ${bulbs}
 
-      <!-- window -->
-      <g transform="translate(58 88)">
+      <!-- window (right side — the bed lives on the left) -->
+      <g transform="translate(404 88)">
         <rect x="-26" y="-26" width="296" height="10" rx="5" fill="#EAB786" stroke="${COCOA}" stroke-width="2.5"/>
         <circle cx="-26" cy="-21" r="8" fill="#EAB786" stroke="${COCOA}" stroke-width="2.5"/>
         <circle cx="270" cy="-21" r="8" fill="#EAB786" stroke="${COCOA}" stroke-width="2.5"/>
@@ -549,7 +549,7 @@ CSR.art = (() => {
       </g>
 
       <!-- bed -->
-      <g transform="translate(420 398)">
+      <g transform="translate(28 398)">
         <ellipse cx="145" cy="348" rx="152" ry="20" fill="#B98F7B" opacity="0.18"/>
         <path d="M20 130 v-64 a52 52 0 0 1 52 -52 h146 a52 52 0 0 1 52 52 v64 Z" fill="#F6D9AF" stroke="${COCOA}" stroke-width="${SW}"/>
         <path d="M38 128 v-56 a38 38 0 0 1 38 -38 h138 a38 38 0 0 1 38 38 v56 Z" fill="#FBEACC" stroke="#EBC9A0" stroke-width="2.5"/>
@@ -578,7 +578,7 @@ CSR.art = (() => {
       </g>
 
       <!-- nightstand -->
-      <g transform="translate(304 470)">
+      <g transform="translate(338 470)">
         <ellipse cx="49" cy="192" rx="56" ry="12" fill="#B98F7B" opacity="0.18"/>
         <rect x="12" y="164" width="14" height="20" rx="5" fill="#EAB786" stroke="${COCOA}" stroke-width="2.5"/>
         <rect x="72" y="164" width="14" height="20" rx="5" fill="#EAB786" stroke="${COCOA}" stroke-width="2.5"/>
@@ -650,26 +650,32 @@ CSR.art = (() => {
       <path d="M-10 34 Q 150 54 320 42 T 730 30" fill="none" stroke="#B98F7B" stroke-width="4" stroke-linecap="round"/>
       ${flags}
 
-      <!-- window with café curtain -->
-      <g transform="translate(64 98)">
-        <rect x="-10" y="-10" width="240" height="230" rx="20" fill="#FFF7EA" stroke="#E8C7A6" stroke-width="3"/>
-        <rect x="0" y="0" width="220" height="190" rx="14" fill="url(#skyG)" stroke="${COCOA}" stroke-width="3"/>
-        <g clip-path="url(#winClip)">
-          <circle cx="48" cy="46" r="18" fill="#FFE29E" stroke="#F2C46F" stroke-width="3"/>
-          <ellipse cx="140" cy="52" rx="30" ry="13" fill="#FFFFFF" opacity="0.95"/>
-          <ellipse cx="162" cy="42" rx="18" ry="11" fill="#FFFFFF" opacity="0.95"/>
-          <path d="M0 190 q 55 -40 110 -28 q 60 13 110 -8 l0 36 l-220 0 Z" fill="#CDEBD2" opacity="0.9"/>
-          <rect x="100" y="0" width="10" height="190" fill="#FFF7EA" opacity="0.9"/>
-          <rect x="0" y="85" width="220" height="10" fill="#FFF7EA" opacity="0.9"/>
-          <path d="M0 124 Q 27 112 55 124 T 110 124 T 165 124 T 220 124 L 220 190 L 0 190 Z"
-                fill="#FDE0E9" stroke="#F0B9C9" stroke-width="3"/>
-          <circle cx="36" cy="152" r="4" fill="#FFFFFF" opacity="0.7"/>
-          <circle cx="110" cy="162" r="4" fill="#FFFFFF" opacity="0.7"/>
-          <circle cx="184" cy="152" r="4" fill="#FFFFFF" opacity="0.7"/>
-        </g>
-        <rect x="0" y="0" width="220" height="190" rx="14" fill="none" stroke="${COCOA}" stroke-width="3"/>
-        <rect x="-20" y="188" width="280" height="20" rx="10" fill="#FFF7EA" stroke="#E8C7A6" stroke-width="3"/>
+      <!-- twin farmhouse windows over one long sill -->
+      <g transform="translate(40 100)">
+        <rect x="-8" y="-8" width="156" height="148" rx="16" fill="#FFF7EA" stroke="#E8C7A6" stroke-width="3"/>
+        <rect x="0" y="0" width="140" height="132" rx="11" fill="url(#skyG)" stroke="${COCOA}" stroke-width="3"/>
+        <circle cx="36" cy="38" r="14" fill="#FFE29E" stroke="#F2C46F" stroke-width="3"/>
+        <path d="M3 90 L137 90 L136 126 Q70 132 4 126 Z" fill="#FDE0E9" stroke="#F0B9C9" stroke-width="2.5"/>
+        <path d="M3 90 q17 10 34 0 q17 10 34 0 q16 10 32 0 q16 10 32 0" fill="none" stroke="#F0B9C9" stroke-width="2.5"/>
+        <circle cx="46" cy="110" r="3.5" fill="#FFFFFF" opacity="0.8"/>
+        <circle cx="96" cy="114" r="3.5" fill="#FFFFFF" opacity="0.8"/>
+        <rect x="64" y="0" width="9" height="90" fill="#FFF7EA" opacity="0.9"/>
+        <rect x="0" y="0" width="140" height="132" rx="11" fill="none" stroke="${COCOA}" stroke-width="3"/>
       </g>
+      <g transform="translate(230 100)">
+        <rect x="-8" y="-8" width="156" height="148" rx="16" fill="#FFF7EA" stroke="#E8C7A6" stroke-width="3"/>
+        <rect x="0" y="0" width="140" height="132" rx="11" fill="url(#skyG)" stroke="${COCOA}" stroke-width="3"/>
+        <ellipse cx="94" cy="36" rx="22" ry="10" fill="#FFFFFF" opacity="0.95"/>
+        <ellipse cx="74" cy="28" rx="14" ry="8" fill="#FFFFFF" opacity="0.95"/>
+        <path d="M3 90 L137 90 L136 126 Q70 132 4 126 Z" fill="#FDE0E9" stroke="#F0B9C9" stroke-width="2.5"/>
+        <path d="M3 90 q17 10 34 0 q17 10 34 0 q16 10 32 0 q16 10 32 0" fill="none" stroke="#F0B9C9" stroke-width="2.5"/>
+        <circle cx="42" cy="112" r="3.5" fill="#FFFFFF" opacity="0.8"/>
+        <circle cx="98" cy="110" r="3.5" fill="#FFFFFF" opacity="0.8"/>
+        <rect x="64" y="0" width="9" height="90" fill="#FFF7EA" opacity="0.9"/>
+        <rect x="0" y="0" width="140" height="132" rx="11" fill="none" stroke="${COCOA}" stroke-width="3"/>
+      </g>
+      <rect x="24" y="230" width="172" height="20" rx="10" fill="#FFF7EA" stroke="#E8C7A6" stroke-width="3"/>
+      <rect x="214" y="230" width="172" height="20" rx="10" fill="#FFF7EA" stroke="#E8C7A6" stroke-width="3"/>
 
       <!-- fridge -->
       <g transform="translate(540 348)">
