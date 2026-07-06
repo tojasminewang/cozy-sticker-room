@@ -825,5 +825,7 @@ CSR.art = (() => {
   // tiny star (used by particles + UI)
   const starPath = 'M0 -6 L1.7 -1.7 L6 0 L1.7 1.7 L0 6 L-1.7 1.7 L-6 0 L-1.7 -1.7 Z';
 
-  return { stickers, roomBase, stickerSVG, spotMarkup, placedMarkup, starPath, COCOA };
+  // `scenes` and `stickers` are exposed so extra room packs
+  // (js/rooms-plus.js, js/stickers-plus.js) can register more content.
+  return { stickers, scenes, roomBase, stickerSVG, spotMarkup, placedMarkup, starPath, COCOA, SW };
 })();
