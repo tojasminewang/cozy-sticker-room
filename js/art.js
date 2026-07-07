@@ -864,6 +864,13 @@ CSR.art = (() => {
   const scenes = { bedroom: bedroomScene, kitchen: kitchenScene, nook: nookScene };
 
   function roomBase(room) {
+    // A room can opt into a raster background (e.g. AI-generated art):
+    // set `bgImage` on the room config and the image covers the whole
+    // 720×920 canvas instead of the procedural scene.
+    if (room.bgImage) {
+      return `<image href="${room.bgImage}" x="0" y="0" width="720" height="920"
+        preserveAspectRatio="xMidYMid slice"/>`;
+    }
     const p = room.palette || {
       wallTop: '#FBE9DD', wallBottom: '#F8D7C6',
       floorTop: '#F6DEBD', floorBottom: '#F0CBA1', accent: '#EE8FA6',
