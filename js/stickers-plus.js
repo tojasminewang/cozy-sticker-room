@@ -940,7 +940,7 @@
 
     snowglobe: {
       w: 100, h: 110,
-      sil: `<path d="M18 76 A38 38 0 1 1 82 76 L86 78 Q92 80 92 88 L92 94 Q92 102 84 102 L16 102 Q8 102 8 94 L8 88 Q8 80 14 78 Z"/>`,
+      sil: `<path d="M14 80 L29.5 80 A38 38 0 1 1 70.5 80 L86 80 L84 92 Q83 99 76 99 L24 99 Q17 99 16 92 Z"/>`,
       body: `
         <circle cx="50" cy="48" r="38" fill="#EAF6FF" stroke="${C}" stroke-width="${SW}"/>
         <path d="M50 26 L62 46 L56 46 L66 62 L34 62 L44 46 L38 46 Z" fill="#86CF9C" stroke="#58A46F" stroke-width="2.5" stroke-linejoin="round"/>
