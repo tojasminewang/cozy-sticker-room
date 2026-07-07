@@ -43,6 +43,8 @@ CSR.config = {
         { id: 'poster',    art: 'poster',    name: 'Rainbow Poster', x: 158, y: 208, scale: 1.15, z: 1, shadow: false },
         { id: 'moonlight', art: 'moonlight', name: 'Moon Light',     x: 345, y: 325, scale: 0.9,  z: 1, shadow: false },
         { id: 'slippers',  art: 'slippers',  name: 'Slippers',       x: 395, y: 874, scale: 0.95, z: 3, shadow: false },
+        { id: 'fairyjar',    art: 'fairyjar',    name: 'Fairy Jar',    x: 175, y: 855, scale: 0.9,  z: 3, shadow: true  },
+        { id: 'dreambanner', art: 'dreambanner', name: 'Dream Flags',  x: 285, y: 122, scale: 0.95, z: 1, shadow: false },
       ],
     },
     {
@@ -63,6 +65,8 @@ CSR.config = {
         { id: 'stool',      art: 'stool',      name: 'Honey Stool',  x: 520, y: 810, scale: 1.1,  z: 2, shadow: true  },
         { id: 'fruitcrate', art: 'fruitcrate', name: 'Fruit Crate',  x: 140, y: 800, scale: 1.0,  z: 2, shadow: true  },
         { id: 'mugrack',    art: 'mugrack',    name: 'Mug Rack',     x: 285, y: 395, scale: 0.85, z: 1, shadow: false },
+        { id: 'fryingpan',  art: 'fryingpan',  name: 'Frying Pan',   x: 135, y: 385, scale: 0.9,  z: 1, shadow: false },
+        { id: 'milkcarton', art: 'milkcarton', name: 'Milk Carton',  x: 215, y: 494, scale: 0.85, z: 2, shadow: false },
       ],
     },
     {
@@ -83,6 +87,8 @@ CSR.config = {
         { id: 'can',       art: 'wateringcan', name: 'Watering Pal', x: 350, y: 795, scale: 1.0,  z: 3, shadow: true  },
         { id: 'gnome',     art: 'gnome',       name: 'Gnome Pal',    x: 580, y: 845, scale: 0.95, z: 3, shadow: true  },
         { id: 'birdhouse', art: 'birdhouse',   name: 'Birdhouse',    x: 355, y: 452, scale: 0.95, z: 1, shadow: false },
+        { id: 'butterfly',   art: 'butterfly',   name: 'Flutterby',    x: 610, y: 138, scale: 0.8,  z: 1, shadow: false },
+        { id: 'seedpackets', art: 'seedpackets', name: 'Seed Packets', x: 140, y: 520, scale: 0.9,  z: 1, shadow: false },
       ],
     },
     {
@@ -97,6 +103,8 @@ CSR.config = {
         { id: 'trailplant', art: 'trailplant', name: 'Ivy Hook',     x: 600, y: 230, scale: 1.0,  z: 1, shadow: false },
         { id: 'cupstack',   art: 'cupstack',   name: 'Cup Tower',    x: 430, y: 492, scale: 0.9,  z: 2, shadow: false },
         { id: 'latteart',   art: 'latteart',   name: 'Latte Print',  x: 600, y: 390, scale: 0.95, z: 1, shadow: false },
+        { id: 'donutplate', art: 'donutplate', name: 'Donut Plate',  x: 214, y: 498, scale: 0.7,  z: 2, shadow: false },
+        { id: 'opensign',   art: 'opensign',   name: 'Open Sign',    x: 120, y: 385, scale: 0.9,  z: 1, shadow: false },
       ],
     },
     {
@@ -111,6 +119,8 @@ CSR.config = {
         { id: 'bathmat',     art: 'bathmat',     name: 'Bath Mat',     x: 200, y: 850, scale: 1.5,  z: 0, shadow: false },
         { id: 'towelring',   art: 'towelring',   name: 'Towel Ring',   x: 170, y: 388, scale: 0.95, z: 1, shadow: false },
         { id: 'octo',        art: 'octo',        name: 'Octo Pal',     x: 418, y: 545, scale: 0.8,  z: 2, shadow: false },
+        { id: 'toothcup',    art: 'toothcup',    name: 'Rinse Cup',    x: 170, y: 500, scale: 0.85, z: 1, shadow: false },
+        { id: 'bathboat',    art: 'bathboat',    name: 'Tub Boat',     x: 610, y: 538, scale: 0.75, z: 2, shadow: false },
       ],
     },
     {
@@ -125,6 +135,8 @@ CSR.config = {
         { id: 'pouf',        art: 'pouf',        name: 'Pouf',        x: 300, y: 830, scale: 1.2,  z: 2, shadow: true  },
         { id: 'deskchair',   art: 'deskchair',   name: 'Desk Chair',  x: 485, y: 762, scale: 1.1,  z: 2, shadow: true  },
         { id: 'wastebasket', art: 'wastebasket', name: 'Paper Bin',   x: 655, y: 795, scale: 0.95, z: 2, shadow: true  },
+        { id: 'paperplane',  art: 'paperplane',  name: 'Paper Plane', x: 482, y: 188, scale: 0.65, z: 1, shadow: false },
+        { id: 'studybanner', art: 'studybanner', name: 'Study Flags', x: 665, y: 152, scale: 0.9,  z: 1, shadow: false },
       ],
     },
     {
@@ -139,6 +151,8 @@ CSR.config = {
         { id: 'swatchboard', art: 'swatchboard', name: 'Swatches',     x: 370, y: 205, scale: 1.05, z: 1, shadow: false },
         { id: 'canvasroll',  art: 'canvasroll',  name: 'Canvas Rolls', x: 640, y: 830, scale: 1.0,  z: 3, shadow: true  },
         { id: 'ribbon',      art: 'ribbon',      name: 'Art Ribbon',   x: 520, y: 190, scale: 0.9,  z: 1, shadow: false },
+        { id: 'claypot',     art: 'claypot',     name: 'Clay Pot',     x: 415, y: 798, scale: 0.85, z: 2, shadow: true  },
+        { id: 'sketchbook',  art: 'sketchbook',  name: 'Sketchbook',   x: 218, y: 302, scale: 0.85, z: 1, shadow: false },
       ],
     },
     {
@@ -153,6 +167,8 @@ CSR.config = {
         { id: 'vinyl',      art: 'vinyl',      name: 'Vinyl Star', x: 560, y: 255, scale: 1.0,  z: 1, shadow: false },
         { id: 'amp',        art: 'amp',        name: 'Lil Amp',    x: 560, y: 802, scale: 1.0,  z: 3, shadow: true  },
         { id: 'tambourine', art: 'tambourine', name: 'Tambourine', x: 255, y: 425, scale: 0.9,  z: 1, shadow: false },
+        { id: 'maraca',     art: 'maraca',     name: 'Maraca',     x: 665, y: 798, scale: 0.85, z: 3, shadow: true  },
+        { id: 'sheetmusic', art: 'sheetmusic', name: 'Sheet Music',x: 668, y: 252, scale: 0.85, z: 1, shadow: false },
       ],
     },
     {
@@ -167,6 +183,8 @@ CSR.config = {
         { id: 'starsign',    art: 'starsign',    name: 'Star Sign',    x: 245, y: 245, scale: 1.1,  z: 1, shadow: false },
         { id: 'cloudplush',  art: 'cloudplush',  name: 'Cloud Plush',  x: 468, y: 820, scale: 1.0,  z: 3, shadow: true  },
         { id: 'retroposter', art: 'retroposter', name: 'Retro Poster', x: 640, y: 248, scale: 0.95, z: 1, shadow: false },
+        { id: 'dicepair',    art: 'dicepair',    name: 'Lucky Dice',   x: 150, y: 858, scale: 0.75, z: 3, shadow: true  },
+        { id: 'trophy',      art: 'trophy',      name: 'Mini Trophy',  x: 552, y: 316, scale: 0.8,  z: 2, shadow: false },
       ],
     },
     {
@@ -181,6 +199,8 @@ CSR.config = {
         { id: 'fishpennant', art: 'fishpennant', name: 'Fish Flags',   x: 560, y: 190, scale: 1.1,  z: 1, shadow: false },
         { id: 'catbed',      art: 'catbed',      name: 'Cat Bed',      x: 360, y: 722, scale: 1.0,  z: 2, shadow: true  },
         { id: 'mousetoy',    art: 'mousetoy',    name: 'Mouse Toy',    x: 150, y: 756, scale: 0.85, z: 3, shadow: true  },
+        { id: 'kibblebag',   art: 'kibblebag',   name: 'Kibble Bag',   x: 68,  y: 700, scale: 0.85, z: 2, shadow: true  },
+        { id: 'photostrip',  art: 'photostrip',  name: 'Photo Strip',  x: 398, y: 342, scale: 0.85, z: 1, shadow: false },
       ],
     },
     {
@@ -195,6 +215,8 @@ CSR.config = {
         { id: 'floorcushion', art: 'floorcushion', name: 'Sun Cushion', x: 585, y: 830, scale: 1.1,  z: 2, shadow: true  },
         { id: 'birdfeeder',   art: 'birdfeeder',   name: 'Bird Feeder', x: 100, y: 132, scale: 0.9,  z: 1, shadow: false },
         { id: 'telescope',    art: 'telescope',    name: 'Telescope',   x: 648, y: 724, scale: 1.0,  z: 2, shadow: true  },
+        { id: 'succulents',   art: 'succulents',   name: 'Succulents',  x: 80,  y: 428, scale: 0.8,  z: 2, shadow: false },
+        { id: 'starlamp',     art: 'starlamp',     name: 'Star Lamp',   x: 240, y: 798, scale: 0.9,  z: 2, shadow: true  },
       ],
     },
     {
@@ -209,6 +231,8 @@ CSR.config = {
         { id: 'starbunting', art: 'starbunting', name: 'Star Flags',   x: 420, y: 140, scale: 1.15, z: 1, shadow: false },
         { id: 'owl',         art: 'owl',         name: 'Owl Buddy',    x: 200, y: 256, scale: 0.85, z: 2, shadow: false },
         { id: 'cooler',      art: 'cooler',      name: 'Camp Cooler',  x: 490, y: 864, scale: 0.9,  z: 3, shadow: true  },
+        { id: 'trailsign',   art: 'trailsign',   name: 'Trail Sign',   x: 80,  y: 798, scale: 0.9,  z: 2, shadow: true  },
+        { id: 'fireflyjar',  art: 'fireflyjar',  name: 'Firefly Jar',  x: 605, y: 875, scale: 0.75, z: 3, shadow: true  },
       ],
     },
     {
@@ -223,6 +247,8 @@ CSR.config = {
         { id: 'blanketbasket', art: 'blanketbasket', name: 'Knit Basket',  x: 180, y: 780, scale: 1.1,  z: 2, shadow: true  },
         { id: 'rockingchair',  art: 'rockingchair',  name: 'Rocker Chair', x: 322, y: 742, scale: 1.15, z: 2, shadow: true  },
         { id: 'sconce',        art: 'sconce',        name: 'Wall Candle',  x: 320, y: 308, scale: 0.9,  z: 1, shadow: false },
+        { id: 'sled',          art: 'sled',          name: 'Snow Sled',    x: 560, y: 788, scale: 1.0,  z: 2, shadow: true  },
+        { id: 'mistletoe',     art: 'mistletoe',     name: 'Mistletoe',    x: 655, y: 116, scale: 0.8,  z: 1, shadow: false },
       ],
     },
 

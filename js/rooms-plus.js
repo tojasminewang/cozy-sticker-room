@@ -192,7 +192,14 @@
         <path d="M40 218 Q52 206 90 206 Q128 206 140 218 Q146 226 134 228 L46 228 Q34 226 40 218 Z" fill="#B98F7B" stroke="${C}" stroke-width="3"/>
         <ellipse cx="90" cy="12" rx="88" ry="20" fill="#F6E6C8" stroke="${C}" stroke-width="${SW}"/>
         <ellipse cx="90" cy="8" rx="70" ry="13" fill="#FBF1DC"/>
-      </g>`;
+      </g>
+      <!-- floating shelf with bean jars -->
+      <rect x="480" y="132" width="200" height="12" rx="6" fill="#B98F7B" stroke="${C}" stroke-width="2.5"/>
+      <rect x="500" y="94" width="28" height="38" rx="7" fill="#C5E8D6" stroke="${C}" stroke-width="2.5"/>
+      <circle cx="514" cy="112" r="6" fill="#8A6357"/>
+      <rect x="544" y="100" width="24" height="32" rx="6" fill="#F9BFCE" stroke="${C}" stroke-width="2.5"/>
+      <path d="M600 110 q14 -8 26 2 l-6 20 q-10 -6 -20 -2 Z" fill="#E8C08A" stroke="${C}" stroke-width="2.5"/>
+      ${A.roomDetail({ sw: [390, 325], outlet: [620, 505] })}`;
   }
 
   /* ════════════════ 5. BUBBLE BATH ════════════════ */
@@ -262,7 +269,13 @@
         <circle cx="120" cy="4" r="6" fill="#EAF6FF" stroke="#7FC4BD" stroke-width="2"/>
         <circle cx="272" cy="8" r="7" fill="#EAF6FF" stroke="#7FC4BD" stroke-width="2"/>
         <path d="M60 80 Q70 110 92 130" stroke="#E8F4F1" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.9"/>
-      </g>`;
+      </g>
+      <!-- loofah on a hook -->
+      <circle cx="80" cy="278" r="3.5" fill="#FFF" stroke="${C}" stroke-width="2"/>
+      <path d="M80 281 v12" stroke="#B8A08E" stroke-width="2.5"/>
+      <circle cx="80" cy="310" r="17" fill="#BEE8CD" stroke="${C}" stroke-width="2.5"/>
+      <path d="M68 304 q12 12 24 0 M68 316 q12 -12 24 0" stroke="#8FCF9F" stroke-width="2" fill="none"/>
+      ${A.roomDetail({ sw: [250, 300] })}`;
   }
 
   /* ════════════════ 6. STUDY NOOK ════════════════ */
@@ -300,7 +313,9 @@
         <rect x="172" y="190" width="88" height="70" rx="9" fill="#F6E6C8" stroke="#D9B98C" stroke-width="2.5"/>
         <circle cx="216" cy="225" r="6" fill="#D9A468" stroke="${C}" stroke-width="2.5"/>
         <rect x="0" y="0" width="290" height="24" rx="12" fill="#E8C08A" stroke="${C}" stroke-width="${SW}"/>
-      </g>`;
+      </g>
+      <path d="M40 468 L242 468 L262 600 L20 600 Z" fill="#FFFFFF" opacity="0.05"/>
+      ${A.roomDetail({ sw: [270, 330], outlet: [390, 552] })}`;
   }
 
   /* ════════════════ 7. ART STUDIO ════════════════ */
@@ -364,7 +379,8 @@
         <circle cx="120" cy="26" r="10" fill="#E8C08A" stroke="${C}" stroke-width="3"/>
         <rect x="20" y="228" width="200" height="18" rx="9" fill="#E8C08A" stroke="${C}" stroke-width="3"/>
         <rect x="38" y="56" width="204" height="156" rx="6" fill="#FFFDF6" stroke="${C}" stroke-width="${SW}" transform="rotate(-1 140 134)"/>
-      </g>`;
+      </g>
+      ${A.roomDetail({ sw: [282, 300], outlet: [452, 556] })}`;
   }
 
   /* ════════════════ 8. MUSIC ROOM ════════════════ */
@@ -416,7 +432,13 @@
         <rect x="232" y="118" width="14" height="14" rx="2" fill="#5C5064"/>
         <rect x="14" y="262" width="22" height="20" rx="6" fill="#9E6A88" stroke="${C}" stroke-width="2.5"/>
         <rect x="234" y="262" width="22" height="20" rx="6" fill="#9E6A88" stroke="${C}" stroke-width="2.5"/>
-      </g>`;
+      </g>
+      <!-- little concert poster -->
+      <rect x="632" y="128" width="58" height="76" rx="6" fill="#B47E9E" stroke="${C}" stroke-width="2.5"/>
+      <circle cx="653" cy="168" r="6" fill="#F4D8E6"/>
+      <path d="M659 168 L659 146 L671 142 L671 162" stroke="#F4D8E6" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path transform="translate(650 190) scale(0.7)" d="${A.starPath}" fill="#F4D8E6"/>
+      ${A.roomDetail({ sw: [228, 325], outlet: [386, 552] })}`;
   }
 
   /* ════════════════ 9. GAME DEN ════════════════ */
@@ -471,7 +493,16 @@
         <circle cx="76" cy="115" r="6" fill="#D9A468" stroke="${C}" stroke-width="2.5"/>
         <rect x="150" y="65" width="112" height="44" rx="9" fill="#F6E6C8" stroke="#D9B98C" stroke-width="2.5"/>
         <rect x="150" y="121" width="112" height="44" rx="9" fill="#F6E6C8" stroke="#D9B98C" stroke-width="2.5"/>
-      </g>`;
+      </g>
+      <!-- pixel-buddy wall decals -->
+      ${[[150, 378, '#A7E0B6'], [228, 432, '#F9BFCE'], [138, 462, '#FFD98E']].map(([x, y, c2]) => `
+        <g transform="translate(${x} ${y})" opacity="0.6">
+          <rect x="0" y="0" width="28" height="14" rx="3" fill="${c2}"/>
+          <rect x="4" y="-6" width="20" height="8" rx="3" fill="${c2}"/>
+          <circle cx="9" cy="7" r="2.5" fill="#FFFDF6"/><circle cx="19" cy="7" r="2.5" fill="#FFFDF6"/>
+          <rect x="3" y="14" width="6" height="5" rx="2" fill="${c2}"/><rect x="19" y="14" width="6" height="5" rx="2" fill="${c2}"/>
+        </g>`).join('')}
+      ${A.roomDetail({ sw: [380, 330], outlet: [108, 548] })}`;
   }
 
   /* ════════════════ 10. KITTY CORNER ════════════════ */
@@ -495,7 +526,13 @@
         <rect x="0" y="0" width="260" height="24" rx="12" fill="#E8C08A" stroke="${C}" stroke-width="${SW}"/>
         <rect x="12" y="-10" width="236" height="16" rx="8" fill="#F8B58E" stroke="${C}" stroke-width="3"/>
         <path d="M40 -2 q6 5 12 0 M100 -2 q6 5 12 0 M160 -2 q6 5 12 0 M208 -2 q6 5 12 0" stroke="#E0955F" stroke-width="2" fill="none"/>
-      </g>`;
+      </g>
+      <!-- dangling pom toy + floor basket -->
+      <path d="M660 368 v52" stroke="#B8A08E" stroke-width="2.5"/>
+      <circle cx="660" cy="430" r="9" fill="#F49BB0" stroke="${C}" stroke-width="2.5"/>
+      <rect x="670" y="856" width="46" height="10" rx="5" fill="#E8C08A" stroke="${C}" stroke-width="2.5"/>
+      <path d="M674 866 h38 l-4 26 q-1 6 -7 6 h-16 q-6 0 -7 -6 Z" fill="#F0CD9C" stroke="${C}" stroke-width="2.5"/>
+      ${A.roomDetail({ sw: [498, 302], outlet: [255, 552] })}`;
   }
 
   /* ════════════════ 11. BALCONY GARDEN ════════════════ */
@@ -576,6 +613,14 @@
         <path d="M160 100 L228 330 Q210 344 160 344 Z" fill="#C9917E" opacity="0.55"/>
         <path d="M152 -8 L160 6 L170 -12" stroke="${C}" stroke-width="4" fill="none" stroke-linecap="round"/>
         <circle cx="160" cy="200" r="5" fill="#FFD98E" stroke="${C}" stroke-width="2"/>
+      </g>
+      <!-- old tree stump -->
+      <g transform="translate(95 682)">
+        <rect x="-28" y="0" width="56" height="26" fill="#B98F7B" stroke="${C}" stroke-width="2.5"/>
+        <ellipse cx="0" cy="26" rx="28" ry="9" fill="#A8836B" stroke="${C}" stroke-width="2.5"/>
+        <ellipse cx="0" cy="0" rx="28" ry="11" fill="#D9A468" stroke="${C}" stroke-width="2.5"/>
+        <ellipse cx="0" cy="0" rx="14" ry="5.5" fill="none" stroke="#B98F7B" stroke-width="2"/>
+        <ellipse cx="0" cy="0" rx="5" ry="2" fill="#B98F7B"/>
       </g>`;
   }
 
@@ -636,7 +681,9 @@
               fill="#4E3A34"/>
         <ellipse cx="130" cy="240" rx="60" ry="24" fill="#F8A05C" opacity="0.25"/>
         <rect x="30" y="272" width="200" height="18" rx="9" fill="#E8C08A" stroke="${C}" stroke-width="3"/>
-      </g>`;
+      </g>
+      <path d="M326 236 L436 236 L458 376 L304 376 Z" fill="#FFFFFF" opacity="0.05"/>
+      ${A.roomDetail({ sw: [258, 328], outlet: [395, 550] })}`;
   }
 
   Object.assign(A.scenes, {

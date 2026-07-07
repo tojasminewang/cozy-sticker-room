@@ -587,6 +587,14 @@ CSR.art = (() => {
         <rect x="20" y="114" width="58" height="28" rx="9" fill="#FBEACC" stroke="#E5C08F" stroke-width="2.5"/>
         <circle cx="49" cy="128" r="5" fill="#EAB786" stroke="${COCOA}" stroke-width="2.5"/>
       </g>
+
+      <!-- sunbeam from the window + little framed pictures -->
+      <path d="M400 330 L676 330 L700 588 L376 588 Z" fill="#FFFFFF" opacity="0.05"/>
+      <rect x="240" y="168" width="34" height="44" rx="4" fill="#FFFDF6" stroke="${COCOA}" stroke-width="2.5"/>
+      <path d="M257 186 c-1.8 -2.2 -5.2 -0.8 -5.2 1.7 c0 2.2 3 3.5 5.2 5.4 c2.2 -1.9 5.2 -3.2 5.2 -5.4 c0 -2.5 -3.4 -3.9 -5.2 -1.7 Z" fill="#F49BB0"/>
+      <rect x="288" y="222" width="28" height="36" rx="4" fill="#FFFDF6" stroke="${COCOA}" stroke-width="2.5"/>
+      <path transform="translate(302 240) scale(0.9)" d="${starPath}" fill="#FFD98E"/>
+      ${roomDetail({ sw: [240, 330] })}
     `;
   }
 
@@ -707,6 +715,15 @@ CSR.art = (() => {
         <rect x="58" y="-14" width="98" height="22" rx="11" fill="#B98F7B" stroke="${COCOA}" stroke-width="3"/>
         <circle cx="107" cy="-3" r="12" fill="none" stroke="#EFD9B8" stroke-width="3.5"/>
       </g>
+
+      <!-- hanging pots above the fridge -->
+      <g transform="translate(556 118)">
+        <rect x="0" y="0" width="134" height="9" rx="4.5" fill="#B98F7B" stroke="${COCOA}" stroke-width="2.5"/>
+        <path d="M32 9 v14 M98 9 v14" stroke="${COCOA}" stroke-width="2.5"/>
+        <path d="M16 23 h32 l-4 26 q-1 6 -7 6 h-10 q-6 0 -7 -6 Z" fill="#F0A3A3" stroke="${COCOA}" stroke-width="2.5"/>
+        <path d="M82 23 h32 l-3.5 20 q-1 5 -6 5 h-13 q-5 0 -6 -5 Z" fill="#8FC1E8" stroke="${COCOA}" stroke-width="2.5"/>
+      </g>
+      ${roomDetail({ outlet: [506, 548] })}
     `;
   }
 
@@ -803,7 +820,45 @@ CSR.art = (() => {
         <rect x="140" y="308" width="46" height="9" rx="3.5" fill="#F49BB0" stroke="${COCOA}" stroke-width="2"/>
         <rect x="146" y="299" width="38" height="9" rx="3.5" fill="#8FC1E8" stroke="${COCOA}" stroke-width="2"/>
       </g>
+
+      <!-- hanging glass terrarium -->
+      <g transform="translate(505 96)">
+        <path d="M0 -34 L0 12" stroke="#B98F7B" stroke-width="2.5"/>
+        <circle cx="0" cy="38" r="28" fill="#EAF6FF" opacity="0.75" stroke="${COCOA}" stroke-width="2.5"/>
+        <path d="M-20 46 q20 10 40 0 l0 8 q-20 8 -40 0 Z" fill="#E8C08A" opacity="0.9"/>
+        <path d="M0 44 L0 26 M0 36 q-8 -6 -10 -14 M0 36 q8 -6 10 -14" stroke="#58A46F" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </g>
+      ${roomDetail({ sw: [318, 305], outlet: [444, 552] })}
     `;
+  }
+
+  /* ---------------------------------------------------------- *
+   *  SHARED ROOM DETAILS — ceiling cove, corner/floor shading,  *
+   *  and tiny lived-in props (light switch, outlet).            *
+   * ---------------------------------------------------------- */
+  function roomDetail({ cove = true, ao = true, sw = null, outlet = null } = {}) {
+    let s = '';
+    if (cove) {
+      s += `<rect x="-6" y="0" width="732" height="24" fill="#FFFFFF" opacity="0.25"/>
+        <path d="M-6 25 L726 25" stroke="${COCOA}" stroke-width="2" opacity="0.14"/>`;
+    }
+    if (ao) {
+      s += `<rect x="0" y="28" width="22" height="576" fill="${COCOA}" opacity="0.045"/>
+        <rect x="698" y="28" width="22" height="576" fill="${COCOA}" opacity="0.045"/>
+        <rect x="0" y="590" width="720" height="14" fill="${COCOA}" opacity="0.05"/>
+        <rect x="0" y="604" width="720" height="12" fill="${COCOA}" opacity="0.07"/>
+        <rect x="0" y="896" width="720" height="24" fill="${COCOA}" opacity="0.06"/>`;
+    }
+    if (sw) {
+      s += `<rect x="${sw[0]}" y="${sw[1]}" width="22" height="34" rx="5" fill="#FFFDF6" stroke="${COCOA}" stroke-width="2"/>
+        <rect x="${sw[0] + 7}" y="${sw[1] + 10}" width="8" height="14" rx="3" fill="#E8D5C0" stroke="${COCOA}" stroke-width="1.5"/>`;
+    }
+    if (outlet) {
+      s += `<rect x="${outlet[0]}" y="${outlet[1]}" width="24" height="30" rx="5" fill="#FFFDF6" stroke="${COCOA}" stroke-width="2"/>
+        <circle cx="${outlet[0] + 12}" cy="${outlet[1] + 10}" r="2" fill="${COCOA}"/>
+        <circle cx="${outlet[0] + 12}" cy="${outlet[1] + 20}" r="2" fill="${COCOA}"/>`;
+    }
+    return s;
   }
 
   const scenes = { bedroom: bedroomScene, kitchen: kitchenScene, nook: nookScene };
@@ -865,5 +920,5 @@ CSR.art = (() => {
 
   // `scenes` and `stickers` are exposed so extra room packs
   // (js/rooms-plus.js, js/stickers-plus.js) can register more content.
-  return { stickers, scenes, roomBase, stickerSVG, spotMarkup, placedMarkup, starPath, COCOA, SW };
+  return { stickers, scenes, roomBase, roomDetail, stickerSVG, spotMarkup, placedMarkup, starPath, COCOA, SW };
 })();
