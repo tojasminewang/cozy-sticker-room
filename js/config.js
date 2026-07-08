@@ -38,11 +38,11 @@ CSR.config = {
       stickers: [
         { id: 'rug',       art: 'rug',       name: 'Scallop Rug',    x: 456, y: 812, scale: 2.05, z: 0, shadow: false },
         { id: 'shelf',     art: 'bookshelf', name: 'Book Nook',      x: 572, y: 598, scale: 1.5,  z: 1, shadow: true  },
-        { id: 'lamp',      art: 'lamp',      name: 'Glow Lamp',      x: 316, y: 425, scale: 0.95, z: 2, shadow: false },
+        { id: 'lamp',      art: 'lamp',      name: 'Glow Lamp',      x: 345, y: 405, scale: 0.95, z: 2, shadow: false },
         { id: 'plant',     art: 'plant',     name: 'Leafy Friend',   x: 75,  y: 840, scale: 1.0,  z: 3, shadow: true  },
         { id: 'bunny',     art: 'bunny',     name: 'Mochi Bunny',    x: 208, y: 494, scale: 0.85, z: 2, shadow: false },
         { id: 'poster',    art: 'poster',    name: 'Rainbow Poster', x: 158, y: 208, scale: 1.15, z: 1, shadow: false },
-        { id: 'moonlight', art: 'moonlight', name: 'Moon Light',     x: 345, y: 325, scale: 0.9,  z: 1, shadow: false },
+        { id: 'moonlight', art: 'moonlight', name: 'Moon Light',     x: 360, y: 250, scale: 0.9,  z: 1, shadow: false },
         { id: 'slippers',  art: 'slippers',  name: 'Slippers',       x: 395, y: 874, scale: 0.95, z: 3, shadow: false },
         { id: 'fairyjar',    art: 'fairyjar',    name: 'Fairy Jar',    x: 175, y: 855, scale: 0.9,  z: 3, shadow: true  },
         { id: 'dreambanner', art: 'dreambanner', name: 'Dream Flags',  x: 285, y: 122, scale: 0.95, z: 1, shadow: false },
