@@ -1379,17 +1379,18 @@
     /* ---- lodge: rocking chair ---- */
     rockingchair: {
       w: 135, h: 150,
-      sil: `<path d="M34 12 Q34 2 44 2 L92 2 Q102 2 102 12 L102 56 Q102 64 94 64 L98 64 Q108 64 108 74 L108 80 Q108 88 100 88 L96 88 L96 112 L106 116 Q116 122 110 130 Q104 136 96 130 L88 124 L46 124 L38 130 Q30 136 24 130 Q18 122 28 116 L38 112 L38 88 L34 88 Q26 88 26 80 L26 74 Q26 64 36 64 L40 64 Q34 64 34 56 Z"/>`,
+      sil: `
+        <rect x="34" y="2" width="68" height="62" rx="14"/>
+        <rect x="26" y="62" width="82" height="26" rx="11"/>
+        <path d="M44 82 L90 82 Q96 106 110 118 Q116 124 109 129 Q67 143 25 129 Q18 124 24 118 Q38 106 44 82 Z"/>`,
       body: `
         <rect x="34" y="2" width="68" height="62" rx="14" fill="#E8C08A" stroke="${C}" stroke-width="${SW}"/>
         <path d="M50 10 L50 56 M67 10 L67 56 M84 10 L84 56" stroke="#D9A468" stroke-width="3.5" stroke-linecap="round"/>
-        <path d="M96 6 Q116 10 112 34 Q110 48 96 50 L92 38 Q100 36 100 26 Q100 18 92 16 Z" fill="#A7C6A0" stroke="${C}" stroke-width="2.5"/>
-        <path d="M96 14 q6 4 4 12 M92 44 q6 -2 8 -8" stroke="#8FB287" stroke-width="2" fill="none"/>
         <rect x="26" y="64" width="82" height="22" rx="10" fill="#E88A8A" stroke="${C}" stroke-width="${SW}"/>
         <path d="M34 75 h66" stroke="#D07070" stroke-width="2.5" stroke-dasharray="7 7" stroke-linecap="round"/>
         <rect x="38" y="86" width="12" height="28" rx="5" fill="#D9A468" stroke="${C}" stroke-width="2.5"/>
         <rect x="84" y="86" width="12" height="28" rx="5" fill="#D9A468" stroke="${C}" stroke-width="2.5"/>
-        <path d="M22 122 Q67 140 112 122" fill="none" stroke="#B98F7B" stroke-width="6" stroke-linecap="round"/>
+        <path d="M22 122 Q67 138 112 122" fill="none" stroke="#B98F7B" stroke-width="6" stroke-linecap="round"/>
       `,
     },
 
@@ -1691,7 +1692,6 @@
         <rect x="44" y="10" width="12" height="90" rx="5" fill="#B98F7B" stroke="${C}" stroke-width="3"/>
         <path d="M56 28 L84 28 Q87 28 88 31 L93 40 L88 49 Q87 52 84 52 L56 52 Z" fill="#E8C08A" stroke="${C}" stroke-width="3" stroke-linejoin="round"/>
         <path d="M62 40 h16 M74 34 l6 6 -6 6" stroke="${C}" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M36 100 q-3 -12 -7 -15 M42 100 q0 -13 0 -16 M60 100 q3 -12 7 -15" stroke="#7FB472" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         <path d="M50 16 c-1.6 -1.9 -4.6 -0.7 -4.6 1.5 c0 1.9 2.7 3.1 4.6 4.8 c1.9 -1.7 4.6 -2.9 4.6 -4.8 c0 -2.2 -3 -3.4 -4.6 -1.5 Z" fill="#E88A8A"/>
       `,
     },
