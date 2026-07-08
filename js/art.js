@@ -891,21 +891,15 @@ CSR.art = (() => {
    *  HELPERS                                                    *
    * ---------------------------------------------------------- */
 
-  // An image-based sticker (AI art already has its own white die-cut border
-  // baked in) fills the sticker's w×h box.
-  function imgBody(a) {
-    return `<image href="${a.img}" x="0" y="0" width="${a.w}" height="${a.h}" preserveAspectRatio="xMidYMid meet"/>`;
-  }
-
   // A standalone sticker <svg> (tray, collection, ghost, hero…)
   // mode: 'die' = with white sticker border · 'plain' · 'mystery' = grey silhouette
   function stickerSVG(artId, mode = 'die', cls = '') {
     const a = stickers[artId];
     const pad = 18;
-    let inner;
-    if (mode === 'mystery') inner = `<g class="sil-mystery">${a.sil}</g>`;
-    else if (a.img) inner = imgBody(a);
-    else inner = `${mode === 'die' ? `<g class="sil-die">${a.sil}</g>` : ''}${a.body}`;
+    const inner =
+      mode === 'mystery'
+        ? `<g class="sil-mystery">${a.sil}</g>`
+        : `${mode === 'die' ? `<g class="sil-die">${a.sil}</g>` : ''}${a.body}`;
     return `<svg class="stk ${cls}" viewBox="${-pad} ${-pad} ${a.w + pad * 2} ${a.h + pad * 2}"
               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${inner}</svg>`;
   }
@@ -926,12 +920,12 @@ CSR.art = (() => {
     const shadow = spec.shadow
       ? `<ellipse cx="${a.w / 2}" cy="${a.h - 1}" rx="${a.w * 0.38}" ry="7" fill="${COCOA}" opacity="0.14"/>`
       : '';
-    const art = a.img ? imgBody(a) : `<g class="sil-die">${a.sil}</g>${a.body}`;
     return `<g class="placed" data-id="${spec.id}" data-z="${spec.z || 0}" transform="translate(${spec.x} ${spec.y}) scale(${spec.scale})">
       <g class="breathe"><g class="inner${withPop ? ' pop' : ''}">
         <g transform="translate(${-a.w / 2} ${-a.h / 2})">
           ${shadow}
-          ${art}
+          <g class="sil-die">${a.sil}</g>
+          ${a.body}
         </g>
       </g></g>
     </g>`;
