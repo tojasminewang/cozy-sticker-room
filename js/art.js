@@ -41,16 +41,19 @@ CSR.art = (() => {
     /* ---- leafy plant in a smiley pot ---- */
     plant: {
       w: 120, h: 150,
-      sil: `<path d="M39 87 A46 46 0 1 1 81 87 L90 87 Q93 87 93 90 L93 99 Q93 102 90 102 L88.5 102 L82 141 Q80.5 148.5 73 148.5 L47 148.5 Q39.5 148.5 38 141 L31.5 102 L30 102 Q27 102 27 99 L27 90 Q27 87 30 87 Z"/>`,
+      sil: `
+        <path d="M28 90 Q11 80 14 71 Q13 55 22 46 Q33 31 60 26 Q87 31 98 46 Q107 55 106 71 Q109 80 92 90 Z"/>
+        <rect x="27" y="86" width="66" height="16" rx="8"/>
+        <path d="M32 96 h56 l-6.5 44 a9 9 0 0 1 -9 8 h-25 a9 9 0 0 1 -9 -8 Z"/>`,
       body: `
-        <path d="M60 66 C 42 60 26 62 14 51 C 28 40 48 49 60 66 Z" fill="#6FBE8A" stroke="#58A46F" stroke-width="3"/>
-        <path d="M60 66 C 78 60 94 62 106 51 C 92 40 72 49 60 66 Z" fill="#6FBE8A" stroke="#58A46F" stroke-width="3"/>
-        <path d="M60 66 C 42 52 28 44 22 26 C 42 26 56 42 60 66 Z" fill="#A7E0B6" stroke="#58A46F" stroke-width="3"/>
-        <path d="M60 66 C 78 52 92 44 98 26 C 78 26 64 42 60 66 Z" fill="#A7E0B6" stroke="#58A46F" stroke-width="3"/>
-        <path d="M60 68 C 50 42 52 22 60 6 C 68 22 70 42 60 68 Z" fill="#86CF9C" stroke="#58A46F" stroke-width="3"/>
-        <path d="M60 60 L 60 22" stroke="#58A46F" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
-        <path d="M34 46 q7 -9 14 -11" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
-        <path d="M86 46 q-7 -9 -14 -11" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+        <path d="M60 86 C 42 80 26 82 14 71 C 28 60 48 69 60 86 Z" fill="#6FBE8A" stroke="#58A46F" stroke-width="3"/>
+        <path d="M60 86 C 78 80 94 82 106 71 C 92 60 72 69 60 86 Z" fill="#6FBE8A" stroke="#58A46F" stroke-width="3"/>
+        <path d="M60 86 C 42 72 28 64 22 46 C 42 46 56 62 60 86 Z" fill="#A7E0B6" stroke="#58A46F" stroke-width="3"/>
+        <path d="M60 86 C 78 72 92 64 98 46 C 78 46 64 62 60 86 Z" fill="#A7E0B6" stroke="#58A46F" stroke-width="3"/>
+        <path d="M60 88 C 50 62 52 42 60 26 C 68 42 70 62 60 88 Z" fill="#86CF9C" stroke="#58A46F" stroke-width="3"/>
+        <path d="M60 80 L 60 44" stroke="#58A46F" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+        <path d="M34 66 q7 -9 14 -11" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+        <path d="M86 66 q-7 -9 -14 -11" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
         <path d="M32 96 h56 l-6.5 44 a9 9 0 0 1 -9 8 h-25 a9 9 0 0 1 -9 -8 Z" fill="#F3AE8B" stroke="${COCOA}" stroke-width="${SW}"/>
         <rect x="27" y="87" width="66" height="15" rx="7.5" fill="#F8C3A4" stroke="${COCOA}" stroke-width="${SW}"/>
         <rect x="33" y="90" width="15" height="5.5" rx="2.75" fill="#FFFFFF" opacity="0.4"/>
@@ -111,7 +114,7 @@ CSR.art = (() => {
     /* ---- mochi bunny plush ---- */
     bunny: {
       w: 132, h: 142,
-      sil: `<path d="M35 60 Q34 44 42 35 L32 13 Q29 3 38.5 3 Q47 3 49 11 L55 29 Q60 25 66 25 Q72 25 77 29 L83 11 Q85 3 93.5 3 Q103 3 100 13 L90 35 Q98 44 97 60 Q104 70 107 84 Q110 100 105 114 Q100 131 88 137 Q66 144 44 137 Q32 131 27 114 Q22 100 25 84 Q28 70 35 60 Z"/>`,
+      sil: `<path d="M35 60 Q34 44 42 35 L32 13 Q29 3 38.5 3 Q47 3 49 11 L55 29 Q60 25 66 25 Q72 25 77 29 L83 11 Q85 3 93.5 3 Q103 3 100 13 L90 35 Q98 44 97 60 Q107 78 108 100 Q108 124 96 135 Q86 143 66 143 Q46 143 36 135 Q24 124 24 100 Q25 78 35 60 Z"/>`,
       body: `
         <rect x="34" y="4" width="21" height="48" rx="10.5" transform="rotate(-14 44 28)" fill="#FFF6EE" stroke="${COCOA}" stroke-width="${SW}"/>
         <rect x="40" y="11" width="9" height="32" rx="4.5" transform="rotate(-14 44 28)" fill="#FBC9D6"/>
@@ -274,7 +277,10 @@ CSR.art = (() => {
     /* ---- baby basil on the windowsill ---- */
     herb: {
       w: 95, h: 95,
-      sil: `<path d="M25 56 A30 30 0 1 1 69 56 L74 56 Q77 56 77 59 L77 64 Q77 67 74 67 L72 67 L67.5 86 Q66.5 92 60 92 L34 92 Q27.5 92 26.5 86 L22 67 L20 67 Q17 67 17 64 L17 59 Q17 56 20 56 Z"/>`,
+      sil: `
+        <path d="M27 60 Q19 42 25 24 Q33 13 47 12 Q61 13 69 24 Q75 42 67 60 Z"/>
+        <rect x="22" y="55" width="50" height="15" rx="7"/>
+        <path d="M26 68 h42 l-4.5 19 a7 7 0 0 1 -7 6 h-19 a7 7 0 0 1 -7 -6 Z"/>`,
       body: `
         <path d="M47 58 L47 28 M47 52 Q37 46 33 33 M47 52 Q57 46 61 33" fill="none" stroke="#58A46F" stroke-width="3" stroke-linecap="round"/>
         <ellipse cx="47" cy="23" rx="7.5" ry="10" fill="#86CF9C" stroke="#58A46F" stroke-width="2"/>
@@ -402,7 +408,10 @@ CSR.art = (() => {
     /* ---- sweet tulips in a vase ---- */
     tulipvase: {
       w: 110, h: 130,
-      sil: `<path d="M23 50 A34 34 0 1 1 87 50 L82 62 Q88 68 88 80 Q88 102 78 111 Q71 118 55 118 Q39 118 32 111 Q22 102 22 80 Q22 68 28 62 Z"/>`,
+      sil: `
+        <path d="M38 62 Q28 48 30 22 Q34 3 47 5 Q51 -1 55 3 Q59 -1 63 5 Q76 3 80 22 Q82 48 72 62 Z"/>
+        <rect x="32" y="57" width="46" height="12" rx="6"/>
+        <path d="M32 64 Q24 70 24 82 Q24 102 34 110 Q42 116 55 116 Q68 116 76 110 Q86 102 86 82 Q86 70 78 64 Z"/>`,
       body: `
         <path d="M39 34 L47 62 M55 26 L55 60 M71 34 L63 62" stroke="#58A46F" stroke-width="3" stroke-linecap="round"/>
         <ellipse cx="44" cy="52" rx="7" ry="4.5" transform="rotate(-32 44 52)" fill="#86CF9C" stroke="#58A46F" stroke-width="2"/>
