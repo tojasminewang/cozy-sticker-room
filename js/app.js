@@ -321,34 +321,29 @@
     }
   }
 
-  /* ---------------- reset (two-tap confirm) ---------------- */
+  /* ---------------- undo (peel the last-placed sticker) ---------------- */
   function disarmReset() {
-    state.resetArmed = false;
     els.btnReset.classList.remove('armed');
     clearTimeout(state.resetTimer);
   }
 
+  // One tap peels the most-recently-placed sticker back to the tray; tap
+  // again to keep undoing. Re-drag it from the tray to place it once more.
   function onReset() {
-    if (!state.resetArmed) {
-      state.resetArmed = true;
-      els.btnReset.classList.add('armed');
-      X.click();
-      state.resetTimer = setTimeout(disarmReset, 2600);
-      return;
-    }
-    disarmReset();
+    const rm = S.room(state.data, state.roomId);
+    if (state.peeling || rm.placed.length === 0) return;
+    const id = rm.placed[rm.placed.length - 1];
+    state.peeling = true;
     X.back();
-    els.roomSvg.querySelectorAll('#gItems .placed .inner').forEach((el) => {
-      el.classList.remove('pop');
-      el.classList.add('peel');
-    });
+    const inner = els.roomSvg.querySelector(`#gItems .placed[data-id="${id}"] .inner`);
+    if (inner) { inner.classList.remove('pop'); inner.classList.add('peel'); }
     setTimeout(() => {
-      const rm = S.room(state.data, state.roomId);
-      rm.placed = [];
+      rm.placed = rm.placed.filter((x) => x !== id);
       rm.done = false;      // rewarded stays true — no coin farming, just cozy replay
       S.write(state.data);
       hidePopup();
       renderGame();
+      state.peeling = false;
     }, 330);
   }
 
