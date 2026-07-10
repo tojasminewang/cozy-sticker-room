@@ -264,6 +264,7 @@ body {
    how big the sticker is drawn — so a placed sticker's border and line
    weights match its tray thumbnail exactly, whatever its scale. */
 .stk *, #gItems .placed * { vector-effect: non-scaling-stroke; }
+.sil-edge * { fill: #A88979; stroke: #A88979; stroke-width: 13.5; stroke-linejoin: round; stroke-linecap: round; }
 .sil-die * { fill: #fff; stroke: #fff; stroke-width: 9; stroke-linejoin: round; stroke-linecap: round; }
 .sil-mystery * { fill: #E7DACD; stroke: #D9C6B4; stroke-width: 3; stroke-linejoin: round; }
 

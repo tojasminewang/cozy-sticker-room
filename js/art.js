@@ -896,7 +896,7 @@ CSR.art = (() => {
     const inner =
       mode === 'mystery'
         ? `<g class="sil-mystery">${a.sil}</g>`
-        : `${mode === 'die' ? `<g class="sil-die">${a.sil}</g>` : ''}${a.body}`;
+        : `${mode === 'die' ? `<g class="sil-edge">${a.sil}</g><g class="sil-die">${a.sil}</g>` : ''}${a.body}`;
     return `<svg class="stk ${cls}" viewBox="${-pad} ${-pad} ${a.w + pad * 2} ${a.h + pad * 2}"
               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${inner}</svg>`;
   }
@@ -921,6 +921,7 @@ CSR.art = (() => {
       <g class="breathe"><g class="inner${withPop ? ' pop' : ''}">
         <g transform="translate(${-a.w / 2} ${-a.h / 2})">
           ${shadow}
+          <g class="sil-edge">${a.sil}</g>
           <g class="sil-die">${a.sil}</g>
           ${a.body}
         </g>
